@@ -22,19 +22,13 @@ try {
 
 
 
+
+
+
+
+
     $dane_post = json_encode($dane_posta);
-
-
-
-    //testy
     echo $dane_post;
-    $plik=fopen("baza_danych.json", "w+");
-    fwrite($plik, $dane_post);
-   /* */
-
-
-
-
     mysqli_close($baza);
 } catch (Exception $blod) {
     if (!file_exists('bledy.txt')) {

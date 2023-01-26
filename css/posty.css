@@ -264,3 +264,12 @@ article {
         text-shadow: 2px 2px 6px orange !important;
     }
 }
+
+
+
+
+@media screen and (max-device-width:1200px) {
+    .post_komentarze input {
+        width: 64% !important;
+    }
+}
