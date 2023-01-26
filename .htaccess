@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+
+RewriteRule ^(.+)$ index.php [QSA,L]
+
+RewriteRule ^/css/([a-zA-Z]+)/$ /css/$i
+
+
+AddType application/x-httpd-php .html .htm
+
+
+Options -Indexes

@@ -1,0 +1,180 @@
+* {
+    position: relative;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body {
+    background: black;
+    min-height: 100vh;
+    color: white;
+}
+
+
+#menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(20 22 24);
+    width: 100%;
+    height: 68px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgb(40, 118, 33);
+    font-size: 48px;
+    z-index: 28;
+}
+
+.tytul {
+    margin: 4px 10px 4px 4px;
+    width: 48px;
+    background: linear-gradient(40deg, blue, green);
+    border-radius: 48px;
+    text-align: center;
+    font-family: cursive;
+    box-shadow: 0 0 4px green;
+    border: 5px groove green;
+    font-size: 36px;
+}
+
+#wyszukiwarka {
+    left: 24%;
+    top: 0;
+    width: 36%;
+    bottom: 0;
+    z-index: 8;
+    position: absolute;
+}
+
+.wyszukaj {
+    width: 100%;
+    margin-top: 10px;
+}
+
+#wyszukiwarka input {
+    height: 44px;
+    border-radius: 8px 0 0 8px;
+    font-size: 40px;
+    background: rgb(56, 52, 50);
+    width: 100%;
+    border: 0;
+    border: 1px solid silver;
+    z-index: 6;
+    color: white;
+    top: 0;
+}
+
+#szukaj:focus,
+.lupa_aktywna {
+    outline: 0;
+    box-shadow: 0 0 5px blue;
+    border: 1px solid blue !important;
+}
+
+.lupa_aktywna:hover {
+    transform: scale(1.1);
+}
+
+.lupa {
+    position: relative;
+    top: 0;
+    font-size: 24px;
+    cursor: pointer;
+    background: rgb(56, 52, 50);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 5px;
+    z-index: 8;
+    width: 32px;
+    height: 32px;
+    border: 1px solid silver;
+}
+
+
+
+
+#menu div ul li {
+    float: left;
+    margin: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#menu div ul li:hover {
+    background: silver;
+    box-shadow: 0 0 4px orange;
+}
+
+.opcje {
+    position: absolute;
+    right: 0;
+    top: -48px;
+}
+
+#wyszukiwarka .wysrodkuj {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+#wynik_wyszukiwania {
+    width: 100%;
+    min-height: 48px;
+    max-height: 488px;
+    background: wheat;
+    position: absolute;
+    left: 5%;
+    top: 68px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 0 4px blue;
+    border-radius: 8px;
+    display: none;
+    color: green;
+    font-size: 48px;
+    text-align: center;
+    animation: rozwin 4s ease;
+}
+
+.wyszukiwara_uzyt {
+    width: 100%;
+    min-height: 88px;
+    box-shadow: 0 0 4px black;
+    text-align: left;
+    justify-content: left !important;
+    font-family: cursive;
+}
+
+.wyszukiwara_uzyt:hover {
+    background: silver;
+    box-shadow: 0 0 4px orange !important;
+}
+
+.wyszukiwara_uzyt img {
+    width: 68px;
+    height: 68px;
+    float: left;
+    border-radius: 48px;
+}
+
+
+
+
+/* menu */
+
+
+#glowna_tresc_p {
+    width: 50%;
+    min-height: 268px;
+    margin: 108px auto 88px auto;
+    z-index: 4;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+@media (max-width: 1008px) {
+    #glowna_tresc_p {
+        width: 100% !important;
+    }
+}

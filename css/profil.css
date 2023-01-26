@@ -1,0 +1,329 @@
+* {
+    position: relative;
+    text-decoration: none;
+    list-style-type: none;
+}
+body {
+    color:white;
+    min-height: 100vh;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+.zdjecia_profilu {
+    position: relative;
+    top: -50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.zdjecia_profilu img {
+    width: 100%;
+    height: 208px;
+}
+
+.zdjecia_profilu a {
+    width: 28%;
+    height: 208px;
+    float: left;
+    margin: 3px;
+    border: 6px solid black;
+}
+
+#caly_profil {
+    min-width: 438px;
+    width: 100%;
+}
+
+.wyrownaj {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+
+.dodajznajomego {
+    background: #0000ff85;
+    width: 28%;
+    height: 88px;
+    border-radius: 28px;
+    font-size: 28px;
+    margin-top: 100px;
+    cursor: pointer;
+    position: absolute;
+    top: 428px;
+    margin-left: 8px;
+    color: lime;
+    font-weight: 900;
+}
+
+.dodajznajomego:hover {
+    background-color: lime;
+    color: #0000ff85;
+}
+
+.profiledytujinformacje {
+    width: 88%;
+    height: 68px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    background: silver;
+    position: relative;
+    bottom: 28px;
+    box-shadow: 0 0 24px rgb(0, 174, 255);
+}
+
+.profiledytujinformacje:hover {
+    background: white;
+}
+
+.profilzamknijedytujinfo {
+    position: relative;
+    width: 88px;
+    height: 88px;
+    cursor: pointer;
+    font-size: 64px;
+    color: red;
+    border-left: 1px solid black;
+}
+
+.profilzamknijedytujinfo:hover {
+    background: silver;
+    border-top-right-radius: 28px;
+}
+
+h3 {
+    margin: 0;
+}
+
+.dodajPosta {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000000f5;
+    left: 0;
+    bottom: 0;
+    z-index: 48;
+    display: block;
+}
+
+.dodawanie_informacji {
+    max-width: 98%;
+    background: white;
+    border-radius: 48px;
+    min-height: 488px;
+    padding: 8px;
+    margin-top: 10px;
+}
+
+.dodawanie_informacji input[type="text"] {
+    width: 88%;
+    height: 48px;
+    margin-bottom: 10px;
+    border-radius: 28px;
+    font-size: 28px;
+}
+
+.dodawanie_informacji input[type="submit"] {
+    width: 88%;
+    background: blue;
+    border-radius: 28px;
+    box-shadow: 0 0 28px green;
+    cursor: pointer;
+    height: 48px;
+    font-size: 28px;
+    color: orangered;
+    border: 3px solid green;
+}
+
+.dodawanie_informacji input[type="submit"]:hover {
+    opacity: 0.4;
+}
+
+.post {
+    width: 100% !important;
+}
+
+body {
+    background-color: black;
+}
+
+/*
+* {
+ /*   max-width: 100%;
+}*/
+
+.profilwszystko {
+    position: relative;
+    margin-top: 448px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.goraprofilu {
+    position: relative;
+    top: 64px;
+    left: 0;
+    width: 88%;
+    height: 428px;
+    background-color: rgb(3, 112, 255 / 88%);
+}
+
+.tlo_profilu {
+    position: relative;
+    height: 100%;
+    max-width: 100%;
+}
+
+.tlo_profilu img {
+    width: 100%;
+    height: 100%;
+    border: 2px dotted green;
+    border-radius: 28px;
+}
+
+.awata_profiu {
+    position: relative;
+    height: 324px;
+    bottom: 148px;
+}
+
+.awata_profiu img {
+    position: relative;
+    border-radius: 108px;
+    width: 348px;
+    height: 100%;
+    border: 2px dotted green;
+}
+
+.goraprofilu h1 {
+    position: relative;
+    color: #ccff00;
+    font-size: 68px;
+    top: -188px;
+    width: fit-content;
+    padding: 8px;
+    border-radius: 28px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 4px blue;
+}
+
+
+.lewa_burta {
+    position: relative;
+    left: 0;
+    width: 40%;
+}
+
+.lewa_burta_info {
+
+    background-color: rgb(255 255 255 / 3%);
+    min-height: 228px;
+    border-radius: 12px;
+    /*  min-width: 428px; */
+    margin-bottom: 12px;
+    height: min-content;
+    padding-bottom: 2px;
+    border: 2px solid black;
+}
+
+.lewa_burta_info h2,
+#profil_posty h2,
+.posty {
+    position: relative;
+    color: rgb(242 255 0);
+    font-size: 48px;
+    bottom: 28px;
+    text-shadow: 0 0 4px blue;
+}
+
+.lewa_burta_info p {
+    position: relative;
+    color: rgb(33, 107, 181);
+    text-align: center;
+    word-break: break-word;
+}
+
+.hobby {
+    position: relative;
+    bottom: 24px;
+}
+
+.hobby div {
+    color: #ff6800;
+    text-align: center;
+}
+
+#profil_posty {
+    position: relative;
+    float: left;
+    width: 44%;
+    min-height: 88px;
+    margin-left: 10px;
+    border-radius: 12px;
+    padding-bottom: 24px;
+    border: 2px solid black;
+    background-color: rgb(255 255 255 / 1%);
+    padding: 8px;
+}
+
+.komentarz {
+    left: 0 !important;
+}
+
+
+
+.brakpostow {
+    color: blue;
+    font-size: 48px;
+}
+
+.kto_polubil {
+    float: left;
+}
+
+.dol-posta {
+    clear: both;
+}
+
+
+
+
+
+
+
+@media (max-device-width:1000px) {
+    #profil_posty {
+        width: 96%;
+    }
+
+    .lewa_burta {
+        width: 96%;
+    }
+
+    .goraprofilu {
+        width: 98%;
+    }
+
+    .dodajznajomego {
+        top: 380px !important;
+        position: relative !important;
+        right: 0 !important;
+        left: 0 !important;
+        width: 48%;
+    }
+
+    h1 {
+        font-size: 34px;
+    }
+    .komentarz_uzytkownik {
+        font-size: 16px;
+    }
+
+}

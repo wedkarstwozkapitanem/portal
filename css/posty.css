@@ -1,0 +1,266 @@
+/*post*/
+
+article {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    margin:0;
+    margin-top: 68px;
+}
+
+.post {
+    position: relative;
+    width: 100%;
+    background: rgba(45, 45, 46, 0.458);
+    min-height: 148px;
+    border-radius: 8px;
+    box-shadow: 0 0 4px #00ffe7;
+    word-break: break-word;
+}
+
+.post_informacje {
+    position: relative;
+    width: 98%;
+    min-height: 60px;
+    background: rgba(245, 245, 179, 0.338);
+    border-radius: 8px;
+    padding: 4px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post_informacje img {
+    height: 58px;
+    width: 58px;
+    border-radius: 48px;
+    float: left;
+    border: 1px solid black;
+    z-index: 12;
+}
+
+.post_imie {
+    left: 10px;
+    text-shadow: 0 0 4px rgb(0, 0, 255);
+    font-size: 28px;
+    color: wheat;
+}
+
+.post_data {
+    left: 10px;
+    font-size: 16px;
+    text-shadow: 0 0 2px rgb(0, 21, 255);
+}
+
+.post_data a {
+    color: silver;
+}
+
+.post_data a:hover {
+    text-decoration: underline;
+}
+
+.post_tresc {
+    margin: 20px;
+    text-align: center;
+    font-size: 28px;
+    text-shadow: 0 0 4px rgb(51, 0, 255);
+}
+
+.post_zdjecia {
+    position: relative;
+}
+
+.post_akcja {
+    width: 100%;
+    border-top: 1px dotted silver;
+    border-bottom: 1px dotted silver;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post_akcja button {
+    background: blue;
+    color: whitesmoke;
+    width: 33%;
+    height: 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: cursive;
+    cursor: pointer;
+}
+
+.post_akcja button:hover {
+    background: white;
+    color: blue;
+}
+
+.licznik_posta {
+    border-top: 1px dotted silver;
+    font-size: 15px;
+    color: silver;
+}
+
+.licznik_polubien {
+    float: left;
+    cursor: pointer;
+    width: 33%;
+    z-index: 12;
+    text-align: center;
+}
+
+.licznik_polubien:hover {
+    text-decoration: underline;
+}
+
+.licznik_komentarzy {
+    text-align: center;
+    cursor: pointer;
+    width: 33%;
+    float: left;
+}
+
+.licznik_komentarzy:hover {
+    text-decoration: underline;
+}
+
+.licznik_udustepnien {
+    position: relative;
+    cursor: pointer;
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+.licznik_udustepnien:hover {
+    text-decoration: underline;
+}
+
+
+.polubione {
+    background: white !important;
+    color: blue !important;
+}
+
+.post_komentarze {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.post_komentarze input {
+    width: 78%;
+    height: 40px;
+    box-shadow: 0 0 4px #007180;
+    border-radius: 28px;
+    background: black;
+    border: 0;
+    font-size: 28px;
+    margin: 10px;
+    color: white;
+    display: inline;
+}
+
+.dodaj_komentarz {
+    display: inline-block;
+    cursor: pointer;
+    width: 8%;
+    height: 40px;
+    top: 6px;
+
+}
+
+.dodaj_komentarz img {
+    width: 100%;
+    height: 100%;
+}
+
+.post_komentarze form {
+    border: 1px dotted silver;
+}
+
+.komentarze_post {
+    width: 98%;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+
+.dodaj_komentarz_profilowe {
+    height: 58px;
+    float: left;
+}
+
+.dodaj_komentarz_profilowe img {
+    width: 100%;
+    height: 100%;
+    border-radius: 88px;
+}
+
+.komentarz_posta {
+    width: 98%;
+    box-shadow: 0 0 4px silver;
+    min-height: 68px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.komentarze_post article {
+    margin: 4px !important;
+    width: 100% !important;
+}
+
+.komentarz_nazwa {
+    left: 10px;
+    font-size: 20px;
+    color: silver;
+}
+
+.komentarz_uzytkownik img {
+    width: 60px;
+    height: 60px;
+    border-radius: 48px;
+    float: left;
+    z-index: 28;
+}
+
+.komentarz_tresc {
+    left: 10px;
+    font-size: 28px;
+    margin: 5px;
+}
+
+
+#prawa_burta {
+    float: right;
+    width: 25%;
+}
+
+
+.wszyatkonadzis {
+    font-size: 68px;
+    color: black;
+    text-shadow: 0 0 4px rgb(255 127 0);
+    animation:swiecocytekst 4s infinite;
+}
+
+.brak {
+    margin-top: 100px;
+    color:rgb(255 255 255 / 1%);
+    box-shadow: 0 0 2px orange;
+}
+
+@keyframes swiecocytekst {
+    0% {
+        text-shadow: 4px 4px 8px orange !important;
+    }
+    50% {
+        text-shadow: 0 0 4px orange !important;
+    }
+    80% {
+        text-shadow: 2px 2px 6px orange !important;
+    }
+}

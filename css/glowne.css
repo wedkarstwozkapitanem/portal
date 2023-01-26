@@ -1,0 +1,605 @@
+* {
+    position: relative;
+    margin: 0;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body {
+    background: black;
+    min-height: 100vh;
+    color: white;
+    font-family: fantasy;
+    font-size: 20px;
+}
+
+.srodkowanie {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgb(20 22 24);
+    width: 100%;
+    height: 68px;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgb(40, 118, 33);
+    font-size: 48px;
+    z-index: 28;
+}
+
+.tytul {
+    margin: 4px 10px 4px 4px;
+    width: 48px;
+    background: linear-gradient(40deg, blue, green);
+    border-radius: 48px;
+    text-align: center;
+    font-family: cursive;
+    box-shadow: 0 0 4px green;
+    border: 5px groove green;
+    font-size: 36px;
+}
+
+#wyszukiwarka {
+    left: 24%;
+    top: 0;
+    width: 36%;
+    bottom: 0;
+    z-index: 8;
+    position: absolute;
+}
+
+.wyszukaj {
+    width: 100%;
+}
+
+#wyszukiwarka input {
+    height: 44px;
+    border-radius: 8px 0 0 8px;
+    font-size: 40px;
+    background: rgb(56, 52, 50);
+    width: 100%;
+    border: 0;
+    border: 1px solid silver;
+    z-index: 6;
+    color: white;
+    top: 0;
+}
+
+#szukaj:focus,
+.lupa_aktywna {
+    outline: 0;
+    box-shadow: 0 0 5px blue;
+    border: 1px solid blue !important;
+}
+
+.lupa_aktywna:hover {
+    transform: scale(1.1);
+}
+
+.lupa {
+    position: relative;
+    top: 0;
+    font-size: 24px;
+    cursor: pointer;
+    background: rgb(56, 52, 50);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 5px;
+    z-index: 8;
+    width: 32px;
+    height: 32px;
+    border: 1px solid silver;
+}
+
+
+
+
+#menu div ul li {
+    float: left;
+    margin: 4px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#menu div ul li:hover {
+    background: silver;
+    box-shadow: 0 0 4px orange;
+}
+
+.opcje {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.wysrodkuj {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+
+#wynik_wyszukiwania {
+    width: 100%;
+    min-height: 48px;
+    max-height: 488px;
+    background: wheat;
+    position: absolute;
+    left: 5%;
+    top: 68px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-shadow: 0 0 4px blue;
+    border-radius: 8px;
+    display: none;
+    color: green;
+    font-size: 48px;
+    text-align: center;
+    animation: rozwin 4s ease;
+}
+
+.wyszukiwara_uzyt {
+    width: 100%;
+    min-height: 88px;
+    box-shadow: 0 0 4px black;
+    text-align: left;
+    justify-content: left !important;
+    font-family: cursive;
+}
+
+.wyszukiwara_uzyt:hover {
+    background: silver;
+    box-shadow: 0 0 4px orange !important;
+}
+
+.wyszukiwara_uzyt img {
+    width: 68px;
+    height: 68px;
+    float: left;
+    border-radius: 48px;
+}
+
+
+@keyframes rozwin {
+    0% {
+        height: 0px !important;
+    }
+
+    100% {
+        height: auto !important;
+    }
+}
+
+@media screen and (max-device-width:1200px) {
+    .tytul {
+        display: none;
+    }
+
+    #wyszukiwarka {
+        left: 4px;
+    }
+
+    #wynik_wyszukiwania {
+        width: 60vh !important;
+        left: 5%;
+    }
+
+    #glowna_tresc {
+        width: 98% !important;
+    }
+
+    #zdjecie {
+        margin-left: 12px !important;
+    }
+
+    .dodaj_posta button {
+        width: 96% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        right: 0 !important;
+    }
+
+    #podglodfot {
+        width: 68% !important;
+    }
+
+    #menu div ul li {
+        margin: 1px !important;
+    }
+
+    .post_komentarze input {
+        width: 64% !important;
+    }
+}
+
+/* menu */
+
+/* glowna */
+#glowna_tresc {
+    width: 50%;
+    min-height: 268px;
+    margin: 108px auto 88px auto;
+    z-index: 4;
+    overflow-y: auto;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.dodaj_posta {
+    width: 98%;
+    min-height: 168px;
+    margin: 28px auto 0 2px;
+    background: rgb(26, 26, 25);
+    border-radius: 28px;
+    box-shadow: 0 0 4px #0070ff;
+}
+
+.dodaj_posta input {
+    width: 88%;
+    background: rgb(78, 71, 71);
+    height: 60px;
+    border-radius: 28px;
+    color: rgb(255, 255, 255);
+    outline: 0;
+    font-size: 40px;
+    margin: 12px;
+    font-family: cursive;
+    box-shadow: 0 0 4px rgb(0, 13, 255);
+}
+
+.dodaj_posta button {
+    width: 188px;
+    background: blue;
+    height: 50px;
+    position: relative;
+    right: 20px;
+    margin: 10px;
+    border: 0;
+    font-size: 40px;
+    color: orangered;
+    border-radius: 28px;
+    cursor: pointer;
+    box-shadow: 0 0 2px green;
+    clear: both;
+    font-family: fantasy;
+}
+
+.dodaj_posta button:hover {
+    color: blue;
+    background: orangered;
+}
+
+#tresc_artykulu:focus {
+    box-shadow: 0 0 4px orange !important;
+}
+
+.publikacja {
+    width: 100%;
+}
+
+#podglodfot {
+    float: left;
+    width: 50%;
+    height: 68px;
+}
+
+#zdjecie {
+    float: left;
+    margin-left: 48px;
+    font-size: 58px;
+    cursor: pointer;
+}
+
+#przeglodaj {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 88px;
+    margin: 4px auto 68px auto;
+    width: 98%;
+    border-radius: 8px;
+}
+
+.dodawanie_profil {
+    min-height: 68px;
+    font-size: 44px;
+    text-align: left;
+    margin: 15px auto 10px 28px;
+    top: 8px;
+}
+
+.dodawanie_profil img {
+    width: 68px;
+    height: 68px;
+    border-radius: 48px;
+    float: left;
+}
+
+
+/*post*/
+
+article {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    margin-top: 68px;
+}
+
+.post {
+    position: relative;
+    width: 100%;
+    background: rgba(45, 45, 46, 0.458);
+    min-height: 148px;
+    border-radius: 8px;
+    box-shadow: 0 0 4px #00ffe7;
+    word-break: break-word;
+}
+
+.post_informacje {
+    position: relative;
+    width: 98%;
+    min-height: 60px;
+    background: rgba(245, 245, 179, 0.338);
+    border-radius: 8px;
+    padding: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    top:4px;
+}
+
+.post_informacje img {
+    height: 58px;
+    width: 58px;
+    border-radius: 48px;
+    float: left;
+    border: 1px solid black;
+    z-index: 12;
+}
+
+.post_imie {
+    left: 10px;
+    text-shadow: 0 0 4px rgb(0, 0, 255);
+    font-size: 28px;
+    color: wheat;
+}
+
+.post_data {
+    left: 10px;
+    font-size: 16px;
+    text-shadow: 0 0 2px rgb(0, 21, 255);
+}
+
+.post_data a {
+    color: silver;
+}
+
+.post_data a:hover {
+    text-decoration: underline;
+}
+
+.post_tresc {
+    margin: 20px;
+    text-align: center;
+    font-size: 28px;
+    text-shadow: 0 0 4px rgb(51, 0, 255);
+}
+
+.post_zdjecia {
+    position: relative;
+}
+
+.post_akcja {
+    width: 100%;
+    border-top: 1px dotted silver;
+    border-bottom: 1px dotted silver;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post_akcja button {
+    background: blue;
+    color: whitesmoke;
+    width: 33%;
+    height: 28px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: cursive;
+    cursor: pointer;
+}
+
+.post_akcja button:hover {
+    background: white;
+    color: blue;
+}
+
+.licznik_posta {
+    border-top: 1px dotted silver;
+    font-size: 15px;
+    color: silver;
+}
+
+.licznik_polubien {
+    float: left;
+    cursor: pointer;
+    width: 33%;
+    z-index: 12;
+    text-align: center;
+}
+
+.licznik_polubien:hover {
+    text-decoration: underline;
+}
+
+.licznik_komentarzy {
+    text-align: center;
+    cursor: pointer;
+    width: 33%;
+    float: left;
+}
+
+.licznik_komentarzy:hover {
+    text-decoration: underline;
+}
+
+.licznik_udustepnien {
+    position: relative;
+    cursor: pointer;
+    float: left;
+    width: 33%;
+    text-align: center;
+}
+
+.licznik_udustepnien:hover {
+    text-decoration: underline;
+}
+
+
+.polubione {
+    background: white !important;
+    color: blue !important;
+}
+
+.post_komentarze {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.post_komentarze input {
+    width: 78%;
+    height: 40px;
+    box-shadow: 0 0 4px #007180;
+    border-radius: 28px;
+    background: black;
+    border: 0;
+    font-size: 28px;
+    margin: 10px;
+    color: white;
+    display: inline;
+}
+
+.dodaj_komentarz {
+    display: inline-block;
+    cursor: pointer;
+    width: 8%;
+    height: 40px;
+    top: 6px;
+
+}
+
+.dodaj_komentarz img {
+    width: 100%;
+    height: 100%;
+}
+
+.post_komentarze form {
+    border: 1px dotted silver;
+}
+
+.komentarze_post {
+    width: 98%;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+
+.dodaj_komentarz_profilowe {
+    height: 58px;
+    float: left;
+}
+
+.dodaj_komentarz_profilowe img {
+    width: 100%;
+    height: 100%;
+    border-radius: 88px;
+}
+
+.komentarz_posta {
+    width: 98%;
+    box-shadow: 0 0 4px silver;
+    min-height: 68px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.14);
+    word-break: break-all;
+}
+
+.komentarze_post article {
+    margin: 4px !important;
+    width: 100% !important;
+}
+
+.komentarz_nazwa {
+    left: 10px;
+    font-size: 20px;
+    color: silver;
+}
+
+.komentarz_uzytkownik img {
+    width: 60px;
+    height: 60px;
+    border-radius: 48px;
+    float: left;
+    z-index: 28;
+}
+
+.komentarz_tresc {
+    left: 10px;
+    font-size: 28px;
+    margin: 5px;
+    width: 95%;
+}
+
+
+#prawa_burta {
+    float: right;
+    width: 25%;
+}
+
+
+.wszyatkonadzis {
+    font-size: 68px;
+    color: black;
+    text-shadow: 0 0 4px rgb(255 127 0);
+    animation:swiecocytekst 4s infinite;
+}
+
+@keyframes swiecocytekst {
+    0% {
+        text-shadow: 4px 4px 8px orange !important;
+    }
+    50% {
+        text-shadow: 0 0 4px orange !important;
+    }
+    80% {
+        text-shadow: 2px 2px 6px orange !important;
+    }
+}
+
+
+
+
+
+#dokladneinformacje {
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.968);
+    z-index:28;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
