@@ -15,14 +15,10 @@ try {
     $dane_posta[0] += mysqli_fetch_assoc(mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe` FROM `uzytkownicy` where `id` = '$id_uzytkownika'"));
     
 
+
     $dane_posta[0]['licznikpolubien'] = mysqli_num_rows(mysqli_query($baza, "SELECT `id_uzytkownika`,`id_posta` FROM `polubienia` WHERE `id_posta` = '$id_posta'"));
     $dane_posta[0]['licznikomentarzy'] = mysqli_num_rows(mysqli_query($baza, "SELECT * FROM `komentarze` where `idposta` = '$id_posta'"));
     $dane_posta[0]['polubiono'] = mysqli_num_rows(mysqli_query($baza, "SELECT `id_uzytkownika`,`id_posta` FROM `polubienia` WHERE `id_uzytkownika` = '$sesja' AND id_posta = '$id_posta'")) === 0 ? false : true;
-
-
-
-
-
 
 
 

@@ -68,6 +68,9 @@
             e.preventDefault();
             bledy.splice(0);
 
+
+
+
             for (let i = 0; i < wszystkie.length - 1; i++) {
                 wszystkie[i].classList.remove('blod');
                 komunikat.innerHTML = "";
@@ -167,6 +170,11 @@
                     komunikat.innerHTML = "Podany email jest już zarejstrowany";
                     email.classList = 'blod';
                 }
+                if (odpowiedz.includes('niedozwoloneznaki')) {
+                    akcja.innerText = "Niepowodzenie"
+                    komunikat.innerHTML = "Występują niedozwolone znaki z zakresu:  - / < > ? : * | , \ ` & $ { } ( ) ! # %";
+                }
+
             }
 
             poloczenie.send(`ppp=rejestracja&imie=${imie.value}&nazwisko=${nazwisko.value}&data_urodzenia=${dataurodzenia.value}&email=${email.value}&haslo=${haslo.value}&haslo_powtorz=${haslo_powtorz.value}`);

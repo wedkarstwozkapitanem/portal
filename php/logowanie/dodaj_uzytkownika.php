@@ -15,6 +15,14 @@ try {
             (string)$haslo_powtorzone = mysqli_real_escape_string($baza, htmlentities($_POST['haslo_powtorz']));
             (string)$ip = mysqli_real_escape_string($baza, $_SERVER['REMOTE_ADDR']);
 
+            $niedozwoloneznaki = array( "/","<", ">","?",":","*","|","`","&","[","]","{","}","!","$","#","%","\ ");
+            foreach ($niedozwoloneznaki as $x) {
+                if (strpos($imie, "$x") || strpos($nazwisko,"$x") || strpos($data_urodzenia,"$x") || strpos($email,"$x") || strpos($haslo,"$x") || strpos($haslo_powtorzone,"$x") || strpos($ip,"$x")) {
+                    echo "niedozwoloneznaki";
+                    exit();
+                }
+            }
+
             $zapytanie = mysqli_query($baza, "SELECT * FROM `hasla` WHERE `email` = '$email'"); //sprawdzenie czy nie istnieje taki sam email
             if (mysqli_num_rows($zapytanie) <= 0) {
 
@@ -23,18 +31,23 @@ try {
                         try {
 
                             $dodawanie_hasel = mysqli_query($baza, "INSERT INTO `hasla` (email,haslo,ip) VALUES ('$email','$haslo','$ip')");
-                            (int) $id = mysqli_insert_id($baza);
-                            $dodawanie_uzytkownika = mysqli_query($baza, "INSERT INTO `uzytkownicy` (id,imie,nazwisko,wiek,profilowe) VALUES ('$id','$imie','$nazwisko','$data_urodzenia','uzytkownik.jpg')");
+                            (int) $id_profilu = mysqli_insert_id($baza);
+                            $dodawanie_uzytkownika = mysqli_query($baza, "INSERT INTO `uzytkownicy` (id,imie,nazwisko,wiek,profilowe) VALUES ('$id_profilu','$imie','$nazwisko','$data_urodzenia','uzytkownik.jpg')");
                             $i = mysqli_real_escape_string($baza,htmlentities(strtolower($imie)));
                             $n =  mysqli_real_escape_string($baza,htmlentities(strtolower($nazwisko)));
-                            $folder_profilu =  mysqli_real_escape_string($baza,htmlentities("{$i}_{$n}_{$id}"));
-                            mkdir("foty/$folder_profilu", 0777);
-                            mkdir("foty/$folder_profilu/posty", 0777);
-                            mkdir("foty/$folder_profilu/wiadomosci", 0777);
-                            mysqli_query($baza, "UPDATE `uzytkownicy` SET `folder` = '$folder_profilu' WHERE `id` = '$id'");
-
-                                $_SESSION['uzytkwonik_pixi_id'] = mysqli_real_escape_string($baza,htmlentities("$id"));
+                            $folder_profilu =  mysqli_real_escape_string($baza,htmlspecialchars("{$i}_{$n}_{$id_profilu}"));
+                            if(mkdir("foty/$folder_profilu", 0777)) {
+                                mkdir("foty/$folder_profilu/posty", 0777);
+                                mkdir("foty/$folder_profilu/wiadomosci", 0777);
+                                mysqli_query($baza, "UPDATE `uzytkownicy` SET `folder` = '$folder_profilu' WHERE `id` = '$id_profilu'");
+                                $_SESSION['uzytkwonik_pixi_id'] = mysqli_real_escape_string($baza,htmlentities("$id_profilu"));
                                 echo 'dodano';
+                            } else {
+                            mysqli_query($baza,"DELETE FROM `uzytkownicy` WHERE `id` = '$id_profilu");
+                            };
+
+                            
+
                             
                             //    header('Location:index.php');
 
