@@ -69,6 +69,7 @@ article {
 .post_zdjecia {
     position: relative;
     width: 100%;
+    margin-top: 24px;
 }
 .post_zdjecia img {
     max-width: 100%;
@@ -290,4 +291,18 @@ article {
     height: 68px;
     width: 68px;
     border-radius: 28px;
+}
+
+
+
+.wysrodkowanie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+
+.opcjeposta_usuwanie:hover{
+    background: silver;
 }

@@ -77,6 +77,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
                         <div class="post_imie"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
                     </a>
                     <div class="post_data"><a href="/profil/<?php echo $uzytkownik[0]; ?>/post/<?php echo $post['id'] ?>"><time><?php echo $post['datadodania'] ?></time></a></div>
+                    <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
                 </div>
                 <div class="post_tresc">
                     <?php echo $post['tresc'] ?>

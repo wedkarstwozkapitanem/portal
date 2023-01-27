@@ -77,3 +77,6 @@ function wczytywanie_postow() {
     }
     poloczenie.send(`ppp=posty`);
 }
+
+
+

@@ -12,7 +12,7 @@ try {
 
         while ($uzytkownik = mysqli_fetch_row($wynik_profil)) {
             ?>
-        <img src="../../../zdjecia/<?php echo $uzytkownik[3] ?>" alt="profilowe" />
+        <img id="moje_profilowe_fota" src="/../../../zdjecia/<?php echo $uzytkownik[3] ?>" alt="profilowe" />
         <div class="post_imie" style="top:10px;"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
         <?php } ?>
     </div>

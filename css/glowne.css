@@ -394,6 +394,7 @@ article {
 .post_zdjecia {
     position: relative;
     width: 100%;
+    margin-top: 24px;
 }
 .post_zdjecia img {
     max-width: 100%;

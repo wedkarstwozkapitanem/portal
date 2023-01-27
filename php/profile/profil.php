@@ -75,7 +75,7 @@ try {
                 <div class="wyrownaj">
         <!--<center>-->
             <div class="goraprofilu">
-                <div class="tlo_profilu"><img src="../zdjecia/';
+                <div class="tlo_profilu"><img src="/../zdjecia/';
                         if ($uzytkownik['tlo'] != "") {
                             echo $uzytkownik['tlo'];
                         } else {
@@ -106,7 +106,7 @@ try {
 
 
 
-                            $sqlczyznaj = "SELECT * FROM (SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja') as p where `iduzytkownika` = '$id' OR `iduzytkownik` = '$id'";
+                            $sqlczyznaj = "SELECT * FROM (SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja') as p where `iduzytkownika` = '$id' OR `iduzytkownik` = '$id' LIMIT 1";
                             $czyznaj = mysqli_query($baza, $sqlczyznaj);
                             if (mysqli_num_rows($czyznaj) > 0) {
                                 while ($czyznajomy = $czyznaj->fetch_assoc()) {
@@ -211,7 +211,7 @@ try {
                         echo '<div class="lewa_burta_info"><h2 style="width: 44%;float: left;">Zdjęcia:</h2><a href="profil.php?id=' . $uzytkownik['id'] . '&zdjecia=' . $uzytkownik['id'] . '" style="position:relative;top:28px;margin-left:8px;">Przejdz do wszystkich zdjęć</a><div style="clear:both"></div><div class="zdjecia_profilu">';
 //posty
                         mysqli_escape_string($baza, $id);
-                        $sqlpostfoty = "SELECT * FROM `posty` WHERE `iduzytkownika` = '$id' ORDER BY id DESC";
+                        $sqlpostfoty = "SELECT id,foty FROM `posty` WHERE `iduzytkownika` = '$id' ORDER BY id DESC LIMIT 9";
                         if (!$zapytaniepostfoty = mysqli_query($baza, $sqlpostfoty)) {
                             if (!file_exists('bledy.txt')) {
                                 fopen('bledy/bledy.txt', 'w');
@@ -307,15 +307,18 @@ try {
                                             <div class="post_imie"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
                                         </a>
                                         <div class="post_data"><a href="/profil/<?php echo $post['iduzytkownika'] ?>/post/<?php echo $post['id'] ?>"><time><?php echo $post['datadodania'] ?></time></a></div>
+                                        <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
                                     </div>
                                     <div class="post_tresc">
                                         <?php echo $post['tresc'] ?>
                                         <div class="post_zdjecia">
                                         <?php
-                                        if ((array) $lista_fot = explode(",", $post['foty'])) {
-                                            if ($lista_fot[0] !== "" && !empty($lista_fot)) {
-                                                foreach ($lista_fot as $fotka) {
-                                                    echo "<img src='/foty/" . $uzytkownik[4] . "/posty/" . $fotka . "' alt='zdjecie posta' />";
+                                        if ($post['foty'] != "" && isset($post['foty'])) {
+                                            if ((array) $lista_fot = explode(",", $post['foty'])) {
+                                                if ($lista_fot[0] !== "" && !empty($lista_fot)) {
+                                                    foreach ($lista_fot as $fotka) {
+                                                        echo "<img src='/foty/" . $uzytkownik[4] . "/posty/" . $fotka . "' alt='zdjecie posta' />";
+                                                    }
                                                 }
                                             }
                                         }
@@ -373,7 +376,7 @@ try {
                                         $profilowe = mysqli_query($baza, "SELECT `profilowe` from `uzytkownicy` where `id` = '$sesja' LIMIT 9");
                                         $prof = mysqli_fetch_row($profilowe);
 
-                                        echo "<div class='dodaj_komentarz_profilowe'><img src='../../zdjecia/" . $prof[0] . "' alt='profilowe' /></div>";
+                                        echo "<div class='dodaj_komentarz_profilowe'><img src='/../../zdjecia/" . $prof[0] . "' alt='profilowe' /></div>";
 
                                         ?>
                 

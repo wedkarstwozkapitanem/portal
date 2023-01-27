@@ -4,9 +4,27 @@ const wynik_wyszukiwania = document.getElementById('wynik_wyszukiwania');
 const formularz_wyszukiwania_na_blogu = document.getElementById('szukaj_na_forum');
 const dokladneinformacje = document.getElementById('dokladneinformacje');
 const gdzie = document.getElementById('przeglodaj');
+let profilinoformacje;
+
+
+function komunikacja(akcja) {
+    let poloczenie = new XMLHttpRequest();
+    poloczenie.open('POST', 'zadania.php', true);
+    poloczenie.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    poloczenie.onreadystatechange = () => {
+        if (poloczenie.readyState === 4 && poloczenie.status === 200) {
+         profilinoformacje = JSON.parse(poloczenie.response);
+        } 
+    }
+    poloczenie.send(`ppp=${akcja}&tresc=${akcja}`);
+}
+
+
+
 
 
 window.onload = () => {
+    console.log(profilinoformacje);
 
     wczytywanie_postow();
 
@@ -220,11 +238,22 @@ function pokaz_kto_polubil(t) {
                                   </a>
                                   <div class="post_data"><a href="/profil/${danenowypost.iduzytkownika}/post/${danenowypost.id}"><time>${danenowypost.datadodania}</time></a></div>
                                   <div class="opcjeposta wysrodkuj" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
-                              </div>
-                              <div class="post_tresc">
-                                  ${danenowypost.tresc}
-                              <div class="post_zdjecia"></div>
-                              `;
+                              </div>`;
+
+                        let tresc = document.createElement('div');
+                        tresc.className = 'post_tresc';
+                        tresc.innerText = danenowypost.tresc;
+                        let tresc_posta = nowy_postp.appendChild(tresc);
+
+                          if(danenowypost.foty != "") {
+                            post_zdjecia = document.createElement("div");
+                            post_zdjecia.className="post_zdjecia"
+                            let tresc_fota = tresc_posta.appendChild(post_zdjecia);
+                            tresc_fota.innerHTML += `<img src="/foty/${danenowypost.folder}/posty/${danenowypost.foty}" alt="zdjecie posta"/>`;
+                          }    
+                              
+                              
+        
               
               dol_posta = document.createElement('div');
               dol_posta.className = "licznik_posta";
@@ -269,12 +298,14 @@ function pokaz_kto_polubil(t) {
               post_komentarze.className = "post_komentarze";
               let post_kom_dodaj = nowy_postp.appendChild(post_komentarze);
 
+        
+              post_kom_dodaj.innerHTML += `<div class="dodaj_komentarz_profilowe"><img src='${document.getElementById("moje_profilowe_fota").src}' alt='profilowe' /></div>`;
+            
 
-              post_kom_dodaj.innerHTML += `<div class="dodaj_komentarz_profilowe"><img src='../../zdjecia/${danenowypost.profilowe}' alt='profilowe' /></div>`;
-            post_kom_dodaj.innerHTML += `
+              post_kom_dodaj.innerHTML += `
               <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="${danenowypost.id}" />
               <label>
-                  <div data-postid-kom="${danenowypost.id}" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img src="../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
+                  <div data-postid-kom="${danenowypost.id}" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img src="/../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
               </label>
               <div data-postid-pokakom="${danenowypost.id}" class="komentarze_post wysrodkuj" style="display: none;">
 `;
@@ -293,3 +324,8 @@ function pokaz_kto_polubil(t) {
     function menuposta(p) {
 alert(p.dataset.postid);
     }
+
+
+
+
+

@@ -161,3 +161,11 @@ if (typeof(p) === 'object') {
     polocz('wyswietlkomentarze',idposta,`[data-postid-pokakom='${idposta}']`);
 
 }
+
+
+
+
+function menuposta(p) {
+    alert(p.dataset.postid);
+        }
+    

@@ -72,6 +72,9 @@ try {
             case 'kto_polubil':
                 sprawdzplik("php/skrypty/kto_polubil.php");
                 break;
+            case 'mojeinformacje':
+                sprawdzplik("php/profile/mojeinformacje.php");
+                break;
             default:
                 echo "Nie prawidłowe żądanie";
                 header("HTTP/1.1 404 Not Found");

@@ -12,14 +12,11 @@ try {
 
       //upload zdjec
         if (!empty($_FILES['fota_artykulu']) && isset($_FILES['fota_artykulu'])) {
-        $mojfolder = mysqli_fetch_array(mysqli_query($baza,"SELECT `folder` FROM `uzytkownicy` where `id`='$sesja'"))[0];
+        (string)$mojfolder = mysqli_fetch_array(mysqli_query($baza,"SELECT `folder` FROM `uzytkownicy` where `id`='$sesja'"))[0];
 
 
-        foreach ($_FILES['fota_artykulu'] as $f) {
-          print_r($f);
-        }
 
-        $fota_nazwa = mysqli_real_escape_string($baza, htmlentities($_FILES['fota_artykulu']['name']));
+        (string)$fota_nazwa = mysqli_real_escape_string($baza, htmlentities($_FILES['fota_artykulu']['name']));
         move_uploaded_file($_FILES['fota_artykulu']['tmp_name'], "foty/".$mojfolder."/posty/".$fota_nazwa);
         }
 
