@@ -63,7 +63,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
 
 
         $idu = (int) mysqli_real_escape_string($baza,htmlentities($post['iduzytkownika']));
-        $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe` FROM `uzytkownicy` where id = $idu";
+        $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where id = $idu";
         $wynik_profil = mysqli_query($baza, $zapytanie_profil);
 
         while ($uzytkownik = mysqli_fetch_row($wynik_profil)) {
@@ -80,7 +80,17 @@ if (mysqli_num_rows($wynik_post) > 0) {
                 </div>
                 <div class="post_tresc">
                     <?php echo $post['tresc'] ?>
-                    <div class="post_zdjecia"></div>
+                    <div class="post_zdjecia">
+                    <?php
+                                        if ((array) $lista_fot = explode(",", $post['foty'])) {
+                                            if (isset($lista_fot) && !empty($lista_fot)) {
+                                                foreach ($lista_fot as $fotka) {
+                                                    echo "<img src='/foty/" . $uzytkownik[4] . "/posty/" . $fotka . "' alt='zdjecie posta' />";
+                                                }
+                                            }
+                                        }
+                    ?>
+                    </div>
                 </div>
                 <div class="licznik_posta">
 

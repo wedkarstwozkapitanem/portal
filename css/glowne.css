@@ -393,7 +393,12 @@ article {
 
 .post_zdjecia {
     position: relative;
+    width: 100%;
 }
+.post_zdjecia img {
+    max-width: 100%;
+}
+
 
 .post_akcja {
     width: 100%;
@@ -602,4 +607,25 @@ article {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+
+
+
+
+
+.opcjeposta {
+    float: right;
+    right: 0px;
+    top: 0px;
+    font-size: 40px;
+    position: absolute;
+    cursor: pointer;
+    height: 68px;
+    width: 68px;
+    border-radius: 28px;
+}
+
+.opcjeposta:hover {
+    background: silver;
 }

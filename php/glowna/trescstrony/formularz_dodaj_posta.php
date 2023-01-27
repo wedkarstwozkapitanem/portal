@@ -16,7 +16,7 @@ try {
         <div class="post_imie" style="top:10px;"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
         <?php } ?>
     </div>
-    <form action="dodawanie_tresci" method="POST">
+    <form action="dodawanie_tresci" method="POST" enctype="multipart/form-data">
         <input type="text" placeholder="Napisz co słychać?" name="tresc_artykulu" id="tresc_artykulu">
         <div class="publikacja">
             <div style="float:left;">

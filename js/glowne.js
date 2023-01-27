@@ -219,14 +219,7 @@ function pokaz_kto_polubil(t) {
                                       <div class="post_imie">${danenowypost.imie}  ${danenowypost.nazwisko} </div>
                                   </a>
                                   <div class="post_data"><a href="/profil/${danenowypost.iduzytkownika}/post/${danenowypost.id}"><time>${danenowypost.datadodania}</time></a></div>
-                                  <div id="opcjeposta" class="wysrodkuj" style="float: right;
-                                  right: 0px;
-                                  top: 0px;
-                                  font-size: 40px;
-                                  position: absolute;
-                                  cursor: pointer;
-                                  height: 68px;
-                                  width: 68px;" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
+                                  <div class="opcjeposta wysrodkuj" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
                               </div>
                               <div class="post_tresc">
                                   ${danenowypost.tresc}

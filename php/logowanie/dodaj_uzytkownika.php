@@ -15,10 +15,11 @@ try {
             (string)$haslo_powtorzone = mysqli_real_escape_string($baza, htmlentities($_POST['haslo_powtorz']));
             (string)$ip = mysqli_real_escape_string($baza, $_SERVER['REMOTE_ADDR']);
 
-            $niedozwoloneznaki = array( "/","<", ">","?",":","*","|","`","&","[","]","{","}","!","$","#","%","\ ");
+            $niedozwoloneznaki = array( "/","<", ">","?",":","*","|","`","[","]","{","}","!","$","#","%","\ ");
             foreach ($niedozwoloneznaki as $x) {
                 if (strpos($imie, "$x") || strpos($nazwisko,"$x") || strpos($data_urodzenia,"$x") || strpos($email,"$x") || strpos($haslo,"$x") || strpos($haslo_powtorzone,"$x") || strpos($ip,"$x")) {
                     echo "niedozwoloneznaki";
+                    echo $x;
                     exit();
                 }
             }

@@ -68,6 +68,10 @@ article {
 
 .post_zdjecia {
     position: relative;
+    width: 100%;
+}
+.post_zdjecia img {
+    max-width: 100%;
 }
 
 .post_akcja {
@@ -249,8 +253,9 @@ article {
 
 .brak {
     margin-top: 100px;
-    color:rgb(255 255 255 / 1%);
-    box-shadow: 0 0 2px orange;
+    color:black;
+    text-shadow: 0 0 2px orange;
+    font-size: 64px;
 }
 
 @keyframes swiecocytekst {
@@ -272,4 +277,17 @@ article {
     .post_komentarze input {
         width: 64% !important;
     }
+}
+
+
+.opcjeposta {
+    float: right;
+    right: 0px;
+    top: 0px;
+    font-size: 40px;
+    position: absolute;
+    cursor: pointer;
+    height: 68px;
+    width: 68px;
+    border-radius: 28px;
 }

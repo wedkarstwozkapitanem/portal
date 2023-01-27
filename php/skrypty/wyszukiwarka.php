@@ -12,7 +12,7 @@ try {
       ?>
  <a href="/profil/<?php echo $uzytkownik[0]; ?>">
 <div class="wyszukiwara_uzyt wysrodkuj">
-<img src="../../zdjecia/<?php echo $uzytkownik[3]; ?>" alt="profilowe"/>
+<img src="/../../zdjecia/<?php echo $uzytkownik[3]; ?>" alt="profilowe"/>
 <div class="wyszukiwarka_nazwa"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
 </div>
  </a>

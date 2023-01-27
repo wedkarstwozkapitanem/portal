@@ -29,7 +29,21 @@ try {
     ?>
 <!DOCTYPE html>
 <html lang="pl">
+<?php
+             $id = mysqli_real_escape_string($baza, $id);
+            (string) $sqluzytkownik = "SELECT * FROM `uzytkownicy` WHERE `id` = '$id' LIMIT 1";
+            try {
+                $zapytanieuzytkownik = mysqli_query($baza, $sqluzytkownik);
+            } catch (Exception $blod) {
+                echo "błąd";
+                header('Location:/');
+                exit();
+            }
 
+            try {
+                if (mysqli_num_rows($zapytanieuzytkownik) > 0) {
+                    while ($uzytkownik = $zapytanieuzytkownik->fetch_assoc()) { 
+                        ?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,21 +69,8 @@ try {
 
 
         <div id="caly_profil">
-            <?php
-             $id = mysqli_real_escape_string($baza, $id);
-            (string) $sqluzytkownik = "SELECT * FROM `uzytkownicy` WHERE `id` = '$id'";
-            try {
-                $zapytanieuzytkownik = mysqli_query($baza, $sqluzytkownik);
-            } catch (Exception $blod) {
-                echo "błąd";
-                header('Location:/');
-                exit();
-            }
 
-            try {
-                if (mysqli_num_rows($zapytanieuzytkownik) > 0) {
-                    while ($uzytkownik = $zapytanieuzytkownik->fetch_assoc()) {
-
+<?php
                         echo '
                 <div class="wyrownaj">
         <!--<center>-->
@@ -229,7 +230,7 @@ try {
 
                                     for ($i = 0; $i <= $liczbazdjecprofilu; $i++) {
                                         if ($liczbafot <= 8) {
-                                            echo '<a href="post.php?id=' . $postfoty['id'] . '"><img src="' . $fota[$i] . '" alt="zdjęcie użytkownika"/></a>';
+                                            echo '<a href="/profil/'.$id.'/post/' . $postfoty['id'] . '"><img src="/foty/'.$uzytkownik['folder']."/posty/".$fota[$i].'" alt="zdjęcie użytkownika"/></a>';
                                             $liczbafot = $liczbafot + 1;
                                         } else {
                                             break;
@@ -292,7 +293,7 @@ try {
 
                             $idu = htmlentities($post['iduzytkownika']);
                             mysqli_real_escape_string($baza, $idu);
-                            $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe` FROM `uzytkownicy` where `id` = '$idu'";
+                            $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$idu'";
                             $wynik_profil = mysqli_query($baza, $zapytanie_profil);
 
                             while ($uzytkownik = mysqli_fetch_row($wynik_profil)) {
@@ -309,7 +310,17 @@ try {
                                     </div>
                                     <div class="post_tresc">
                                         <?php echo $post['tresc'] ?>
-                                        <div class="post_zdjecia"></div>
+                                        <div class="post_zdjecia">
+                                        <?php
+                                        if ((array) $lista_fot = explode(",", $post['foty'])) {
+                                            if ($lista_fot[0] !== "" && !empty($lista_fot)) {
+                                                foreach ($lista_fot as $fotka) {
+                                                    echo "<img src='/foty/" . $uzytkownik[4] . "/posty/" . $fotka . "' alt='zdjecie posta' />";
+                                                }
+                                            }
+                                        }
+                    ?>
+                                        </div>
                                     </div>
                                     <div class="licznik_posta">
                 
@@ -359,7 +370,7 @@ try {
                                     <div class="post_komentarze">
                 
                                         <?php
-                                        $profilowe = mysqli_query($baza, "SELECT `profilowe` from `uzytkownicy` where `id` = '$sesja'");
+                                        $profilowe = mysqli_query($baza, "SELECT `profilowe` from `uzytkownicy` where `id` = '$sesja' LIMIT 9");
                                         $prof = mysqli_fetch_row($profilowe);
 
                                         echo "<div class='dodaj_komentarz_profilowe'><img src='../../zdjecia/" . $prof[0] . "' alt='profilowe' /></div>";
