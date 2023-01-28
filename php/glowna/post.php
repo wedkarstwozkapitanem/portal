@@ -69,7 +69,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
         while ($uzytkownik = mysqli_fetch_row($wynik_profil)) {
             ?>
         <article>
-            <div class="post">
+            <div class="post" data-postid="<?php echo $post['id'] ?>">
                 <div class="post_informacje"><a href='/profil/<?php echo $post['iduzytkownika'] ?>' style="z-index:12;">
                         <div>
                         <?php if ($uzytkownik[3] != "" && $uzytkownik[3] != "uzytkownik.jpg") {
@@ -102,7 +102,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
 
 
                 </div>
-                <div class="post_tresc">
+                <div class="post_tresc" >
                     <?php echo $post['tresc'] ?>
                     <div class="post_zdjecia">
                     <?php

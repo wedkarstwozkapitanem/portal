@@ -299,7 +299,7 @@ try {
                             while ($uzytkownik = mysqli_fetch_row($wynik_profil)) {
                                 ?>
                             <article>
-                                <div class="post">
+                                <div class="post" data-postid="<?php echo $post['id'] ?>">
                                     <div class="post_informacje"><a href='/profil/<?php echo $post['iduzytkownika'] ?>' style="z-index:12;">
                                             <div>
                                                 <?php 
