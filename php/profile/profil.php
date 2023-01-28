@@ -75,19 +75,19 @@ try {
                 <div class="wyrownaj">
         <!--<center>-->
             <div class="goraprofilu">
-                <div class="tlo_profilu"><img src="/../zdjecia/';
-                        if ($uzytkownik['tlo'] != "") {
+                <div class="tlo_profilu"><img src="/../foty/';
+                        if ($uzytkownik['tlo'] != "" ) {
                             echo $uzytkownik['tlo'];
                         } else {
-                            echo "uzytkownik.jpg";
+                            echo "uzytkownik.gif";
                         }
                         echo '" alt="tło" /></div>
                 
-                    <div class="awata_profiu"><img src="../zdjecia/';
-                        if ($uzytkownik['profilowe'] !== "") {
-                            echo $uzytkownik['profilowe'];
+                    <div class="awata_profiu"><img src="/../foty/';
+                        if ($uzytkownik['profilowe'] !== "" && $uzytkownik['profilowe'] !== 'uzytkownik.gif') {
+                            echo $uzytkownik['folder'] ."/profilowe/". $uzytkownik['profilowe'];
                         } else {
-                            echo 'uzytkownik.png';
+                            echo 'uzytkownik.gif';
                         }
                         echo '" alt="profilowe" /></div>
                    <div class="wyrownaj"> <div><h1>' . $uzytkownik['imie'] . '  ' . $uzytkownik['nazwisko'] . '</h1></div></div>
@@ -301,13 +301,35 @@ try {
                             <article>
                                 <div class="post">
                                     <div class="post_informacje"><a href='/profil/<?php echo $post['iduzytkownika'] ?>' style="z-index:12;">
-                                            <div><img src="../../zdjecia/<?php echo $uzytkownik[3] ?>" alt="profilowe" /></div>
+                                            <div>
+                                                <?php 
+                                                if ($uzytkownik[3] !== "" && $uzytkownik[3] !== "uzytkownik.gif")  {
+                                                ?>
+                                                <img src="/../foty/<?php echo $uzytkownik[4] ?>/posty/<?php echo $uzytkownik[3] ?>" alt="profilowe" />
+<?php } else { ?>
+    <img src="/../foty/uzytkownik.gif" alt="profilowe" />
+    <?php } ?>
+    </div>
                                         </a>
                                         <a href="/profil/<?php echo $post['iduzytkownika'] ?>">
                                             <div class="post_imie"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
                                         </a>
-                                        <div class="post_data"><a href="/profil/<?php echo $post['iduzytkownika'] ?>/post/<?php echo $post['id'] ?>"><time><?php echo $post['datadodania'] ?></time></a></div>
-                                        <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
+                                        <div class="post_data"><a href="/profil/<?php echo $post['iduzytkownika'] ?>/post/<?php echo $post['id'] ?>"><time><?php echo $post['datadodania'] ?></time></a><button style="border-radius:8px;margin: 2px 0 0 8px;background:silver;">Dodał/a posta</button></div>
+                                        <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="<?php echo $post['id'] ?>"><span style="top:-10px;">...</span></div>
+                                    
+                                        <div class="menu_posta_opcje" style="display:none;" data-opcje_posta="<?php echo $post['id'] ?>">
+                                            <?php if($post['iduzytkownika'] == $sesja) { ?>
+                                            <?php if ($post['foty'] != "" && isset($post['foty'])) { ?>
+                                            <button onclick="zaktalizuj_profilowe(<?php echo $post['id'] ?>)">Zaktalizuj profilowe tym zdjęciem</button>
+                                            <?php } ?>
+                                            <button>Usuń</button>
+                                            <?php } else { ?>
+                                            <button>Zgłoś</button>
+                                            <button>Zapisz</button>
+                                           <?php } ?>
+                                        </div>
+
+
                                     </div>
                                     <div class="post_tresc">
                                         <?php echo $post['tresc'] ?>
@@ -373,10 +395,10 @@ try {
                                     <div class="post_komentarze">
                 
                                         <?php
-                                        $profilowe = mysqli_query($baza, "SELECT `profilowe` from `uzytkownicy` where `id` = '$sesja' LIMIT 9");
+                                        $profilowe = mysqli_query($baza, "SELECT `profilowe`,`folder` from `uzytkownicy` where `id` = '$sesja' LIMIT 9");
                                         $prof = mysqli_fetch_row($profilowe);
 
-                                        echo "<div class='dodaj_komentarz_profilowe'><img src='/../../zdjecia/" . $prof[0] . "' alt='profilowe' /></div>";
+                                        echo "<div class='dodaj_komentarz_profilowe'><img src='/../foty/".$prof[1]."/profilowe/".$prof[0]."' alt='profilowe' /></div>";
 
                                         ?>
                 

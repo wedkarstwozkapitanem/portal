@@ -27,6 +27,7 @@ article {
     padding: 4px;
     margin-left: auto;
     margin-right: auto;
+    top:2px;
 }
 
 .post_informacje img {
@@ -43,6 +44,10 @@ article {
     text-shadow: 0 0 4px rgb(0, 0, 255);
     font-size: 28px;
     color: wheat;
+    text-decoration: none;
+}
+.post_imie:hover {
+    text-decoration: none !important;
 }
 
 .post_data {
@@ -161,7 +166,7 @@ article {
     background: black;
     border: 0;
     font-size: 28px;
-    margin: 10px;
+    margin: 12px;
     color: white;
     display: inline;
 }
@@ -169,10 +174,12 @@ article {
 .dodaj_komentarz {
     display: inline-block;
     cursor: pointer;
-    width: 8%;
-    height: 40px;
-    top: 6px;
-
+    width: 48px;
+    height: 43px;
+    top: -20px;
+    position: absolute;
+    z-index: 20;
+    right: -48px;
 }
 
 .dodaj_komentarz img {
@@ -195,14 +202,17 @@ article {
 
 
 .dodaj_komentarz_profilowe {
-    height: 58px;
+    height: 56px;
+    width: 56px;
     float: left;
+    margin: 4px;
 }
 
 .dodaj_komentarz_profilowe img {
     width: 100%;
     height: 100%;
     border-radius: 88px;
+    border:1px solid black;
 }
 
 .komentarz_posta {
@@ -305,4 +315,26 @@ article {
 
 .opcjeposta_usuwanie:hover{
     background: silver;
+}
+
+
+.menu_posta_opcje {
+    position: absolute;
+right: 4px;
+z-index:12;
+margin-top:16px;
+}
+.menu_posta_opcje button {
+    width:100%;
+    background:silver;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    padding:8px;
+    border-radius:8px;
+    font-weight: 888;
+    cursor: pointer;
+    border:3px groove black;
+}
+.menu_posta_opcje button:hover {
+    background: white;
 }

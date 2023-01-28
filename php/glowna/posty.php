@@ -10,8 +10,8 @@ try {
   (int) $i = (int)0;
     while($post = mysqli_fetch_assoc( $zapytanie_post)) {
     $dane_posta[] = $post;
-    (int)$id_uzytkownika = (int) mysqli_real_escape_string($baza,htmlentities($dane_posta[0]["iduzytkownika"]));
-    (int)$id_posta = (int) mysqli_real_escape_string($baza, htmlentities($dane_posta[0]["id"]));
+    (int)$id_uzytkownika = (int) mysqli_real_escape_string($baza,htmlentities($dane_posta[$i]["iduzytkownika"]));
+    (int)$id_posta = (int) mysqli_real_escape_string($baza, htmlentities($dane_posta[$i]["id"]));
     
     $dane_posta[$i] += mysqli_fetch_assoc(mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_uzytkownika'"));
 

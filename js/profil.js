@@ -39,7 +39,7 @@ function polocz(akcja, wyslij, odbierz) {
         if (poloczenie.readyState === 4 && poloczenie.status === 200) {
             if (odbierz) {
                 document.querySelector(`${odbierz}`).innerHTML = poloczenie.response;
-            } // else console.log(poloczenie.response);
+            }  else console.log(poloczenie.response);
         } else {
             console.log('ładowanie');
         }
@@ -166,6 +166,14 @@ if (typeof(p) === 'object') {
 
 
 function menuposta(p) {
-    alert(p.dataset.postid);
+    idposta = p.dataset.postid;
+    let menupost =  document.querySelector(`[data-opcje_posta='${idposta}']`);
+    menupost.style.display == 'none' ? menupost.style.display = 'block' : menupost.style.display = 'none';
         }
     
+
+
+        function zaktalizuj_profilowe(p) {
+            let idposta = p;
+            polocz('zaktalizujprofilowe',idposta);
+        }

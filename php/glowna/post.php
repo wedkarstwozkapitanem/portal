@@ -71,7 +71,15 @@ if (mysqli_num_rows($wynik_post) > 0) {
         <article>
             <div class="post">
                 <div class="post_informacje"><a href='/profil/<?php echo $post['iduzytkownika'] ?>' style="z-index:12;">
-                        <div><img src="/../zdjecia/<?php echo $uzytkownik[3] ?>" alt="profilowe" /></div>
+                        <div>
+                        <?php if ($uzytkownik[3] != "" && $uzytkownik[3] != "uzytkownik.jpg") {
+                            echo "<img src='/../foty/".$uzytkownik[4]."/profilowe/".$uzytkownik[3]."' alt='profilowe' />";
+                        } else {
+                            echo "<img src='/../foty/uzytkownik.gif' alt='profilowe' />";
+                        }
+                        
+                        ?>
+                        </div>
                     </a>
                     <a href="/profil/<?php echo $post['iduzytkownika'] ?>">
                         <div class="post_imie"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
@@ -141,10 +149,10 @@ if (mysqli_num_rows($wynik_post) > 0) {
                 <div class="post_komentarze">
 
                     <?php
-                    $profilowe = mysqli_query($baza, "SELECT `profilowe` from `uzytkownicy` where `id` = '$sesja'");
+                    $profilowe = mysqli_query($baza, "SELECT `profilowe`,`folder` from `uzytkownicy` where `id` = '$sesja'");
                     $prof = mysqli_fetch_row($profilowe);
 
-                    echo "<div class='dodaj_komentarz_profilowe'><img src='/../zdjecia/" . $prof[0] . "' alt='profilowe' /></div>";
+                    echo "<div class='dodaj_komentarz_profilowe'><img src='/../foty/".$prof[1]."/profilowe/" . $prof[0] . "' alt='profilowe' /></div>";
 
                     ?>
 
@@ -172,11 +180,11 @@ try {
 
         <article style="margin-top:10px !important">
             <div class="komentarz_posta">
-                <?php $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
+                <?php $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
                 while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
                     ?>
                     <a href="/profil/<?php echo $uzytkownik_komentarz['id']; ?>">
-                        <div class="komentarz_uzytkownik"><img src="/../zdjecia/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
+                        <div class="komentarz_uzytkownik"><img src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
                             <div class="komentarz_nazwa"><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?> dodał komentarz <time><?php echo $komentarz['dodanedata'] ?></time> </div>
                         </div>
                     </a>

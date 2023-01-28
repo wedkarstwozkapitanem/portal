@@ -231,7 +231,7 @@ function pokaz_kto_polubil(t) {
               let nowy_postp=dodawanie_nowego_artykulu.appendChild(nowy_post_dodaj);
               nowy_postp.innerHTML = `
                               <div class="post_informacje"><a href='/profil/${danenowypost.iduzytkownika}' style="z-index:12;">
-                                      <div><img src="../../zdjecia/${danenowypost.profilowe}" alt="profilowe" /></div>
+                                      <div><img src="/../foty/${danenowypost.profilowe}" alt="profilowe" /></div>
                                   </a>
                                   <a href="/profil/${danenowypost.iduzytkownika}">
                                       <div class="post_imie">${danenowypost.imie}  ${danenowypost.nazwisko} </div>
@@ -329,3 +329,6 @@ alert(p.dataset.postid);
 
 
 
+function zaktalizuj_profilowe() {
+    
+}

@@ -75,6 +75,9 @@ try {
             case 'mojeinformacje':
                 sprawdzplik("php/profile/mojeinformacje.php");
                 break;
+            case 'zaktalizujprofilowe':
+                sprawdzplik("php/skrypty/zaktalizujprofilowe.php");
+                break;
             default:
                 echo "Nie prawidłowe żądanie";
                 header("HTTP/1.1 404 Not Found");

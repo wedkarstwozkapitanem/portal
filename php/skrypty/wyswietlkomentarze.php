@@ -15,11 +15,11 @@ try {
 
         <article style="margin-top:10px !important">
             <div class="komentarz_posta">
-                <?php $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
+                <?php $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
                 while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
                     ?>
                     <a href="/profil/<?php echo $uzytkownik_komentarz['id']; ?>">
-                        <div class="komentarz_uzytkownik"><img src="/../../zdjecia/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
+                        <div class="komentarz_uzytkownik"><img src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/posty/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
                             <div class="komentarz_nazwa"><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?> dodał komentarz <time><?php echo $komentarz['dodanedata'] ?></time> </div>
                         </div>
                     </a>
