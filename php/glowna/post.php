@@ -55,7 +55,7 @@ try {
 //posty
 (int)$idposta = (int) mysqli_real_escape_string($baza,htmlentities($id_2));
 //(int) $id;
-$zapytanie_post = "SELECT * FROM `posty` where `iduzytkownika` = '$id' AND `id` = '$idposta'";
+$zapytanie_post = "SELECT * FROM `posty` where `iduzytkownika` = '$id' AND `id` = '$idposta' AND `usunieto` = 0";
 $wynik_post = mysqli_query($baza, $zapytanie_post);
 
 if (mysqli_num_rows($wynik_post) > 0) {
@@ -85,16 +85,33 @@ if (mysqli_num_rows($wynik_post) > 0) {
                         <div class="post_imie"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
                     </a>
                     <div class="post_data"><a href="/profil/<?php echo $uzytkownik[0]; ?>/post/<?php echo $post['id'] ?>"><time><?php echo $post['datadodania'] ?></time></a></div>
-                    <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
+                    <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="<?php echo $post['id'] ?>"><span style="top:-10px;">...</span></div>
+                                    
+                                    <div class="menu_posta_opcje" style="display:none;" data-opcje_posta="<?php echo $post['id'] ?>">
+                                        <?php if($post['iduzytkownika'] == $sesja) { ?>
+                                        <?php if ($post['foty'] != "" && isset($post['foty'])) { ?>
+                                        <button onclick="zaktalizuj_profilowe(<?php echo $post['id'] ?>)">Zaktalizuj profilowe tym zdjęciem</button>
+                                        <?php } ?>
+                                        <button onclick="usunposta(<?php echo $post['id'] ?>)">Usuń</button>
+                                        <?php } else { ?>
+                                        <button>Zgłoś</button>
+                                        <button>Zapisz</button>
+                                       <?php } ?>
+                                    </div>
+
+
+
                 </div>
                 <div class="post_tresc">
                     <?php echo $post['tresc'] ?>
                     <div class="post_zdjecia">
                     <?php
-                                        if ((array) $lista_fot = explode(",", $post['foty'])) {
-                                            if (isset($lista_fot) && !empty($lista_fot)) {
-                                                foreach ($lista_fot as $fotka) {
-                                                    echo "<img src='/foty/" . $uzytkownik[4] . "/posty/" . $fotka . "' alt='zdjecie posta' />";
+                                           if ($post['foty'] != "" && isset($post['foty'])) {
+                                            if ((array) $lista_fot = explode(",", $post['foty'])) {
+                                                if ($lista_fot[0] !== "" && !empty($lista_fot)) {
+                                                    foreach ($lista_fot as $fotka) {
+                                                        echo "<img src='/foty/" . $uzytkownik[4] . "/posty/" . $fotka . "' alt='zdjecie posta' />";
+                                                    }
                                                 }
                                             }
                                         }

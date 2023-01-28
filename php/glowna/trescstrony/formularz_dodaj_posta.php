@@ -7,12 +7,16 @@ try {
 <div class="dodaj_posta">
     <div class="dodawanie_profil">
         <?php
-        $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe` FROM `uzytkownicy` where `id` = '$sesja'";
+        $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$sesja'";
         $wynik_profil = mysqli_query($baza, $zapytanie_profil);
 
         while ($uzytkownik = mysqli_fetch_row($wynik_profil)) {
             ?>
-        <img id="moje_profilowe_fota" src="/../../../zdjecia/<?php echo $uzytkownik[3] ?>" alt="profilowe" />
+        <?php if($uzytkownik[3]!=="" || $uzytkownik[3]=="uzytkownik.gif") { ?>
+        <img id="moje_profilowe_fota" src="/../../../foty/<?php echo $uzytkownik[4]?>/profilowe/<?php echo $uzytkownik[3] ?>" alt="profilowe" />
+        <?php } else {?>
+            <img id="moje_profilowe_fota" src="/../../../foty/uzytkownik.gif" alt="profilowe" />
+            <?php } ?>
         <div class="post_imie" style="top:10px;"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
         <?php } ?>
     </div>

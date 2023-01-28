@@ -6,7 +6,7 @@ try {
     $dane_posta = [];
 
 
-    $zapytanie_post = mysqli_query($baza,"SELECT * FROM `posty` order by `id` desc");
+    $zapytanie_post = mysqli_query($baza,"SELECT * FROM `posty`  where  `usunieto` = 0 order by `id` desc");
   (int) $i = (int)0;
     while($post = mysqli_fetch_assoc( $zapytanie_post)) {
     $dane_posta[] = $post;

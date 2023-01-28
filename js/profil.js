@@ -177,3 +177,9 @@ function menuposta(p) {
             let idposta = p;
             polocz('zaktalizujprofilowe',idposta);
         }
+
+
+        function usunposta(p) {
+            let idposta = p;
+            polocz('usunposta',idposta);
+        }

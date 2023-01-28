@@ -164,6 +164,20 @@ if (typeof(p) === 'object') {
 
 
 function menuposta(p) {
-    alert(p.dataset.postid);
+    idposta = p.dataset.postid;
+    let menupost =  document.querySelector(`[data-opcje_posta='${idposta}']`);
+    menupost.style.display == 'none' ? menupost.style.display = 'block' : menupost.style.display = 'none';
         }
     
+
+
+        function zaktalizuj_profilowe(p) {
+            let idposta = p;
+            polocz('zaktalizujprofilowe',idposta);
+        }
+
+
+        function usunposta(p) {
+            let idposta = p;
+            polocz('usunposta',idposta);
+        }

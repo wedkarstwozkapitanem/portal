@@ -211,7 +211,7 @@ try {
                         echo '<div class="lewa_burta_info"><h2 style="width: 44%;float: left;">Zdjęcia:</h2><a href="profil.php?id=' . $uzytkownik['id'] . '&zdjecia=' . $uzytkownik['id'] . '" style="position:relative;top:28px;margin-left:8px;">Przejdz do wszystkich zdjęć</a><div style="clear:both"></div><div class="zdjecia_profilu">';
 //posty
                         mysqli_escape_string($baza, $id);
-                        $sqlpostfoty = "SELECT id,foty FROM `posty` WHERE `iduzytkownika` = '$id' ORDER BY id DESC LIMIT 9";
+                        $sqlpostfoty = "SELECT id,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 ORDER BY id DESC LIMIT 9";
                         if (!$zapytaniepostfoty = mysqli_query($baza, $sqlpostfoty)) {
                             if (!file_exists('bledy.txt')) {
                                 fopen('bledy/bledy.txt', 'w');
@@ -284,7 +284,7 @@ try {
                     }
 
 
-                    $zapytanie_post = "SELECT * FROM `posty` WHERE `iduzytkownika` = '$id' ORDER BY `id` DESC";
+                    $zapytanie_post = "SELECT * FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 ORDER BY `id` DESC";
                     $wynik_post = mysqli_query($baza, $zapytanie_post);
 
                     if (mysqli_num_rows($wynik_post) > 0) {
@@ -322,7 +322,7 @@ try {
                                             <?php if ($post['foty'] != "" && isset($post['foty'])) { ?>
                                             <button onclick="zaktalizuj_profilowe(<?php echo $post['id'] ?>)">Zaktalizuj profilowe tym zdjęciem</button>
                                             <?php } ?>
-                                            <button>Usuń</button>
+                                            <button onclick="usunposta(<?php echo $post['id'] ?>)">Usuń</button>
                                             <?php } else { ?>
                                             <button>Zgłoś</button>
                                             <button>Zapisz</button>

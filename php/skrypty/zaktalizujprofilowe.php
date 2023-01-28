@@ -14,7 +14,7 @@ if (!$sesja) {
 }
 
 
-if (isset($_POST['tresc'])) {
+if (isset($_POST['tresc']) && !empty($_POST['tresc'])) {
     if ((string) $id_posta = (string) mysqli_real_escape_string($baza, htmlentities($_POST['tresc']))) {
         $fota_zap = mysqli_query($baza, "SELECT foty FROM `posty` where `id` = '$id_posta' AND `iduzytkownika` = '$sesja' LIMIT 1");
         if (mysqli_num_rows($fota_zap) == 1) {

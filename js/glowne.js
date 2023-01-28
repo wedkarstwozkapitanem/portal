@@ -229,16 +229,34 @@ function pokaz_kto_polubil(t) {
               let nowy_post_dodaj = document.createElement('div');
               nowy_post_dodaj.className = "post";
               let nowy_postp=dodawanie_nowego_artykulu.appendChild(nowy_post_dodaj);
-              nowy_postp.innerHTML = `
-                              <div class="post_informacje"><a href='/profil/${danenowypost.iduzytkownika}' style="z-index:12;">
-                                      <div><img src="/../foty/${danenowypost.profilowe}" alt="profilowe" /></div>
-                                  </a>
-                                  <a href="/profil/${danenowypost.iduzytkownika}">
-                                      <div class="post_imie">${danenowypost.imie}  ${danenowypost.nazwisko} </div>
-                                  </a>
+              let post_info = document.createElement('div');
+              post_info.className = "post_informacje";
+              let post_informacja = nowy_postp.appendChild(post_info);
+
+              let tworzenielinku = document.createElement("a");
+              tworzenielinku.href = `/profil/${danenowypost.iduzytkownika}`;
+              tworzenielinku.style.zIndex = 12;
+               let link_do_profilu =  post_informacja.appendChild(tworzenielinku);
+        
+               let nazwa = link_do_profilu.appendChild(document.createElement('div'));
+
+               nazwa.innerHTML += danenowypost.profilowe !=="" && danenowypost.profilowe !=="uzytkownik.gif" ? `<img src="/../foty/${danenowypost.folder}/profilowe/${danenowypost.profilowe}" alt="profilowe" />`:`<img src="/../foty/uzytkownik.gif" alt="profilowe" />`;
+
+     
+                                  post_informacja.innerHTML +=  `
+                                  <a href="/profil/${danenowypost.iduzytkownika}">    <div class="post_imie">${danenowypost.imie}  ${danenowypost.nazwisko} </div></a>
+                                  
                                   <div class="post_data"><a href="/profil/${danenowypost.iduzytkownika}/post/${danenowypost.id}"><time>${danenowypost.datadodania}</time></a></div>
-                                  <div class="opcjeposta wysrodkuj" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
-                              </div>`;
+                                  <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
+                                  <div class="menu_posta_opcje" style="display:none;" data-opcje_posta="${danenowypost.id}">
+                                  <button onclick="zaktalizuj_profilowe(${danenowypost.id})">Zaktalizuj profilowe tym zdjęciem</button>
+                                  <button onclick="usunposta(${danenowypost.id})">Usuń</button>
+                                  <button>Zgłoś</button>
+                                  <button>Zapisz</button>
+
+                              </div>
+
+                              `;
 
                         let tresc = document.createElement('div');
                         tresc.className = 'post_tresc';
@@ -328,7 +346,40 @@ alert(p.dataset.postid);
 
 
 
-
-function zaktalizuj_profilowe() {
+    function menuposta(p) {
+        idposta = p.dataset.postid;
+        let menupost =  document.querySelector(`[data-opcje_posta='${idposta}']`);
+        menupost.style.display == 'none' ? menupost.style.display = 'block' : menupost.style.display = 'none';
+            }
+        
     
-}
+    
+            function zaktalizuj_profilowe(p) {
+                let idposta = p;
+                polocz('zaktalizujprofilowe',idposta);
+            }
+
+
+
+
+
+
+            
+function menuposta(p) {
+    idposta = p.dataset.postid;
+    let menupost =  document.querySelector(`[data-opcje_posta='${idposta}']`);
+    menupost.style.display == 'none' ? menupost.style.display = 'block' : menupost.style.display = 'none';
+        }
+    
+
+
+        function zaktalizuj_profilowe(p) {
+            let idposta = p;
+            polocz('zaktalizujprofilowe',idposta);
+        }
+
+
+        function usunposta(p) {
+            let idposta = p;
+            polocz('usunposta',idposta);
+        }

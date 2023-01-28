@@ -78,6 +78,9 @@ try {
             case 'zaktalizujprofilowe':
                 sprawdzplik("php/skrypty/zaktalizujprofilowe.php");
                 break;
+            case 'usunposta':
+                sprawdzplik("php/skrypty/usunposta.php");
+                break;
             default:
                 echo "Nie prawidłowe żądanie";
                 header("HTTP/1.1 404 Not Found");

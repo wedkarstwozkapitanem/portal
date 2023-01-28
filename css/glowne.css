@@ -635,3 +635,41 @@ article {
 .opcjeposta:hover {
     background: silver;
 }
+
+
+
+
+
+.wysrodkowanie {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+
+.opcjeposta_usuwanie:hover{
+    background: silver;
+}
+
+
+.menu_posta_opcje {
+    position: absolute;
+right: 4px;
+z-index:24;
+margin-top:16px;
+}
+.menu_posta_opcje button {
+    width:100%;
+    background:silver;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    padding:8px;
+    border-radius:8px;
+    font-weight: 888;
+    cursor: pointer;
+    border:3px groove black;
+}
+.menu_posta_opcje button:hover {
+    background: white;
+}
