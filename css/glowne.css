@@ -562,6 +562,8 @@ article {
     border-radius: 48px;
     float: left;
     z-index: 28;
+    margin:4px;
+    border:1px solid black;
 }
 
 .komentarz_tresc {
