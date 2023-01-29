@@ -188,7 +188,7 @@ if (typeof(p) === 'object') {
 
 
 function pokaz_kto_polubil(t) {
-   let idposta = t.dataset.postidLicznikpolubien;
+   let idposta = t.dataset.postidlicznikpolubien;
    dokladneinformacje.style.display = 'flex';
    polocz('kto_polubil', idposta,"#dokladneinformacje");
 }
