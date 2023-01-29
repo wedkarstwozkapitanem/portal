@@ -2,6 +2,7 @@
 
 try {
   $baza = mysqli_connect('localhost', 'root', '', 'serwis_kapitana');
+//  $baza = mysqli_connect('pma.ct8.pl', 'm32573_kapitan', 'Dominik.2006', 'm32573_wedkarstwozkapitanem');
 
   if (mysqli_error($baza) || mysqli_errno($baza)) {
     $plik = fopen('bledy.txt', 'w');

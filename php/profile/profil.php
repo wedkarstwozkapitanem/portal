@@ -229,7 +229,7 @@ try {
                                     $liczbazdjecprofilu = count($fota) - 1;
 
                                     for ($i = 0; $i <= $liczbazdjecprofilu; $i++) {
-                                        if ($liczbafot <= 8) {
+                                        if ($liczbafot <= 10) {
                                             echo '<a href="/profil/'.$id.'/post/' . $postfoty['id'] . '"><img src="/foty/'.$uzytkownik['folder']."/posty/".$fota[$i].'" alt="zdjęcie użytkownika"/></a>';
                                             $liczbafot = $liczbafot + 1;
                                         } else {
