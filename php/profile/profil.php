@@ -75,7 +75,7 @@ try {
                 <div class="wyrownaj">
         <!--<center>-->
             <div class="goraprofilu">
-                <div class="tlo_profilu"><img src="/../foty/';
+                <div class="tlo_profilu"><img loading="lazy" src="/../foty/';
                         if ($uzytkownik['tlo'] != "" ) {
                             echo $uzytkownik['tlo'];
                         } else {
@@ -83,7 +83,7 @@ try {
                         }
                         echo '" alt="tło" /></div>
                 
-                    <div class="awata_profiu"><img src="/../foty/';
+                    <div class="awata_profiu"><img loading="lazy" src="/../foty/';
                         if ($uzytkownik['profilowe'] !== "" && $uzytkownik['profilowe'] !== 'uzytkownik.gif') {
                             echo $uzytkownik['folder'] ."/profilowe/". $uzytkownik['profilowe'];
                         } else {
@@ -230,7 +230,7 @@ try {
 
                                     for ($i = 0; $i <= $liczbazdjecprofilu; $i++) {
                                         if ($liczbafot <= 10) {
-                                            echo '<a href="/profil/'.$id.'/post/' . $postfoty['id'] . '"><img src="/foty/'.$uzytkownik['folder']."/posty/".$fota[$i].'" alt="zdjęcie użytkownika"/></a>';
+                                            echo '<a href="/profil/'.$id.'/post/' . $postfoty['id'] . '"><img loading="lazy" src="/foty/'.$uzytkownik['folder']."/posty/".$fota[$i].'" alt="zdjęcie użytkownika"/></a>';
                                             $liczbafot = $liczbafot + 1;
                                         } else {
                                             break;
@@ -305,9 +305,9 @@ try {
                                                 <?php 
                                                 if ($uzytkownik[3] !== "" && $uzytkownik[3] !== "uzytkownik.gif")  {
                                                 ?>
-                                                <img src="/../foty/<?php echo $uzytkownik[4] ?>/posty/<?php echo $uzytkownik[3] ?>" alt="profilowe" />
+                                                <img loading="lazy" src="/../foty/<?php echo $uzytkownik[4] ?>/posty/<?php echo $uzytkownik[3] ?>" alt="profilowe" />
 <?php } else { ?>
-    <img src="/../foty/uzytkownik.gif" alt="profilowe" />
+    <img loading="lazy" src="/../foty/uzytkownik.gif" alt="profilowe" />
     <?php } ?>
     </div>
                                         </a>
@@ -339,7 +339,7 @@ try {
                                             if ((array) $lista_fot = explode(",", $post['foty'])) {
                                                 if ($lista_fot[0] !== "" && !empty($lista_fot)) {
                                                     foreach ($lista_fot as $fotka) {
-                                                        echo "<img src='/foty/" . $uzytkownik[4] . "/posty/" . $fotka . "' alt='zdjecie posta' />";
+                                                        echo "<img loading='lazy' src='/foty/" . $uzytkownik[4] . "/posty/" . $fotka . "' alt='zdjecie posta' />";
                                                     }
                                                 }
                                             }
@@ -398,13 +398,13 @@ try {
                                         $profilowe = mysqli_query($baza, "SELECT `profilowe`,`folder` from `uzytkownicy` where `id` = '$sesja' LIMIT 9");
                                         $prof = mysqli_fetch_row($profilowe);
 
-                                        echo "<div class='dodaj_komentarz_profilowe'><img src='/../foty/".$prof[1]."/profilowe/".$prof[0]."' alt='profilowe' /></div>";
+                                        echo "<div class='dodaj_komentarz_profilowe'><img loading='lazy' src='/../foty/".$prof[1]."/profilowe/".$prof[0]."' alt='profilowe' /></div>";
 
                                         ?>
                 
                                         <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['id'] ?>" />
                                         <label>
-                                            <div data-postid-kom="<?php echo $post['id'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img src="../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
+                                            <div data-postid-kom="<?php echo $post['id'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading="lazy" src="../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
                                         </label>
                                         <div data-postid-pokakom="<?php echo $post['id'] ?>" class="komentarze_post wysrodkuj" style="display: none;">
                 

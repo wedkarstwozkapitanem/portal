@@ -1,4 +1,5 @@
-<div>
+<div class="dymek_polubiony">Ten post został polubiony przez:
+    <button class="zamknij" onclick="document.getElementById('dokladneinformacje').style.display = 'none'">X</button><hr>
 <?php
 include("php/polocz.php");
 $id_posta = (string) mysqli_real_escape_string($baza, htmlentities($_POST['tresc']));
@@ -10,10 +11,10 @@ if (mysqli_num_rows($komentarze) > 0) {
         $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
         while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
 ?>
-<div>
+<div class="kto_polubil_uzytkownik">
             <a href="/profil/<?php echo $id_komentarz_uzytkownik ?>">
-                <div class="like_autor"><img width="68px" height="68px" src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe" />
-                    <span><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko'] ?></span>
+                <div class="like_autor"><img loading="lazy" src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe" />
+                    <div><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko'] ?></div>
                 </div>
             </a>
 </div>

@@ -73,9 +73,9 @@ if (mysqli_num_rows($wynik_post) > 0) {
                 <div class="post_informacje"><a href='/profil/<?php echo $post['iduzytkownika'] ?>' style="z-index:12;">
                         <div>
                         <?php if ($uzytkownik[3] != "" && $uzytkownik[3] != "uzytkownik.jpg") {
-                            echo "<img src='/../foty/".$uzytkownik[4]."/profilowe/".$uzytkownik[3]."' alt='profilowe' />";
+                            echo "<img loading='lazy' src='/../foty/".$uzytkownik[4]."/profilowe/".$uzytkownik[3]."' alt='profilowe' />";
                         } else {
-                            echo "<img src='/../foty/uzytkownik.gif' alt='profilowe' />";
+                            echo "<img loading='lazy' src='/../foty/uzytkownik.gif' alt='profilowe' />";
                         }
                         
                         ?>
@@ -110,7 +110,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
                                             if ((array) $lista_fot = explode(",", $post['foty'])) {
                                                 if ($lista_fot[0] !== "" && !empty($lista_fot)) {
                                                     foreach ($lista_fot as $fotka) {
-                                                        echo "<img src='/foty/" . $uzytkownik[4] . "/posty/" . $fotka . "' alt='zdjecie posta' />";
+                                                        echo "<img loading='lazy' src='/foty/" . $uzytkownik[4] . "/posty/" . $fotka . "' alt='zdjecie posta' />";
                                                     }
                                                 }
                                             }
@@ -169,13 +169,13 @@ if (mysqli_num_rows($wynik_post) > 0) {
                     $profilowe = mysqli_query($baza, "SELECT `profilowe`,`folder` from `uzytkownicy` where `id` = '$sesja'");
                     $prof = mysqli_fetch_row($profilowe);
 
-                    echo "<div class='dodaj_komentarz_profilowe'><img src='/../foty/".$prof[1]."/profilowe/" . $prof[0] . "' alt='profilowe' /></div>";
+                    echo "<div class='dodaj_komentarz_profilowe'><img loading='lazy' src='/../foty/".$prof[1]."/profilowe/" . $prof[0] . "' alt='profilowe' /></div>";
 
                     ?>
 
                     <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['id'] ?>" />
                     <label>
-                        <div data-postid-kom="<?php echo $post['id'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img src="/zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
+                        <div data-postid-kom="<?php echo $post['id'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading='lazy' src="/zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
                     </label>
                     <div data-postid-pokakom="<?php echo $post['id'] ?>" class="komentarze_post wysrodkuj" >
                   
@@ -201,7 +201,7 @@ try {
                 while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
                     ?>
                     <a href="/profil/<?php echo $uzytkownik_komentarz['id']; ?>">
-                        <div class="komentarz_uzytkownik"><img src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
+                        <div class="komentarz_uzytkownik"><img loading='lazy' src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
                             <div class="komentarz_nazwa"><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?> dodał komentarz <time><?php echo $komentarz['dodanedata'] ?></time> </div>
                         </div>
                     </a>

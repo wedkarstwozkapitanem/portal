@@ -13,9 +13,9 @@ try {
         while ($uzytkownik = mysqli_fetch_row($wynik_profil)) {
             ?>
         <?php if($uzytkownik[3]!=="" || $uzytkownik[3]=="uzytkownik.gif") { ?>
-        <img id="moje_profilowe_fota" src="/../../../foty/<?php echo $uzytkownik[4]?>/profilowe/<?php echo $uzytkownik[3] ?>" alt="profilowe" />
+        <img loading="lazy" id="moje_profilowe_fota" src="/../../../foty/<?php echo $uzytkownik[4]?>/profilowe/<?php echo $uzytkownik[3] ?>" alt="profilowe" />
         <?php } else {?>
-            <img id="moje_profilowe_fota" src="/../../../foty/uzytkownik.gif" alt="profilowe" />
+            <img loading="lazy" id="moje_profilowe_fota" src="/../../../foty/uzytkownik.gif" alt="profilowe" />
             <?php } ?>
         <div class="post_imie" style="top:10px;"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
         <?php } ?>

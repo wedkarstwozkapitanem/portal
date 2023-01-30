@@ -675,3 +675,46 @@ margin-top:16px;
 .menu_posta_opcje button:hover {
     background: white;
 }
+
+.dymek_polubiony {
+    background:#262121;
+    position: relative;
+    width: 48%;
+    border-radius: 8px;color:silver;font-size:40px;border:2px solid black;
+}
+
+
+.zamknij {
+    position: absolute;
+    right: 8px;
+    font-size: 38px;cursor:pointer;background:red;width:48px;height:48px;
+    top:0;
+}
+
+
+.kto_polubil_uzytkownik {
+    min-height:70px;border:1px solid wheat;border-radius:8px;margin:8px;
+}
+.kto_polubil_uzytkownik:hover {
+background: wheat;
+}
+
+.like_autor img {
+    width: 68px;
+    height: 68px;
+    float:left;border-radius:48px;
+    border:1px solid black;
+}
+
+.like_autor div {
+    top: 8px;
+    left: 10px;
+    color: #858585;
+}
+
+
+@media  screen and (max-width:888px){
+    .dymek_polubiony {
+        width: 100%;
+    }
+}

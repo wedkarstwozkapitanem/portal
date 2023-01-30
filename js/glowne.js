@@ -241,7 +241,7 @@ function pokaz_kto_polubil(t) {
         
                let nazwa = link_do_profilu.appendChild(document.createElement('div'));
 
-               nazwa.innerHTML += danenowypost.profilowe !=="" && danenowypost.profilowe !=="uzytkownik.gif" ? `<img src="/../foty/${danenowypost.folder}/profilowe/${danenowypost.profilowe}" alt="profilowe" />`:`<img src="/../foty/uzytkownik.gif" alt="profilowe" />`;
+               nazwa.innerHTML += danenowypost.profilowe !=="" && danenowypost.profilowe !=="uzytkownik.gif" ? `<img loading="lazy" src="/../foty/${danenowypost.folder}/profilowe/${danenowypost.profilowe}" alt="profilowe" />`:`<img loading="lazy"  src="/../foty/uzytkownik.gif" alt="profilowe" />`;
 
      
                                   post_informacja.innerHTML +=  `
@@ -268,7 +268,7 @@ function pokaz_kto_polubil(t) {
                             post_zdjecia = document.createElement("div");
                             post_zdjecia.className="post_zdjecia"
                             let tresc_fota = tresc_posta.appendChild(post_zdjecia);
-                            tresc_fota.innerHTML += `<img src="/foty/${danenowypost.folder}/posty/${danenowypost.foty}" alt="zdjecie posta"/>`;
+                            tresc_fota.innerHTML += `<img loading="lazy" src="/foty/${danenowypost.folder}/posty/${danenowypost.foty}" alt="zdjecie posta"/>`;
                           }    
                               
                               
@@ -318,13 +318,13 @@ function pokaz_kto_polubil(t) {
               let post_kom_dodaj = nowy_postp.appendChild(post_komentarze);
 
         
-              post_kom_dodaj.innerHTML += `<div class="dodaj_komentarz_profilowe"><img src='${document.getElementById("moje_profilowe_fota").src}' alt='profilowe' /></div>`;
+              post_kom_dodaj.innerHTML += `<div class="dodaj_komentarz_profilowe"><img loading="lazy" src='${document.getElementById("moje_profilowe_fota").src}' alt='profilowe' /></div>`;
             
 
               post_kom_dodaj.innerHTML += `
               <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="${danenowypost.id}" />
               <label>
-                  <div data-postid-kom="${danenowypost.id}" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img src="/../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
+                  <div data-postid-kom="${danenowypost.id}" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading="lazy" src="/../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
               </label>
               <div data-postid-pokakom="${danenowypost.id}" class="komentarze_post wysrodkuj" style="display: none;">
 `;
