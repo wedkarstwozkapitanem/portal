@@ -208,7 +208,7 @@ try {
                             <?php if ($uzytkownik_komentarz['profilowe'] !== "" && $uzytkownik_komentarz['profilowe'] !== "uzytkownik.gif")  { ?>
                             <img loading='lazy' src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
 <?php } else { ?>
-    <img loading='lazy' src="/../foty/uzytkownik.gif ?>" alt="profilowe">
+    <img loading='lazy' src="/../foty/uzytkownik.gif" alt="profilowe">
 <?php } ?>
                             <div class="komentarz_nazwa"><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?> dodał komentarz <time><?php echo $komentarz['dodanedata'] ?></time> </div>
                         </div>

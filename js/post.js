@@ -77,16 +77,16 @@ function wyszukiwarka() {
 function polubposta(p) {
     let idposta = p.dataset.postid;
     polocz('polubienie', idposta);
-    licznik = document.querySelector(`[data-postid-licznikpolubien='${idposta}'] span`).innerHTML;
+    licznik = document.querySelector(`[data-postidlicznikpolubien='${idposta}'] span`).innerHTML;
     if (p.classList != 'polubione') {
         p.classList.add('polubione');
         p.innerHTML = "👍🏻polubiłem";
         licznik++;
-        document.querySelector(`[data-postid-licznikpolubien='${idposta}'] span`).innerHTML = licznik;
+        document.querySelector(`[data-postidlicznikpolubien='${idposta}'] span`).innerHTML = licznik;
 
 
         //poprawnosc pisowni
-        let sprawdzenie_polub = document.querySelector(`[data-postid-licznikpolubien='${idposta}'] .polubienie`);
+        let sprawdzenie_polub = document.querySelector(`[data-postidlicznikpolubien='${idposta}'] .polubienie`);
         if (sprawdzenie_polub.innerHTML == " Brak polubień") {
             sprawdzenie_polub.innerHTML = " polubienie";
         } else if (sprawdzenie_polub.innerHTML == " polubienie") {
@@ -99,10 +99,10 @@ function polubposta(p) {
         if (!licznik) {
             licznik = "";
         }
-        document.querySelector(`[data-postid-licznikpolubien='${idposta}'] span`).innerHTML = licznik;
+        document.querySelector(`[data-postidlicznikpolubien='${idposta}'] span`).innerHTML = licznik;
 
         //poprawnosc pisowni
-        let sprawdzenie_polub = document.querySelector(`[data-postid-licznikpolubien='${idposta}'] .polubienie`);
+        let sprawdzenie_polub = document.querySelector(`[data-postidlicznikpolubien='${idposta}'] .polubienie`);
         if (sprawdzenie_polub.innerHTML == " polubienie") {
             sprawdzenie_polub.innerHTML = " Brak polubień";
         } else if (sprawdzenie_polub.innerHTML == " polubienia") {

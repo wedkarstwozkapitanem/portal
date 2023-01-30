@@ -40,9 +40,9 @@ function wczytywanie_postow() {
           
           
           
-          if (liczniklike >= 2) dol.innerHTML +=  `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postid-licznikpolubien="${post['id']}"><span>${sprawdzanie}</span><span class="polubienie"> polubienia</span></div>`;
-          else if (liczniklike === 1) dol.innerHTML += `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postid-licznikpolubien="${post['id']}"><span>1</span><span class="polubienie"> polubienie</span></div>`;
-          else if (liczniklike === 0) dol.innerHTML += `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postid-licznikpolubien="${post['id']}"><span></span><span class="polubienie"> Brak polubień</span></div>`;
+          if (liczniklike >= 2) dol.innerHTML +=  `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postidlicznikpolubien="${post['id']}"><span>${sprawdzanie}</span><span class="polubienie"> polubienia</span></div>`;
+          else if (liczniklike === 1) dol.innerHTML += `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postidlicznikpolubien="${post['id']}"><span>1</span><span class="polubienie"> polubienie</span></div>`;
+          else if (liczniklike === 0) dol.innerHTML += `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postidlicznikpolubien="${post['id']}"><span></span><span class="polubienie"> Brak polubień</span></div>`;
           
           
           if (!licznikom)  dol.innerHTML +=  `<div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="${post['id']}"><span data-postid-licznikomentarzyp="${post['id']}"></span><span data-postid-licznikomentarzy="${post['id']}"> Brak komentarzy</span></div>`;

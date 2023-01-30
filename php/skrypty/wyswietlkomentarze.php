@@ -19,8 +19,12 @@ try {
                 while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
                     ?>
                     <a href="/profil/<?php echo $uzytkownik_komentarz['id']; ?>">
+                    <?php if($uzytkownik_komentarz['profilowe'] !=="" && $uzytkownik_komentarz['profilowe'] !== "uzytkownik.gif" ) {?>
                         <div class="komentarz_uzytkownik"><img loading="lazy" src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/posty/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
-                            <div class="komentarz_nazwa"><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?> dodał komentarz <time><?php echo $komentarz['dodanedata'] ?></time> </div>
+                        <?php } else { ?>
+                            <div class="komentarz_uzytkownik"><img loading="lazy" src="/../foty/uzytkownik.gif" alt="profilowe">
+                            <?php } ?>
+                        <div class="komentarz_nazwa"><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?> dodał komentarz <time><?php echo $komentarz['dodanedata'] ?></time> </div>
                         </div>
                     </a>
                 <?php
