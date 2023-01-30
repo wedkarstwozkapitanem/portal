@@ -247,7 +247,7 @@ function pokaz_kto_polubil(t) {
                                   post_informacja.innerHTML +=  `
                                   <a href="/profil/${danenowypost.iduzytkownika}">    <div class="post_imie">${danenowypost.imie}  ${danenowypost.nazwisko} </div></a>
                                   
-                                  <div class="post_data"><a href="/profil/${danenowypost.iduzytkownika}/post/${danenowypost.id}"><time>${danenowypost.datadodania}</time></a></div>
+                                  <div class="post_data"><a href="/profil/${danenowypost.iduzytkownika}/post/${danenowypost.id}"><time>${danenowypost.datadodania}</time></a><button style="border-radius:8px;margin: 2px 0 0 8px;background:silver;">Dodał/a posta</button></div>
                                   <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
                                   <div class="menu_posta_opcje" style="display:none;" data-opcje_posta="${danenowypost.id}">
                                   <button onclick="zaktalizuj_profilowe(${danenowypost.id})">Zaktalizuj profilowe tym zdjęciem</button>

@@ -63,7 +63,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
 
 
         $idu = (int) mysqli_real_escape_string($baza,htmlentities($post['iduzytkownika']));
-        $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where id = $idu";
+        $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$idu'";
         $wynik_profil = mysqli_query($baza, $zapytanie_profil);
 
         while ($uzytkownik = mysqli_fetch_row($wynik_profil)) {
@@ -84,7 +84,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
                     <a href="/profil/<?php echo $post['iduzytkownika'] ?>">
                         <div class="post_imie"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
                     </a>
-                    <div class="post_data"><a href="/profil/<?php echo $uzytkownik[0]; ?>/post/<?php echo $post['id'] ?>"><time><?php echo $post['datadodania'] ?></time></a></div>
+                    <div class="post_data"><a href="/profil/<?php echo $uzytkownik[0]; ?>/post/<?php echo $post['id'] ?>"><time><?php echo $post['datadodania'] ?></time></a><button style="border-radius:8px;margin: 2px 0 0 8px;background:silver;">Dodał/a posta</button></div>
                     <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="<?php echo $post['id'] ?>"><span style="top:-10px;">...</span></div>
                                     
                                     <div class="menu_posta_opcje" style="display:none;" data-opcje_posta="<?php echo $post['id'] ?>">
@@ -127,11 +127,11 @@ if (mysqli_num_rows($wynik_post) > 0) {
                     $sprawdzanie = mysqli_query($baza, $sprawdz);
 
                     if (mysqli_num_rows($sprawdzanie) >= 2) {
-                        echo '<div class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['id']) . '"><span>' . mysqli_num_rows($sprawdzanie) . ' </span><span class="polubienie"> polubienia</span></div>';
+                        echo '<div onclick="pokaz_kto_polubil(this)"  class="licznik_polubien" data-postidlicznikpolubien="' . trim($post['id']) . '"><span>' . mysqli_num_rows($sprawdzanie) . ' </span><span class="polubienie"> polubienia</span></div>';
                     } else if (mysqli_num_rows($sprawdzanie) === 1) {
-                        echo '<div class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['id']) . '"><span>1</span><span class="polubienie"> polubienie</span></div>';
+                        echo '<div onclick="pokaz_kto_polubil(this)"  class="licznik_polubien" data-postidlicznikpolubien="' . trim($post['id']) . '"><span>1</span><span class="polubienie"> polubienie</span></div>';
                     } else if (mysqli_num_rows($sprawdzanie) === 0) {
-                        echo '<div class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['id']) . '"><span></span><span class="polubienie"> Brak polubień</span></div>';
+                        echo '<div onclick="pokaz_kto_polubil(this)"  class="licznik_polubien" data-postidlicznikpolubien="' . trim($post['id']) . '"><span></span><span class="polubienie"> Brak polubień</span></div>';
                     }
 
 
@@ -169,8 +169,11 @@ if (mysqli_num_rows($wynik_post) > 0) {
                     $profilowe = mysqli_query($baza, "SELECT `profilowe`,`folder` from `uzytkownicy` where `id` = '$sesja'");
                     $prof = mysqli_fetch_row($profilowe);
 
-                    echo "<div class='dodaj_komentarz_profilowe'><img loading='lazy' src='/../foty/".$prof[1]."/profilowe/" . $prof[0] . "' alt='profilowe' /></div>";
-
+                    if ($prof[0] !== "" && $prof[0] !== "uzytkownik.gif") {
+                        echo "<div class='dodaj_komentarz_profilowe'><img loading='lazy' src='/../foty/" . $prof[1] . "/profilowe/" . $prof[0] . "' alt='profilowe' /></div>";
+                    } else {
+                        echo "<div class='dodaj_komentarz_profilowe'><img loading='lazy' src='/foty/uzytkownik.gif' alt='profilowe' /></div>";
+                    }
                     ?>
 
                     <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['id'] ?>" />
@@ -201,7 +204,12 @@ try {
                 while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
                     ?>
                     <a href="/profil/<?php echo $uzytkownik_komentarz['id']; ?>">
-                        <div class="komentarz_uzytkownik"><img loading='lazy' src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
+                        <div class="komentarz_uzytkownik">
+                            <?php if ($uzytkownik_komentarz['profilowe'] !== "" && $uzytkownik_komentarz['profilowe'] !== "uzytkownik.gif")  { ?>
+                            <img loading='lazy' src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
+<?php } else { ?>
+    <img loading='lazy' src="/../foty/uzytkownik.gif ?>" alt="profilowe">
+<?php } ?>
                             <div class="komentarz_nazwa"><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?> dodał komentarz <time><?php echo $komentarz['dodanedata'] ?></time> </div>
                         </div>
                     </a>
@@ -299,6 +307,6 @@ try {
   }
 ?>
 
-
+<div style="display:none" id="dokladneinformacje"></div>
 <script src="/js/post.js" type="text/javascript"> </script>
 </html>

@@ -12,7 +12,7 @@ try {
 
         while ($uzytkownik = mysqli_fetch_row($wynik_profil)) {
             ?>
-        <?php if($uzytkownik[3]!=="" || $uzytkownik[3]=="uzytkownik.gif") { ?>
+        <?php if($uzytkownik[3]!=="" && $uzytkownik[3]!=="uzytkownik.gif") { ?>
         <img loading="lazy" id="moje_profilowe_fota" src="/../../../foty/<?php echo $uzytkownik[4]?>/profilowe/<?php echo $uzytkownik[3] ?>" alt="profilowe" />
         <?php } else {?>
             <img loading="lazy" id="moje_profilowe_fota" src="/../../../foty/uzytkownik.gif" alt="profilowe" />

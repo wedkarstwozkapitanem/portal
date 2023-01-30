@@ -13,7 +13,15 @@ if (mysqli_num_rows($komentarze) > 0) {
 ?>
 <div class="kto_polubil_uzytkownik">
             <a href="/profil/<?php echo $id_komentarz_uzytkownik ?>">
-                <div class="like_autor"><img loading="lazy" src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe" />
+                <div class="like_autor">
+
+
+<?php if ($uzytkownik_komentarz['profilowe'] !== "" && $uzytkownik_komentarz['profilowe'] !== "uzytkownik.gif") { ?> 
+                    <img loading="lazy" src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe" />
+<?php } else { ?>
+    <img loading="lazy" src="/../foty/uzytkownik.gif" alt="profilowe" />
+    <?php } ?>
+
                     <div><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko'] ?></div>
                 </div>
             </a>

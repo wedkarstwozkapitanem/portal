@@ -185,3 +185,13 @@ function menuposta(p) {
             document.querySelector(`[data-postid='${idposta}']`).classList.add("wysrodkuj");
             polocz('usunposta',idposta);
         }
+
+
+        
+
+function pokaz_kto_polubil(t) {
+    let idposta = t.dataset.postidlicznikpolubien;
+    dokladneinformacje.style.display = 'flex';
+    polocz('kto_polubil', idposta,"#dokladneinformacje");
+ }
+ 

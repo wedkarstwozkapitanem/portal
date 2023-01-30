@@ -356,11 +356,11 @@ try {
                                         $sprawdzanie = mysqli_query($baza, $sprawdz);
 
                                         if (mysqli_num_rows($sprawdzanie) >= 2) {
-                                            echo '<div class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['id']) . '"><span>' . mysqli_num_rows($sprawdzanie) . ' </span><span class="polubienie"> polubienia</span></div>';
+                                            echo '<div onclick="pokaz_kto_polubil(this)"  class="licznik_polubien" data-postidlicznikpolubien="' . trim($post['id']) . '"><span>' . mysqli_num_rows($sprawdzanie) . ' </span><span class="polubienie"> polubienia</span></div>';
                                         } else if (mysqli_num_rows($sprawdzanie) === 1) {
-                                            echo '<div class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['id']) . '"><span>1</span><span class="polubienie"> polubienie</span></div>';
+                                            echo '<div onclick="pokaz_kto_polubil(this)"  class="licznik_polubien" data-postidlicznikpolubien="' . trim($post['id']) . '"><span>1</span><span class="polubienie"> polubienie</span></div>';
                                         } else if (mysqli_num_rows($sprawdzanie) === 0) {
-                                            echo '<div class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['id']) . '"><span></span><span class="polubienie"> Brak polubień</span></div>';
+                                            echo '<div onclick="pokaz_kto_polubil(this)"  class="licznik_polubien" data-postidlicznikpolubien="' . trim($post['id']) . '"><span></span><span class="polubienie"> Brak polubień</span></div>';
                                         }
 
 
@@ -398,8 +398,12 @@ try {
                                         $profilowe = mysqli_query($baza, "SELECT `profilowe`,`folder` from `uzytkownicy` where `id` = '$sesja' LIMIT 9");
                                         $prof = mysqli_fetch_row($profilowe);
 
-                                        echo "<div class='dodaj_komentarz_profilowe'><img loading='lazy' src='/../foty/".$prof[1]."/profilowe/".$prof[0]."' alt='profilowe' /></div>";
 
+                                        if ($prof[0] !== "" && $prof[0] !== "uzytkownik.gif") {
+                                            echo "<div class='dodaj_komentarz_profilowe'><img loading='lazy' src='/../foty/" . $prof[1] . "/profilowe/" . $prof[0] . "' alt='profilowe' /></div>";
+                                        } else {
+                                            echo "<div class='dodaj_komentarz_profilowe'><img loading='lazy' src='/../foty/uzytkownik.gif' alt='profilowe' /></div>";
+                                        }
                                         ?>
                 
                                         <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['id'] ?>" />
@@ -468,7 +472,7 @@ try {
 
     </div>
 
-
+    <div style="display:none" id="dokladneinformacje"></div>
 
 
 

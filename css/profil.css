@@ -333,3 +333,19 @@ body {
 article {
     margin-top: 12px;
 }
+
+
+
+#dokladneinformacje {
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.968);
+    z-index:28;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
