@@ -19,7 +19,7 @@ try {
     $dane_posta[$i]['licznikpolubien'] = mysqli_num_rows(mysqli_query($baza, "SELECT `id_uzytkownika`,`id_posta` FROM `polubienia` WHERE `id_posta` = '$id_posta'"));
     $dane_posta[$i]['licznikomentarzy'] = mysqli_num_rows(mysqli_query($baza, "SELECT * FROM `komentarze` where `idposta` = '$id_posta'"));
     $dane_posta[$i]['polubiono'] = mysqli_num_rows(mysqli_query($baza, "SELECT `id_uzytkownika`,`id_posta` FROM `polubienia` WHERE `id_uzytkownika` = '$sesja' AND id_posta = '$id_posta'")) === 0 ? false : true;
-
+    $dane_posta[$i]['czymoj'] = mysqli_num_rows(mysqli_query($baza,"SELECT * FROM `posty` WHERE `iduzytkownika` = '$sesja' AND `id`='$id_posta' AND `usunieto` = 0")) === 0 ? false : true;
     $i++;
     }
 

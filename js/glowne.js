@@ -248,16 +248,19 @@ function pokaz_kto_polubil(t) {
                                   <a href="/profil/${danenowypost.iduzytkownika}">    <div class="post_imie">${danenowypost.imie}  ${danenowypost.nazwisko} </div></a>
                                   
                                   <div class="post_data"><a href="/profil/${danenowypost.iduzytkownika}/post/${danenowypost.id}"><time>${danenowypost.datadodania}</time></a><button style="border-radius:8px;margin: 2px 0 0 8px;background:silver;">Dodał/a posta</button></div>
-                                  <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>
-                                  <div class="menu_posta_opcje" style="display:none;" data-opcje_posta="${danenowypost.id}">
-                                  <button onclick="zaktalizuj_profilowe(${danenowypost.id})">Zaktalizuj profilowe tym zdjęciem</button>
-                                  <button onclick="usunposta(${danenowypost.id})">Usuń</button>
-                                  <button>Zgłoś</button>
-                                  <button>Zapisz</button>
-
-                              </div>
-
-                              `;
+                                  <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>`;
+                                  let pmenu_posta_opcje = document.createElement("div");
+                                  pmenu_posta_opcje.className = "menu_posta_opcje";
+                                  pmenu_posta_opcje.style.display = "none";
+                                  pmenu_posta_opcje.dataset.opcje_posta = danenowypost.id;
+                                  let menu_opcje_akcja = post_informacja.appendChild(pmenu_posta_opcje);
+                                  if(danenowypost.czymoj === false) {
+                                  menu_opcje_akcja.innerHTML += `<button>Zgłoś</button>
+                                  <button>Zapisz</button>`;
+                                  } else {
+     if(danenowypost.foty !== "") menu_opcje_akcja.innerHTML += `<button onclick="zaktalizuj_profilowe(${danenowypost.id})">Zaktalizuj profilowe tym zdjęciem</button>`;
+     menu_opcje_akcja.innerHTML +=  `<button onclick="usunposta(${danenowypost.id})">Usuń</button>`;
+                                  }
 
                         let tresc = document.createElement('div');
                         tresc.className = 'post_tresc';
