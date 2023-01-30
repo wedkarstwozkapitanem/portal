@@ -72,7 +72,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
             <div class="post" data-postid="<?php echo $post['id'] ?>">
                 <div class="post_informacje"><a href='/profil/<?php echo $post['iduzytkownika'] ?>' style="z-index:12;">
                         <div>
-                        <?php if ($uzytkownik[3] != "" && $uzytkownik[3] != "uzytkownik.jpg") {
+                        <?php if ($uzytkownik[3] !== "" && $uzytkownik[3] !== "uzytkownik.gif") {
                             echo "<img loading='lazy' src='/../foty/".$uzytkownik[4]."/profilowe/".$uzytkownik[3]."' alt='profilowe' />";
                         } else {
                             echo "<img loading='lazy' src='/../foty/uzytkownik.gif' alt='profilowe' />";
