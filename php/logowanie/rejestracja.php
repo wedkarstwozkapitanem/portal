@@ -25,6 +25,7 @@
                 </div>
                 <div style="clear:both;position: absolute;z-index: 4;left:10%;top:60px;"> Data urudzenia </div>
                 <input type="date" name="data_urodzenia" id="data_urudzenia" value="2006-05-02">
+
                 <input id="email" name="email" type="email" placeholder="Wpisz email">
 
                 <input type="password" name="haslo" id="haslo" placeholder="Wpisz hasło">

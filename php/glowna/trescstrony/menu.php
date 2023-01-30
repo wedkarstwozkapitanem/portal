@@ -4,7 +4,7 @@
     <div id="wyszukiwarka" class="wysrodkuj">
         <form action="" method="POST" id="szukaj_na_forum">
         <div class="wyszukaj wysrodkuj">
-        <input type="search" placeholder="Przeszukaj ten portal" id="szukaj" name="szukaj">
+        <input type="search" placeholder="Przeszukaj ten portal" id="szukaj" name="szukaj" >
         <div class="lupa">🔍</div>
         </div>
         </form>

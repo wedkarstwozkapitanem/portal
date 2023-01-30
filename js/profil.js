@@ -182,5 +182,6 @@ function menuposta(p) {
         function usunposta(p) {
             let idposta = p;
             document.querySelector(`[data-postid='${idposta}']`).innerHTML = "<div style='color:red;font-size:48px;text-align:center;'>Post został usunięty</div>";
+            document.querySelector(`[data-postid='${idposta}']`).classList.add("wysrodkuj");
             polocz('usunposta',idposta);
         }

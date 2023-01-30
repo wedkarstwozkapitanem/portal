@@ -227,6 +227,7 @@ function pokaz_kto_polubil(t) {
               let artykul = document.createElement('article');
               let dodawanie_nowego_artykulu = gdzie.appendChild(artykul);
               let nowy_post_dodaj = document.createElement('div');
+              nowy_post_dodaj.dataset.postid=danenowypost.id;
               nowy_post_dodaj.className = "post";
               let nowy_postp=dodawanie_nowego_artykulu.appendChild(nowy_post_dodaj);
               let post_info = document.createElement('div');
@@ -365,21 +366,23 @@ alert(p.dataset.postid);
 
 
             
-function menuposta(p) {
-    idposta = p.dataset.postid;
-    let menupost =  document.querySelector(`[data-opcje_posta='${idposta}']`);
-    menupost.style.display == 'none' ? menupost.style.display = 'block' : menupost.style.display = 'none';
-        }
-    
-
-
-        function zaktalizuj_profilowe(p) {
-            let idposta = p;
-            polocz('zaktalizujprofilowe',idposta);
-        }
-
-
-        function usunposta(p) {
-            let idposta = p;
-            polocz('usunposta',idposta);
-        }
+            function menuposta(p) {
+                idposta = p.dataset.postid;
+                let menupost =  document.querySelector(`[data-opcje_posta='${idposta}']`);
+                menupost.style.display == 'none' ? menupost.style.display = 'block' : menupost.style.display = 'none';
+                    }
+                
+            
+            
+                    function zaktalizuj_profilowe(p) {
+                        let idposta = p;
+                        polocz('zaktalizujprofilowe',idposta);
+                    }
+            
+            
+                    function usunposta(p) {
+                        let idposta = p;
+                        document.querySelector(`[data-postid='${idposta}']`).innerHTML = "<div style='color:red;font-size:48px;text-align:center;'>Post został usunięty</div>";
+                        document.querySelector(`[data-postid='${idposta}']`).classList.add("wysrodkuj");
+                        polocz('usunposta',idposta);
+                    }

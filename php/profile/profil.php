@@ -211,7 +211,7 @@ try {
                         echo '<div class="lewa_burta_info"><h2 style="width: 44%;float: left;">Zdjęcia:</h2><a href="profil.php?id=' . $uzytkownik['id'] . '&zdjecia=' . $uzytkownik['id'] . '" style="position:relative;top:28px;margin-left:8px;">Przejdz do wszystkich zdjęć</a><div style="clear:both"></div><div class="zdjecia_profilu">';
 //posty
                         mysqli_escape_string($baza, $id);
-                        $sqlpostfoty = "SELECT id,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 ORDER BY id DESC LIMIT 9";
+                        $sqlpostfoty = "SELECT id,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' ORDER BY id DESC LIMIT 9";
                         if (!$zapytaniepostfoty = mysqli_query($baza, $sqlpostfoty)) {
                             if (!file_exists('bledy.txt')) {
                                 fopen('bledy/bledy.txt', 'w');
@@ -274,11 +274,11 @@ try {
             </div>
              <div id="profil_posty" class="wysrodkuj">
 <div style="top:10px;" class="posty">Posty:</div>
-
+<hr>
 
             <center>';
                         if ($sesja == $uzytkownik['id']) {
-                            echo '<button class="profiledytujinformacje dodaj-post" style="margin-top:68px !important;">Dodaj posta </button>
+                            echo '<button class="profiledytujinformacje dodaj-post" style="margin-top:68px !important;margin-bottom:68px !important">Dodaj posta </button>
             ';
                         }
                     }

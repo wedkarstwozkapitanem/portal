@@ -27,7 +27,7 @@
                 <input class="przycisk" id="przycisk" type="submit" value="Zaloguj się">
                 </form>
             </div>
-            <a href="">Zapominałem hasła</a><br>
+            <a href="/niepamietamhasla">Zapominałem hasła</a><br>
             <a href="/rejestracja">Nie masz konta? <button class="n"> Zarajestruj się tutaj </button></a>
         </div>
     </main>
