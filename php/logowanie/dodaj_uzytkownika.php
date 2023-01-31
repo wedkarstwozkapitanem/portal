@@ -33,7 +33,7 @@ try {
 
                             $dodawanie_hasel = mysqli_query($baza, "INSERT INTO `hasla` (email,haslo,ip) VALUES ('$email','$haslo','$ip')");
                             (int) $id_profilu = mysqli_insert_id($baza);
-                            $dodawanie_uzytkownika = mysqli_query($baza, "INSERT INTO `uzytkownicy` (id,imie,nazwisko,wiek,profilowe) VALUES ('$id_profilu','$imie','$nazwisko','$data_urodzenia','uzytkownik.jpg')");
+                            $dodawanie_uzytkownika = mysqli_query($baza, "INSERT INTO `uzytkownicy` (id,imie,nazwisko,wiek) VALUES ('$id_profilu','$imie','$nazwisko','$data_urodzenia')");
                             $i = mysqli_real_escape_string($baza,htmlentities(strtolower($imie)));
                             $n =  mysqli_real_escape_string($baza,htmlentities(strtolower($nazwisko)));
                             $folder_profilu =  mysqli_real_escape_string($baza,htmlspecialchars("{$i}_{$n}_{$id_profilu}"));

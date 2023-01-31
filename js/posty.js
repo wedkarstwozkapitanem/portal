@@ -7,7 +7,7 @@ const gdzie = document.querySelector('body');  // do zmiany
 
 function wczytywanie_postow() {
     let poloczenie = new XMLHttpRequest();
-    poloczenie.open('POST', 'zadania.php', true);
+    poloczenie.open('POST', 'centrumdowodzenia.php', true);
     poloczenie.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     poloczenie.onreadystatechange = () => {
         if (poloczenie.readyState === 4 && poloczenie.status === 200) {

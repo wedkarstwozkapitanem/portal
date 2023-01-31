@@ -33,7 +33,7 @@ function zatwierdz_wyszukiwanie() {
 
 function polocz(akcja, wyslij, odbierz) {
     let poloczenie = new XMLHttpRequest();
-    poloczenie.open('POST', '/zadania.php', true);
+    poloczenie.open('POST', '/centrumdowodzenia.php', true);
     poloczenie.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     poloczenie.onreadystatechange = () => {
         if (poloczenie.readyState === 4 && poloczenie.status === 200) {
@@ -51,7 +51,7 @@ function polocz(akcja, wyslij, odbierz) {
 
 function dodaj_tresc(zadanie, id, tresc) {
     let poloczenie = new XMLHttpRequest();
-    poloczenie.open('POST', '/zadania.php', true);
+    poloczenie.open('POST', '/centrumdowodzenia.php', true);
     poloczenie.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     poloczenie.onreadystatechange = () => {
     //    console.log(poloczenie.response);

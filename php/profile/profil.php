@@ -140,7 +140,7 @@ try {
                     <h1 style="float:left;color:black;"> Edytuj informacje: </h1>
                     <div class="profilzamknijedytujinfo" style="float:right;" onclick="document.querySelector(\'.profiledytujinfo\').style.display=\'none\';document.getElementById(\'profiledytujinformacje\').style.display = \'block\';document.getElementById(\'profilinfo\').style.display = \'block\'" > X </div>
                     <hr style="clear:both;">
-                    <form method="POST" action="centrum-dowodzenia.php">
+                    <form method="POST" action="/centrumdowodzenia.php">
                     <input type="hidden" name="akcja" value="edytujinformacjeprof" />
                     
                     <h3> Adres zamieszkania:</h3>
@@ -151,7 +151,7 @@ try {
                     <input type="text" placeholder="Twoje hobby" name="hobby" value="' . $uzytkownik['hobby'] . '"/>
                     <h3>linki:</h3>
                     <input type="text" placeholder="linki" name="linki" value="' . $uzytkownik['linki'] . '" />
-                    
+                    <input type="hidden" name="ppp" value="edytowanie_profilu"/>
                     <input type="submit" value="Zatwierdz" />
                     </form>
                     
