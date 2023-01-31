@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 27 Sty 2023, 20:07
+-- Czas generowania: 31 Sty 2023, 18:00
 -- Wersja serwera: 10.4.27-MariaDB
--- Wersja PHP: 8.1.12
+-- Wersja PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -89,7 +89,8 @@ CREATE TABLE `uzytkownicy` (
   `imie` text NOT NULL,
   `nazwisko` text NOT NULL,
   `folder` text NOT NULL,
-  `profilowe` text NOT NULL DEFAULT 'uzytkownik.jpg',
+  `numertelefonu` int(11) NOT NULL,
+  `profilowe` text NOT NULL,
   `tlo` text NOT NULL,
   `wiek` date NOT NULL,
   `miejscowosc` text NOT NULL,

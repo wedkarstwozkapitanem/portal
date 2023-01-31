@@ -5,7 +5,7 @@ try {
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (!empty(htmlentities($_POST['imie'])) && !empty(htmlentities($_POST['nazwisko'])) && !empty(htmlentities($_POST['data_urodzenia'])) && !empty(htmlentities($_POST['email'])) && !empty(htmlentities($_POST['haslo'])) && !empty(htmlentities($_POST['haslo_powtorz']))) {
+        if (!empty(htmlentities($_POST['imie'])) && !empty(htmlentities($_POST['nazwisko'])) && !empty(htmlentities($_POST['data_urodzenia'])) && !empty(htmlentities($_POST['email'])) && !empty(htmlentities($_POST['haslo'])) && !empty(htmlentities($_POST['haslo_powtorz'])) && !empty(htmlentities($_POST['telefon']))) {
             
             (string)$imie = mysqli_real_escape_string($baza, htmlentities($_POST['imie']));
             (string)$nazwisko = mysqli_real_escape_string($baza,  htmlentities($_POST['nazwisko']));
@@ -14,7 +14,8 @@ try {
             (string)$haslo = mysqli_real_escape_string($baza, htmlentities($_POST['haslo']));
             (string)$haslo_powtorzone = mysqli_real_escape_string($baza, htmlentities($_POST['haslo_powtorz']));
             (string)$ip = mysqli_real_escape_string($baza, $_SERVER['REMOTE_ADDR']);
-
+            (int)$numer_telefonu = mysqli_real_escape_string($baza, htmlentities($_POST['telefon']));
+       
             $niedozwoloneznaki = array( "/","<", ">","?",":","*","|","`","[","]","{","}","!","$","#","%","\ ");
             foreach ($niedozwoloneznaki as $x) {
                 if (strpos($imie, "$x") || strpos($nazwisko,"$x") || strpos($data_urodzenia,"$x") || strpos($email,"$x") || strpos($haslo,"$x") || strpos($haslo_powtorzone,"$x") || strpos($ip,"$x")) {
@@ -33,7 +34,7 @@ try {
 
                             $dodawanie_hasel = mysqli_query($baza, "INSERT INTO `hasla` (email,haslo,ip) VALUES ('$email','$haslo','$ip')");
                             (int) $id_profilu = mysqli_insert_id($baza);
-                            $dodawanie_uzytkownika = mysqli_query($baza, "INSERT INTO `uzytkownicy` (id,imie,nazwisko,wiek) VALUES ('$id_profilu','$imie','$nazwisko','$data_urodzenia')");
+                            $dodawanie_uzytkownika = mysqli_query($baza, "INSERT INTO `uzytkownicy` (id,imie,nazwisko,wiek,numertelefonu) VALUES ('$id_profilu','$imie','$nazwisko','$data_urodzenia','$numer_telefonu')");
                             $i = mysqli_real_escape_string($baza,htmlentities(strtolower($imie)));
                             $n =  mysqli_real_escape_string($baza,htmlentities(strtolower($nazwisko)));
                             $folder_profilu =  mysqli_real_escape_string($baza,htmlspecialchars("{$i}_{$n}_{$id_profilu}"));

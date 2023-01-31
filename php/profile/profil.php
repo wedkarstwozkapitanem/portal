@@ -191,8 +191,9 @@ try {
                     </p>';
                         }
                         echo '     
-                    <p>Wiek: ' . $uzytkownik['wiek'] . ' lat </p>
-                    ';
+                    <p>Urodzony: ' . $uzytkownik['wiek'] . ' ('. date('Y') - substr($uzytkownik['wiek'],0,4).' lat)</p>';
+
+                        
                         echo '        
                     <p>Data dołączenia:' . $uzytkownik['datadoloczenia'] . '</p>
                     ';

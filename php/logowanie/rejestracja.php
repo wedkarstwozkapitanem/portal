@@ -26,6 +26,8 @@
                 <div style="clear:both;position: absolute;z-index: 4;left:10%;top:60px;"> Data urudzenia </div>
                 <input type="date" name="data_urodzenia" id="data_urudzenia" value="2006-05-02">
 
+                <input type="number" name="telefon" id="telefon" placeholder="numer telefonu (same liczby)" />
+
                 <input id="email" name="email" type="email" placeholder="Wpisz email">
 
                 <input type="password" name="haslo" id="haslo" placeholder="Wpisz hasło">
@@ -48,19 +50,21 @@
         </div>
     </div>
     <script>
-        let imie = document.getElementById('imie');
-        let nazwisko = document.getElementById('nazwisko');
-        let dataurodzenia = document.getElementById('data_urudzenia');
-        let email = document.getElementById('email');
-        let haslo = document.getElementById('haslo');
-        let haslo_powtorz = document.getElementById('haslo_powtorz');
+        
+        const imie = document.getElementById('imie');
+        const nazwisko = document.getElementById('nazwisko');
+        const dataurodzenia = document.getElementById('data_urudzenia');
+        const email = document.getElementById('email');
+        const haslo = document.getElementById('haslo');
+        const haslo_powtorz = document.getElementById('haslo_powtorz');
+        const numer_telefonu = document.getElementById('telefon');
 
-        let wszystkie = document.querySelectorAll('input');
+        const wszystkie = document.querySelectorAll('input');
 
-        let sciana = document.querySelector('.sciana');
-        let komunikat = document.getElementById('alert_tresc');
-        let komunikat_zamknij = document.querySelector('#alert button');
-        let akcja = document.getElementById('akcja');
+        const sciana = document.querySelector('.sciana');
+        const komunikat = document.getElementById('alert_tresc');
+        const komunikat_zamknij = document.querySelector('#alert button');
+        const akcja = document.getElementById('akcja');
 
         let bledy = new Array();
 
@@ -102,6 +106,13 @@
             if (!haslo_powtorz.value) {
                 haslo_powtorz.classList = "blod";
                 bledy.push('Nie potwierdzono hasła')
+            }
+            if (!numer_telefonu.value) {
+             numer_telefonu.classList = "blod";
+             bledy.push('Brak numeru telefonu');   
+            } else if (numer_telefonu.value.length >= 24) {
+            numer_telefonu.classList = "blod";
+             bledy.push('Nie prawidłowy numer telefonu');
             }
 
 
@@ -178,7 +189,7 @@
 
             }
 
-            poloczenie.send(`ppp=rejestracja&imie=${imie.value}&nazwisko=${nazwisko.value}&data_urodzenia=${dataurodzenia.value}&email=${email.value}&haslo=${haslo.value}&haslo_powtorz=${haslo_powtorz.value}`);
+            poloczenie.send(`ppp=rejestracja&imie=${imie.value}&nazwisko=${nazwisko.value}&data_urodzenia=${dataurodzenia.value}&email=${email.value}&haslo=${haslo.value}&haslo_powtorz=${haslo_powtorz.value}&telefon=${numer_telefonu.value}`);
         }
     </script>
 </body>

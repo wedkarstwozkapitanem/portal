@@ -175,6 +175,10 @@ body {
     background-color: rgb(3, 112, 255 / 88%);
 }
 
+#profilinfo {
+    font-size: 28px;
+}
+
 .tlo_profilu {
     position: relative;
     height: 100%;
