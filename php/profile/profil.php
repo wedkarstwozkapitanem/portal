@@ -190,10 +190,10 @@ try {
                         <a href="' . $uzytkownik['linki'] . '">' . $uzytkownik['linki'] . '</a>
                     </p>';
                         }
-                        echo '     
-                    <p>Urodzona/y: ' . $uzytkownik['wiek'] . ' ('. date('Y') - (int)substr($uzytkownik['wiek'],0,4).' lat)</p>';
-
-                        
+                        echo '<p>Urodzona/y:'.$uzytkownik['wiek'] ;
+                    if (is_numeric((int)substr($uzytkownik['wiek'],0,4))) {
+                  echo  '('. date('Y') - (int)substr($uzytkownik['wiek'],0,4).' lat)</p>';
+                    }
                         echo '        
                     <p>Data dołączenia:' . $uzytkownik['datadoloczenia'] . '</p>
                     ';

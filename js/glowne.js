@@ -141,7 +141,24 @@ function dodajkomentarza(p) {
     let tresc_komentarza = document.querySelector(`[data-postid-kom='${idposta}']`).value;
     if (idposta) {
         if (tresc_komentarza) {
+
+            let nowykom = document.createElement('div');
+            nowykom.innerHTML = `<article style="margin-top:10px !important;opacity:0.4;">
+            <div class="komentarz_posta">
+                                    <a href="">
+                                            <div class="komentarz_uzytkownik"><img loading="lazy" src='${document.getElementById("moje_profilowe_fota").src}' alt='profilowe' /> alt="profilowe">
+                                            <div class="komentarz_nazwa">Ja dodał komentarz </div>
+                        </div>
+                    </a>
+                                <div class="komentarz_tresc">${tresc_komentarza}</div>
+            </div>
+        </article>`;
+            document.querySelector(`[data-postid-pokakom='${idposta}']`).appendChild(nowykom);
+
+
             dodaj_tresc('dodajkomentarz', idposta, tresc_komentarza);
+
+
             document.querySelector(`[data-postid-kom='${idposta}']`).value = "";
             pokazkomentarze(idposta);
            let licznikoment = document.querySelector(`[data-postid-licznikomentarzy="${idposta}"]`);
