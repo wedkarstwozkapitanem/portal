@@ -261,16 +261,44 @@ try {
 
 
 
-                        echo '<div class="lewa_burta_info"><h2 style="width: 44%;float: left;">Znajomi:</h2><a href="profil.php?id=' . $uzytkownik['id'] . '&znajomi=' . $uzytkownik['id'] . '" style="position:relative;top:28px;margin-left:8px;">Zobacz wszystkich znajomych</a></div>';
+                        echo '<div class="lewa_burta_info">
+                        <h2 style="width: 44%;float: left;">Znajomi:</h2><a href="profil.php?id=' . $uzytkownik['id'] . '&znajomi=' . $uzytkownik['id'] . '" style="position:relative;top:28px;margin-left:8px;">Zobacz wszystkich znajomych</a><div style="clear:both"></div><div class="zdjecia_profilu">';
 
+        $id_uzyt = $uzytkownik['id'];
+        $znajomi = mysqli_query($baza,"SELECT * FROM `znajomi`  where (`znajomi`.`iduzytkownika` = '$id_uzyt' or `znajomi`.`iduzytkownik` = '$id_uzyt') and `znajomi`.`czyprzyjeto` = 1");
 
+if(mysqli_num_rows($znajomi) > 0) {
+    while($znajomy =  mysqli_fetch_assoc($znajomi)) { 
+    if($znajomy['iduzytkownika'] == $id) {
+       $id_znajomego = $znajomy['iduzytkownik'];
+    } else {
+        $id_znajomego = $znajomy['iduzytkownika'];
+    }
+        $znajomydane = mysqli_query($baza,"SELECT * FROM `uzytkownicy` WHERE `id` = '$id_znajomego' LIMIT 1");
 
-
-
-
-
-
-
+        while($uzytkownikznajomy = mysqli_fetch_assoc($znajomydane)) {
+        ?>
+<a href="<?php echo $uzytkownikznajomy['id'] ?>"  style="border-radius:28px;" >
+<div class="znajomy">
+<?php if( $uzytkownikznajomy['profilowe'] !== "") {  ?>
+  <img src="/../foty/<?php echo $uzytkownikznajomy['folder'] ?>/profilowe/<?php echo $uzytkownikznajomy['profilowe'] ?>" alt="profilowe znajomego "  style="border-radius:28px;" /> 
+  <?php } else { ?>
+    <img src="/../foty/uzytkownik.gif" alt="profilowe znajomego " /> 
+    <?php } ?>
+    <div style="text-align:center;color:white;font-size:18px"><?php echo $uzytkownikznajomy['imie']. ' '.$uzytkownikznajomy['nazwisko'] ?></div>
+</div>
+        </a>
+  <?php 
+    }   
+}
+} else {
+    echo "<div style='font-size:32px;'>Nie ma znajomych ten użytkownik</div>";
+}
+                                
+                        
+                        
+                        
+                        echo '</div></div>';
                         echo '
             </div>
              <div id="profil_posty" class="wysrodkuj">
