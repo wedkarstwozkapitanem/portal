@@ -262,7 +262,7 @@ try {
 
 
                         echo '<div class="lewa_burta_info">
-                        <h2 style="width: 44%;float: left;">Znajomi:</h2><a href="profil.php?id=' . $uzytkownik['id'] . '&znajomi=' . $uzytkownik['id'] . '" style="position:relative;top:28px;margin-left:8px;">Zobacz wszystkich znajomych</a><div style="clear:both"></div><div class="zdjecia_profilu">';
+                        <h2 style="width: 44%;float: left;height: 0px;">Znajomi:</h2><a href="profil.php?id=' . $uzytkownik['id'] . '&znajomi=' . $uzytkownik['id'] . '" style="position:relative;top:28px;margin-left:8px;">Zobacz wszystkich znajomych</a><div style="clear:both"></div><div class="znajomi">';
 
         $id_uzyt = $uzytkownik['id'];
         $znajomi = mysqli_query($baza,"SELECT * FROM `znajomi`  where (`znajomi`.`iduzytkownika` = '$id_uzyt' or `znajomi`.`iduzytkownik` = '$id_uzyt') and `znajomi`.`czyprzyjeto` = 1");
@@ -278,7 +278,7 @@ if(mysqli_num_rows($znajomi) > 0) {
 
         while($uzytkownikznajomy = mysqli_fetch_assoc($znajomydane)) {
         ?>
-<a href="<?php echo $uzytkownikznajomy['id'] ?>"  style="border-radius:28px;" >
+<a href="<?php echo $uzytkownikznajomy['id'] ?>"  style="border-radius:28px;margin-bottom:48px;" >
 <div class="znajomy">
 <?php if( $uzytkownikznajomy['profilowe'] !== "") {  ?>
   <img src="/../foty/<?php echo $uzytkownikznajomy['folder'] ?>/profilowe/<?php echo $uzytkownikznajomy['profilowe'] ?>" alt="profilowe znajomego "  style="border-radius:28px;" /> 
