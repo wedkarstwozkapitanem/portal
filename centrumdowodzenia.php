@@ -72,6 +72,9 @@ try {
             case 'kto_polubil':
                 sprawdzplik("php/skrypty/kto_polubil.php");
                 break;
+            case 'dodajznajomego':
+                sprawdzplik("php/skrypty/dodajznajomego.php");
+                break;
             case 'mojeinformacje':
                 sprawdzplik("php/profile/mojeinformacje.php");
                 break;

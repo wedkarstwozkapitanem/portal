@@ -191,7 +191,7 @@ try {
                     </p>';
                         }
                         echo '     
-                    <p>Urodzony: ' . $uzytkownik['wiek'] . ' ('. date('Y') - substr($uzytkownik['wiek'],0,4).' lat)</p>';
+                    <p>Urodzona/y: ' . $uzytkownik['wiek'] . ' ('. date('Y') - substr($uzytkownik['wiek'],0,4).' lat)</p>';
 
                         
                         echo '        
@@ -481,27 +481,6 @@ try {
 
     <script>
         const id_profilu = '<?php echo $id; ?>';
-
-        const dodajdoznaj = document.getElementById('dodajznaj');
-        function dodajznajomego() {
-            dodaj_tresc('dodajznajomego', '#dodajznaj', id_profilu);
-            if (dodajdoznaj.innerHTML == " Dodaj do znajomych ") {
-                dodajdoznaj.style.background = "silver";
-                dodajdoznaj.style.color = "blue";
-                dodajdoznaj.innerHTML = "Zaproszenie wysłane";
-            } else if (document.getElementById('dodajznaj').innerHTML == "Zaproszenie wysłane") {
-                dodajdoznaj.style.background = "yellow";
-                dodajdoznaj.innerHTML = "Anulowano zaproszenie";
-            } else if (document.getElementById('dodajznaj').innerHTML = "Anulowano zaproszenie") {
-                dodajdoznaj.style.background = "silver";
-                dodajdoznaj.innerHTML = "Zaproszenie wysłane";
-            } else {
-                dodajdoznaj.style.background = "red";
-            }
-        }
-
-
-
 
     </script>
 

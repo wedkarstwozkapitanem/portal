@@ -195,3 +195,33 @@ function pokaz_kto_polubil(t) {
     polocz('kto_polubil', idposta,"#dokladneinformacje");
  }
  
+
+
+
+ const dodajdoznaj = document.getElementById('dodajznaj');
+ function dodajznajomego() {
+     if (dodajdoznaj.innerHTML == " Dodaj do znajomych ") {
+         dodajdoznaj.style.background = "silver";
+         dodajdoznaj.style.color = "blue";
+         dodajdoznaj.innerHTML = " Zaproszenie wysłane ";
+     } else if (document.getElementById('dodajznaj').innerHTML == " Zaproszenie wysłane ") {
+         dodajdoznaj.style.background = "yellow";
+         dodajdoznaj.innerHTML = "Anulowano zaproszenie";
+     } else if (document.getElementById('dodajznaj').innerHTML == "Anulowano zaproszenie") {
+         dodajdoznaj.style.background = "silver";
+         dodajdoznaj.innerHTML = " Zaproszenie wysłane ";
+     } else if (dodajdoznaj.innerHTML == " Przyjmij zaproszenie ") {
+        dodajdoznaj.style.background = "white";
+        dodajdoznaj.innerHTML = " Znajomi ";
+     } else if (dodajdoznaj.innerHTML == " Przyjmij zaproszenie ") {
+        dodajdoznaj.style.background = "orange";
+        dodajdoznaj.innerHTML = " usunięto z grona znajomych ";
+     }
+     else {
+         dodajdoznaj.style.background = "red";
+         dodajdoznaj.innerHTML = "Błąd";
+     }
+
+     polocz('dodajznajomego',id_profilu);
+ }
+
