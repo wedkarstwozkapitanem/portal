@@ -213,7 +213,7 @@ function pokaz_kto_polubil(t) {
      } else if (dodajdoznaj.innerHTML == " Przyjmij zaproszenie ") {
         dodajdoznaj.style.background = "white";
         dodajdoznaj.innerHTML = " Znajomi ";
-     } else if (dodajdoznaj.innerHTML == " Przyjmij zaproszenie ") {
+     } else if (dodajdoznaj.innerHTML == " Znajomi ") {
         dodajdoznaj.style.background = "orange";
         dodajdoznaj.innerHTML = " usunięto z grona znajomych ";
      }
