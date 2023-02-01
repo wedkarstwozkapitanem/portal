@@ -4,15 +4,10 @@ try {
     $id_posta = (string)mysqli_real_escape_string($baza,htmlentities($_POST['tresc']));
     $zapytanie_komentarze = "SELECT * FROM `komentarze` where `idposta` = '$id_posta' order by `id` DESC";
     $kometarze = mysqli_query($baza, $zapytanie_komentarze);
-
-
-
     if (mysqli_num_rows($kometarze) > 0) {
         while ($komentarz = mysqli_fetch_assoc($kometarze)) {
             $id_komentarz_uzytkownik = $komentarz['iduzytkownika'];
             ?>
-
-
         <article style="margin-top:10px !important">
             <div class="komentarz_posta">
                 <?php $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
