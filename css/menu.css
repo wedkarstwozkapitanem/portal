@@ -1,3 +1,4 @@
+@import url('http://fonts.googleapis.com/css?family=Almendra&subset=latin,latin-ext');
 * {
     position: relative;
     text-decoration: none;
@@ -30,7 +31,7 @@ body {
     background: linear-gradient(40deg, blue, green);
     border-radius: 48px;
     text-align: center;
-    font-family: cursive;
+    font-family: 'Almendra', cursive;
     box-shadow: 0 0 4px green;
     border: 5px groove green;
     font-size: 36px;
@@ -142,7 +143,7 @@ body {
     box-shadow: 0 0 4px black;
     text-align: left;
     justify-content: left !important;
-    font-family: cursive;
+    font-family: 'Almendra', cursive;
 }
 
 .wyszukiwara_uzyt:hover {

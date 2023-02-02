@@ -190,10 +190,10 @@ try {
                         <a href="' . $uzytkownik['linki'] . '">' . $uzytkownik['linki'] . '</a>
                     </p>';
                         }
-                        echo '<p>Urodzona/y:'.$uzytkownik['wiek'] ;
-                    if (is_numeric((int)substr($uzytkownik['wiek'],0,4))) {
-                  echo  '('. date('Y') - (int)substr($uzytkownik['wiek'],0,4).' lat)</p>';
-                    }
+                        echo '<p>Urodzona/y:'.$uzytkownik['wiek'] ;                 
+                  (int) $rok = (int)substr($uzytkownik['wiek'],0,4);
+                  (int) $dzisiajrok = (int) date('Y');
+                  echo  ' ('. ($dzisiajrok - $rok).' lat)</p>';
                         echo '        
                     <p>Data dołączenia:' . $uzytkownik['datadoloczenia'] . '</p>
                     ';
@@ -202,6 +202,7 @@ try {
 
                         echo '
                 </div>
+                <a style="font-size:28px;letter-spacing:2px;" href="/profil/'.$id.'/informacje" >Wyświetl szczegółowe informacje</a>
             </div>';
 
 
@@ -249,7 +250,7 @@ try {
 
 
 
-                        echo '                  </div> </div>';
+                        echo '                  </div><a style="font-size:28px;letter-spacing:2px;" href="/profil/'.$id.'/zdjecia" >Przejdz do wszystkich zdjec</a> </div>';
 
 
 
@@ -298,7 +299,7 @@ if(mysqli_num_rows($znajomi) > 0) {
                         
                         
                         
-                        echo '</div></div>';
+                        echo '</div><a style="font-size:28px;letter-spacing:2px;" href="/profil/'.$id.'/znajomi" >Wyświetl znajomych tego użytkownika</a></div>';
                         echo '
             </div>
              <div id="profil_posty" class="wysrodkuj">

@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../zdjecia/logo.png">
     <title>ZALOGUJ SIĘ DO SERWISU SPOŁECZNOŚCIOWEGO</title>
-    <meta name="description" content="Logowanie do portalu społecznościowego">
+    <meta name="description" content="Logowanie do portalu społecznościowego"> 	
+    <link href='http://fonts.googleapis.com/css?family=Akaya+Kanadaka&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -90,7 +91,7 @@ body {
     background: black;
     min-height: 100vh;
     color: rgb(0, 0, 0);
-    font-family: fantasy;
+    font-family: 'Akaya Kanadaka', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -149,7 +150,7 @@ body {
     text-shadow: 0 0 2px rgb(183, 255, 0);
     font-size: 28px;
     top:20px;
-    font-family: cursive;
+    font-family: 'Akaya Kanadaka', sans-serif;
 }
 .poprawnosc {
 color: rgb(12, 12, 12);  
