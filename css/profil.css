@@ -8,7 +8,9 @@ body {
     color:white;
     min-height: 100vh;
 }
-
+.lewa_burta a {
+    color:green;
+}
 .lewa_burta a:hover {
     text-decoration: underline;
 }
@@ -374,4 +376,17 @@ article {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
+}
+
+
+
+.wroc {
+    text-align:center;font-size:68px;
+    color:blue;
+}
+.wroc a {
+    color:blue;
+}
+.wroc a:hover {
+    text-decoration: underline;
 }

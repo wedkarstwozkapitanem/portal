@@ -18,3 +18,6 @@
 
     </div>
 </div>
+<div id="powiadomienia">
+    Brak powiadomień
+</div>

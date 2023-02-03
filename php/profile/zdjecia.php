@@ -127,7 +127,7 @@
 
 
                 echo "</div>";
-                echo "<div style='text-align:center;font-size:68px;'><a href='/profil/".$id."'>Wróć do profilu</a></div>";
+                echo "<div class='wroc'><a href='/profil/".$id."'>Wróć do profilu</a></div>";
                             }
                         }
 

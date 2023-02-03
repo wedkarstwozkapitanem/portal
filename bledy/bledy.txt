@@ -1,0 +1,55 @@
+Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\php\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\php\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\php\logowanie\sprawdz_uzytkownika.php(12): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\index.php(45): include('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\index.php(110): sprawdzeniestrony('wchodze', 'php/logowanie/s...')
+#4 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs522739.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\bazadanych\polocz.php:5
+Stack trace:
+#0 C:\xampp\htdocs\bazadanych\polocz.php(5): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\index.php(6): include('C:\\xampp\\htdocs...')
+#2 {main}

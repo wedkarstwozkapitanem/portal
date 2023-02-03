@@ -113,18 +113,18 @@
 
 <div class="informacje_profilowe">
 <h3>Zainterosowania: </h3>
-<p>                     <?php   if ($uzytkownik['hobby'] != "") {
+                    <?php   if ($uzytkownik['hobby'] != "") {
                             $hobby = explode(',',$uzytkownik['hobby']);
-                    for ($i = 0; $i < count($hobby) - 1; $i++) {
+                    for ($i = 0; $i < count($hobby); $i++) {
                         echo '
-                    <div class="hobby">
+                    <div class="hobbby">
                         <strong> ' . $hobby[$i] . ' </strong>
                     </div>
                    ';
                     }
                 } else {
-                    echo "Brak informacji do wyświetlenia";
-                }?></p>
+                    echo "<p>Brak informacji do wyświetlenia</p>";
+                }?>
 </div>
 
 <div class="informacje_profilowe">
@@ -138,7 +138,7 @@
 
 
 </div>
-<div style='text-align:center;font-size:68px;'><a href='/profil/<?php echo $id ?>'>Wróć do profilu</a></div>
+<div class='wroc'><a href='/profil/<?php echo $id ?>'>Wróć do profilu</a></div>
 <?php
 
                             }
@@ -171,7 +171,7 @@
         color:black;
         font-size:40px;
     }
-    .hobby {
+    .hobbby {
         font-size:28px;
         color:black;
     }

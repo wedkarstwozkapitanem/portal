@@ -111,7 +111,7 @@ echo '<h2 style="color:yellow;font-size:48px;width:100%;text-align:center;">Znaj
         
                 while($uzytkownikznajomy = mysqli_fetch_assoc($znajomydane)) {
                 ?>
-        <a href="<?php echo $uzytkownikznajomy['id'] ?>"  style="border-radius:28px;margin-bottom:48px;" >
+        <a href="/profil/<?php echo $uzytkownikznajomy['id'] ?>"  style="border-radius:28px;margin-bottom:48px;" >
         <div class="znajomy">
         <?php if( $uzytkownikznajomy['profilowe'] !== "") {  ?>
           <img src="/../foty/<?php echo $uzytkownikznajomy['folder'] ?>/profilowe/<?php echo $uzytkownikznajomy['profilowe'] ?>" alt="profilowe znajomego "  style="border-radius:28px;" /> 
@@ -130,7 +130,7 @@ echo '<h2 style="color:yellow;font-size:48px;width:100%;text-align:center;">Znaj
                      
 echo "</div>";
 
-echo "<div style='text-align:center;font-size:68px;'><a href='/profil/".$id."'>Wróć do profilu</a></div>";
+echo "<div class='wroc'><a href='/profil/".$id."'>Wróć do profilu</a></div>";
                             }
                         }
 
