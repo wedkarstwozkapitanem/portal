@@ -4,6 +4,7 @@ const wynik_wyszukiwania = document.getElementById('wynik_wyszukiwania');
 const formularz_wyszukiwania_na_blogu = document.getElementById('szukaj_na_forum');
 const dokladneinformacje = document.getElementById('dokladneinformacje');
 const gdzie = document.getElementById('przeglodaj');
+const powiadomienia = document.getElementById('powiadomienia');
 let profilinoformacje;
 
 
@@ -406,3 +407,10 @@ alert(p.dataset.postid);
                         document.querySelector(`[data-postid='${idposta}']`).classList.add("wysrodkuj");
                         polocz('usunposta',idposta);
                     }
+
+
+
+//powiadomienia
+                    document.getElementById('powiad').addEventListener('click', () => {
+                        document.querySelector('.powiadomienia').style.display = 'none' ? document.querySelector('.powiadomienia').style.display = 'block' : 'none';
+                    })

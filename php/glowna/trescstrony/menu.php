@@ -1,4 +1,5 @@
-<div id="menu">
+
+<nav id="menu">
    <a href="/" style="color:orange;"><div class="tytul">P</div></a>
 
     <div id="wyszukiwarka" class="wysrodkuj">
@@ -12,12 +13,16 @@
     </div>
     <div class="opcje">
         <ul>
-            <li>💌</li>
-           <a href="/wylogowanie"> <li style="background:red;"><svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="48" height="40"><path d="M22.829,9.172,18.95,5.293a1,1,0,0,0-1.414,1.414l3.879,3.879a2.057,2.057,0,0,1,.3.39c-.015,0-.027-.008-.042-.008h0L5.989,11a1,1,0,0,0,0,2h0l15.678-.032c.028,0,.051-.014.078-.016a2,2,0,0,1-.334.462l-3.879,3.879a1,1,0,1,0,1.414,1.414l3.879-3.879a4,4,0,0,0,0-5.656Z"/><path d="M7,22H5a3,3,0,0,1-3-3V5A3,3,0,0,1,5,2H7A1,1,0,0,0,7,0H5A5.006,5.006,0,0,0,0,5V19a5.006,5.006,0,0,0,5,5H7a1,1,0,0,0,0-2Z"/></svg></li></a>
+            <li id="powiad">💌</li>
+           <a href="/wylogowanie"> <li>🚪</li></a>
         </ul>
 
     </div>
 </div>
-<div id="powiadomienia">
-    Brak powiadomień
-</div>
+</nav>
+<aside class="powiadomienia" style="display:none;">
+    <h4>Powiadomienia:</h4>
+    <hr>
+    <div id="powiadomienia">
+    
+</aside>
