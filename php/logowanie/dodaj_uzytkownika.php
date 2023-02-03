@@ -44,6 +44,7 @@ try {
                                 mysqli_query($baza, "UPDATE `uzytkownicy` SET `folder` = '$folder_profilu' WHERE `id` = '$id_profilu'");
                                 $_SESSION['uzytkwonik_pixi_id'] = mysqli_real_escape_string($baza,htmlentities("$id_profilu"));
                                 echo 'dodano';
+                         //       mail($email,"Dziękujemy za rejestracje","Dziękujemy za rejestracje na naszym portalu");
                             } else {
                             mysqli_query($baza,"DELETE FROM `uzytkownicy` WHERE `id` = '$id_profilu");
                             };
