@@ -74,18 +74,31 @@ try {
     else if (strpos($ktora, "profil")) {
         (string) $parametry = substr($ktora, 8);
         (array) $podzial = explode('/', $parametry);
-
+        print_r($podzial[1]);
         if (count($podzial) == 1 || count($podzial) == 3) {
             if (!empty($podzial[1]) == "post") {
                 if ($podzial[2]) {
                     sprawdzeniestrony('profil', 'php/glowna/post.php');
-                } else {
+                }
+                 else {
                     header('Location:/profil/'.$podzial[0]);
                 }
-            } else {
+            }
+            else {
                 sprawdzeniestrony('profil', 'php/profile/profil.php');
             }
-        } else {
+        }  else if($podzial[1] == "zdjecia") {
+            sprawdzeniestrony('profil', 'php/profile/zdjecia.php');
+        }
+          else if($podzial[1] == "informacje") {
+            sprawdzeniestrony('profil', 'php/profile/informacje.php');
+        }
+        else if($podzial[1] == "znajomi") {
+            sprawdzeniestrony('profil', 'php/profile/znajomi.php');
+        }
+        
+        
+        else {
             include "bledy/nieznaleziono.php";
             exit();
         }

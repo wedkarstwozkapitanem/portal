@@ -90,7 +90,7 @@ try {
                             echo 'uzytkownik.gif';
                         }
                         echo '" alt="profilowe" /></div>
-                   <div class="wyrownaj"> <div><h1>' . $uzytkownik['imie'] . '  ' . $uzytkownik['nazwisko'] . '</h1></div></div>
+                   <div class="wyrownaj"> <div style="height:68px"><h1>' . $uzytkownik['imie'] . '  ' . $uzytkownik['nazwisko'] . '</h1></div></div>
                 
             </div>
       <!--  </center> -->
@@ -128,7 +128,7 @@ try {
         <div class="lewa_burta">
             <div class="lewa_burta_info">
   
-                <h2 style="width:58%;float:left;text-align:center;">Informacje:</h2><a style="position:relative;top:28px;margin-left:12px;" href="profil?id=' . $uzytkownik['id'] . '&informacje=' . $uzytkownik['id'] . '">Zobacz szczegółowe informacje</a><div style="clear:both;"></div>';
+                <h2 style="width:58%;float:left;text-align:center;">Informacje:</h2><a style="position:relative;top:28px;margin-left:12px;" href="/profil/' . $uzytkownik['id'].'/informacje">Zobacz szczegółowe informacje</a><div style="clear:both;"></div>';
                         if ($sesja == $uzytkownik['id']) { //mój profil
                             echo '<center><button class="profiledytujinformacje" id="profiledytujinformacje"> Edytuj informacje </button></center>';
 
@@ -210,7 +210,7 @@ try {
 
 
 
-                        echo '<div class="lewa_burta_info"><h2 style="width: 44%;float: left;">Zdjęcia:</h2><a href="profil.php?id=' . $uzytkownik['id'] . '&zdjecia=' . $uzytkownik['id'] . '" style="position:relative;top:28px;margin-left:8px;">Przejdz do wszystkich zdjęć</a><div style="clear:both"></div><div class="zdjecia_profilu">';
+                        echo '<div class="lewa_burta_info"><h2 style="width: 44%;float: left;">Zdjęcia:</h2><a href="/profil/' . $uzytkownik['id'] . '/zdjecia" style="position:relative;top:28px;margin-left:8px;">Przejdz do wszystkich zdjęć</a><div style="clear:both"></div><div class="zdjecia_profilu">';
 //posty
                         mysqli_escape_string($baza, $id);
                         $sqlpostfoty = "SELECT id,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' ORDER BY id DESC LIMIT 9";
@@ -263,7 +263,7 @@ try {
 
 
                         echo '<div class="lewa_burta_info">
-                        <h2 style="width: 44%;float: left;height: 0px;">Znajomi:</h2><a href="profil.php?id=' . $uzytkownik['id'] . '&znajomi=' . $uzytkownik['id'] . '" style="position:relative;top:28px;margin-left:8px;">Zobacz wszystkich znajomych</a><div style="clear:both"></div><div class="znajomi">';
+                        <h2 style="width: 44%;float: left;height: 0px;">Znajomi:</h2><a href="/profil/' . $uzytkownik['id'] . '/znajomi" style="position:relative;top:28px;margin-left:8px;">Zobacz wszystkich znajomych</a><div style="clear:both"></div><div class="znajomi">';
 
         $id_uzyt = $uzytkownik['id'];
         $znajomi = mysqli_query($baza,"SELECT * FROM `znajomi`  where (`znajomi`.`iduzytkownika` = '$id_uzyt' or `znajomi`.`iduzytkownik` = '$id_uzyt') and `znajomi`.`czyprzyjeto` = 1");
