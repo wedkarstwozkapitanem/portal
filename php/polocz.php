@@ -1,7 +1,7 @@
 <?php
 
 try {
- // if(!$baza = mysqli_connect('localhost', 'root', '', 'serwis_kapitana')) {
+  if(!$baza = mysqli_connect('localhost', 'root', '', 'serwis_kapitana')) {
     if (!file_exists('bledy.txt')) {
       fopen('bledy/bledy.txt','a');
     }
