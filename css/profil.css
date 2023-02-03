@@ -385,7 +385,8 @@ article {
     color:blue;
 }
 .wroc a {
-    color:blue;
+    color: #00271f;
+    text-shadow: 0 0 1px #abff00;
 }
 .wroc a:hover {
     text-decoration: underline;
