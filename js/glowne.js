@@ -412,5 +412,10 @@ alert(p.dataset.postid);
 
 //powiadomienia
                     document.getElementById('powiad').addEventListener('click', () => {
-                        document.querySelector('.powiadomienia').style.display = 'none' ? document.querySelector('.powiadomienia').style.display = 'block' : 'none';
+                        document.querySelector('.powiadomienia').style.display === 'none' ? document.querySelector('.powiadomienia').style.display = 'block' : document.querySelector('.powiadomienia').style.display = 'none';
+                        pokapowiadomienia();
                     })
+
+                    function pokapowiadomienia() {
+                        powiadomienia.innerHTML = "Brak powiadomień";
+                    }
