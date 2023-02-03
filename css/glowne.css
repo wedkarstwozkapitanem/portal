@@ -734,4 +734,11 @@ background: wheat;
     color:black;
     top:70px;
     text-align: center;
+    z-index: 48;
+}
+
+@media screen and(max-device-width: 768px) {
+    .powiadomienia {
+        width: 98% !important;
+    }
 }

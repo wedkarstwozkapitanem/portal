@@ -225,3 +225,11 @@ function pokaz_kto_polubil(t) {
      polocz('dodajznajomego',id_profilu);
  }
 
+ document.getElementById('powiad').addEventListener('click', () => {
+    document.querySelector('.powiadomienia').style.display === 'none' ? document.querySelector('.powiadomienia').style.display = 'block' : document.querySelector('.powiadomienia').style.display = 'none';
+    pokapowiadomienia();
+})
+
+function pokapowiadomienia() {
+    powiadomienia.innerHTML = "Brak powiadomień";
+}

@@ -191,3 +191,12 @@ function menuposta(p) {
             polocz('kto_polubil', idposta,"#dokladneinformacje");
          }
          
+
+         document.getElementById('powiad').addEventListener('click', () => {
+            document.querySelector('.powiadomienia').style.display === 'none' ? document.querySelector('.powiadomienia').style.display = 'block' : document.querySelector('.powiadomienia').style.display = 'none';
+            pokapowiadomienia();
+        })
+
+        function pokapowiadomienia() {
+            powiadomienia.innerHTML = "Brak powiadomień";
+        }
