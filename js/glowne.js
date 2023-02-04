@@ -247,7 +247,7 @@ function pokaz_kto_polubil(t) {
               let artykul = document.createElement('article');
               let dodawanie_nowego_artykulu = gdzie.appendChild(artykul);
               let nowy_post_dodaj = document.createElement('div');
-              nowy_post_dodaj.dataset.postid=danenowypost.id;
+              nowy_post_dodaj.dataset.postid=danenowypost.idp;
               nowy_post_dodaj.className = "post";
               let nowy_postp=dodawanie_nowego_artykulu.appendChild(nowy_post_dodaj);
               let post_info = document.createElement('div');
@@ -267,19 +267,19 @@ function pokaz_kto_polubil(t) {
                                   post_informacja.innerHTML +=  `
                                   <a href="/profil/${danenowypost.iduzytkownika}">    <div class="post_imie">${danenowypost.imie}  ${danenowypost.nazwisko} </div></a>
                                   
-                                  <div class="post_data"><a href="/profil/${danenowypost.iduzytkownika}/post/${danenowypost.id}"><time>${danenowypost.datadodania}</time></a><button style="border-radius:8px;margin: 2px 0 0 8px;background:silver;">Dodał/a posta</button></div>
-                                  <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="${danenowypost.id}"><span style="top:-10px;">...</span></div>`;
+                                  <div class="post_data"><a href="/profil/${danenowypost.iduzytkownika}/post/${danenowypost.idp}"><time>${danenowypost.datadodania}</time></a><button style="border-radius:8px;margin: 2px 0 0 8px;background:silver;">Dodał/a posta</button></div>
+                                  <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="${danenowypost.idp}"><span style="top:-10px;">...</span></div>`;
                                   let pmenu_posta_opcje = document.createElement("div");
                                   pmenu_posta_opcje.className = "menu_posta_opcje";
                                   pmenu_posta_opcje.style.display = "none";
-                                  pmenu_posta_opcje.dataset.opcje_posta = danenowypost.id;
+                                  pmenu_posta_opcje.dataset.opcje_posta = danenowypost.idp;
                                   let menu_opcje_akcja = post_informacja.appendChild(pmenu_posta_opcje);
                                   if(danenowypost.czymoj === false) {
                                   menu_opcje_akcja.innerHTML += `<button>Zgłoś</button>
                                   <button>Zapisz</button>`;
                                   } else {
-     if(danenowypost.foty !== "") menu_opcje_akcja.innerHTML += `<button onclick="zaktalizuj_profilowe(${danenowypost.id})">Zaktalizuj profilowe tym zdjęciem</button>`;
-     menu_opcje_akcja.innerHTML +=  `<button onclick="usunposta(${danenowypost.id})">Usuń</button>`;
+     if(danenowypost.foty !== "") menu_opcje_akcja.innerHTML += `<button onclick="zaktalizuj_profilowe(${danenowypost.idp})">Zaktalizuj profilowe tym zdjęciem</button>`;
+     menu_opcje_akcja.innerHTML +=  `<button onclick="usunposta(${danenowypost.idp})">Usuń</button>`;
                                   }
 
                         let tresc = document.createElement('div');
@@ -303,14 +303,14 @@ function pokaz_kto_polubil(t) {
               
               
               
-              if (danenowypost.licznikpolubien >= 2) dol.innerHTML +=  `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postidlicznikpolubien="${danenowypost.id}"><span>${danenowypost.licznikpolubien}</span><span class="polubienie"> polubienia</span></div>`;
-              else if (danenowypost.licznikpolubien) dol.innerHTML += `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postidlicznikpolubien="${danenowypost.id}"><span>1</span><span class="polubienie"> polubienie</span></div>`;
-              else if (!danenowypost.licznikpolubien) dol.innerHTML += `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postidlicznikpolubien="${danenowypost.id}"><span></span><span class="polubienie"> Brak polubień</span></div>`;
+              if (danenowypost.licznikpolubien >= 2) dol.innerHTML +=  `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postidlicznikpolubien="${danenowypost.idp}"><span>${danenowypost.licznikpolubien}</span><span class="polubienie"> polubienia</span></div>`;
+              else if (danenowypost.licznikpolubien) dol.innerHTML += `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postidlicznikpolubien="${danenowypost.idp}"><span>1</span><span class="polubienie"> polubienie</span></div>`;
+              else if (!danenowypost.licznikpolubien) dol.innerHTML += `<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postidlicznikpolubien="${danenowypost.idp}"><span></span><span class="polubienie"> Brak polubień</span></div>`;
               
               
-              if (!danenowypost.licznikomentarzy)  dol.innerHTML +=  `<div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="${danenowypost.id}"><span data-postid-licznikomentarzyp="${danenowypost.id}"></span><span data-postid-licznikomentarzy="${danenowypost.id}"> Brak komentarzy</span></div>`;
-              else if (danenowypost.licznikomentarzy === 1) dol.innerHTML += `<div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="${danenowypost.id}"><span data-postid-licznikomentarzyp="${danenowypost.id}">1</span><span data-postid-licznikomentarzy="${danenowypost.id}"> komentarz</span></div>`;
-              else dol.innerHTML += `<div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="${danenowypost.id}"><span data-postid-licznikomentarzyp="${danenowypost.id}">${danenowypost.licznikomentarzy}</span><span data-postid-licznikomentarzy="${danenowypost.id}"> komentarze</span></div>`;
+              if (!danenowypost.licznikomentarzy)  dol.innerHTML +=  `<div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="${danenowypost.idp}"><span data-postid-licznikomentarzyp="${danenowypost.idp}"></span><span data-postid-licznikomentarzy="${danenowypost.idp}"> Brak komentarzy</span></div>`;
+              else if (danenowypost.licznikomentarzy === 1) dol.innerHTML += `<div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="${danenowypost.idp}"><span data-postid-licznikomentarzyp="${danenowypost.id}">1</span><span data-postid-licznikomentarzy="${danenowypost.idp}"> komentarz</span></div>`;
+              else dol.innerHTML += `<div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="${danenowypost.idp}"><span data-postid-licznikomentarzyp="${danenowypost.idp}">${danenowypost.licznikomentarzy}</span><span data-postid-licznikomentarzy="${danenowypost.idp}"> komentarze</span></div>`;
               
             
               dol.innerHTML += `<div class="licznik_udustepnien"><span>${null}</span> udostępnienia</div>`;
@@ -331,10 +331,10 @@ function pokaz_kto_polubil(t) {
             let przycisk_polub_klik = akcje_posta.appendChild(przyciskpolub);
             przycisk_polub_klik.onclick = polubposta;
 */
-              if(!danenowypost.polubiono) akcje_posta.innerHTML += `<button data-postid="${danenowypost.id}" onclick="polubposta(this)">👍🏻polub</button>`;
-              else akcje_posta.innerHTML += `<button class="polubione" data-postid="${danenowypost.id}" onclick="polubposta(this)">👍🏻polubiłem</button>`;
+              if(!danenowypost.polubiono) akcje_posta.innerHTML += `<button data-postid="${danenowypost.idp}" onclick="polubposta(this)">👍🏻polub</button>`;
+              else akcje_posta.innerHTML += `<button class="polubione" data-postid="${danenowypost.idp}" onclick="polubposta(this)">👍🏻polubiłem</button>`;
               
-              akcje_posta.innerHTML += `<button onclick="pokazkomentarze(this)" data-postid="${danenowypost.id}">💬Komentarz</button><button data-postid="${danenowypost.id}">👝Udostępnij</button>`;
+              akcje_posta.innerHTML += `<button onclick="pokazkomentarze(this)" data-postid="${danenowypost.idp}">💬Komentarz</button><button data-postid="${danenowypost.idp}">👝Udostępnij</button>`;
               
               let post_komentarze = document.createElement('div');
               post_komentarze.className = "post_komentarze";
@@ -345,11 +345,11 @@ function pokaz_kto_polubil(t) {
             
 
               post_kom_dodaj.innerHTML += `
-              <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="${danenowypost.id}" />
+              <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="${danenowypost.idp}" />
               <label>
-                  <div data-postid-kom="${danenowypost.id}" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading="lazy" src="/../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
+                  <div data-postid-kom="${danenowypost.idp}" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading="lazy" src="/../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
               </label>
-              <div data-postid-pokakom="${danenowypost.id}" class="komentarze_post wysrodkuj" style="display: none;">
+              <div data-postid-pokakom="${danenowypost.idp}" class="komentarze_post wysrodkuj" style="display: none;">
 `;
 
               }

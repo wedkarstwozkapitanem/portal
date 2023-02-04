@@ -8,6 +8,7 @@ try {
     $plik = fopen('bledy/bledy.txt','a');
     fwrite($plik, 'Błąd ' . $blod);
     fclose($plik);
+  echo "Błąd";
     exit();
   } catch (PDOException $blod) {
     if (!file_exists('bledy.txt')) {
@@ -16,6 +17,7 @@ try {
     $plik = fopen('bledy/bledy.txt','a');
     fwrite($plik, 'Błąd ' . $blod);
     fclose($plik);
+  echo "Błąd";
     exit();
   }
 ?>

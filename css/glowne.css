@@ -414,7 +414,7 @@ article {
 }
 
 .post_akcja button {
-    background: blue;
+    background: rgba(0, 0, 255, 0.034);
     color: whitesmoke;
     width: 33%;
     height: 28px;
@@ -472,8 +472,8 @@ article {
 
 
 .polubione {
-    background: white !important;
-    color: blue !important;
+    background: blue !important;
+    color: wheat !important;
 }
 
 .post_komentarze {

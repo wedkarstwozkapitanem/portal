@@ -1,5 +1,5 @@
 <?php
-
+$baza = mysqli_connect('localhost', 'root', '', 'serwis_kapitana');
 
 require_once "php/polocz.php";
 
@@ -17,10 +17,10 @@ if (!$sesja) {
 if (isset($_POST['tresc']) && !empty($_POST['tresc'])) {
     if ((string) $id_posta = (string) mysqli_real_escape_string($baza, htmlspecialchars($_POST['tresc']))) {
 
-        (int)$czymoj = mysqli_num_rows(mysqli_query($baza, "SELECT * FROM `posty` WHERE `id` = '$id_posta' AND `iduzytkownika` = '$sesja'"));
+        (int)$czymoj = mysqli_num_rows(mysqli_query($baza, "SELECT * FROM `posty` WHERE `idp` = '$id_posta' AND `iduzytkownika` = '$sesja'"));
 
         if((int)$czymoj === (int)1) {
-            if (mysqli_query($baza, "UPDATE `posty` SET `usunieto` = 1  WHERE `id`='$id_posta' AND `iduzytkownika` = '$sesja'"))
+            if (mysqli_query($baza, "UPDATE `posty` SET `usunieto` = 1  WHERE `idp`='$id_posta' AND `iduzytkownika` = '$sesja'"))
                 echo "Post usunieto";
         }
     }

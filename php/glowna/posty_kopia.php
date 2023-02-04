@@ -23,7 +23,7 @@ try {
                         <a href="/profil/<?php echo $post['iduzytkownika'] ?>">
                             <div class="post_imie"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
                         </a>
-                        <div class="post_data"><a href="/profil/<?php echo $uzytkownik[0]; ?>/post/<?php echo $post['id'] ?>"><time><?php echo $post['datadodania'] ?></time></a></div>
+                        <div class="post_data"><a href="/profil/<?php echo $uzytkownik[0]; ?>/post/<?php echo $post['idp'] ?>"><time><?php echo $post['datadodania'] ?></time></a></div>
                     </div>
                     <div class="post_tresc">
                         <?php echo $post['tresc'] ?>
@@ -32,27 +32,27 @@ try {
                     <div class="licznik_posta">
 
                         <?php
-                        $id_posta = mysqli_real_escape_string($baza,htmlentities($post['id']));
+                        $id_posta = mysqli_real_escape_string($baza,htmlentities($post['idp']));
                         $sprawdz = "SELECT id_uzytkownika,id_posta FROM polubienia WHERE id_posta = '$id_posta'";
                         $sprawdzanie = mysqli_query($baza, $sprawdz);
 
                         if (mysqli_num_rows($sprawdzanie) >= 2) {
-                            echo '<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['id']) . '"><span>' . mysqli_num_rows($sprawdzanie) . ' </span><span class="polubienie"> polubienia</span></div>';
+                            echo '<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['idp']) . '"><span>' . mysqli_num_rows($sprawdzanie) . ' </span><span class="polubienie"> polubienia</span></div>';
                         } else if (mysqli_num_rows($sprawdzanie) === 1) {
-                            echo '<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['id']) . '"><span>1</span><span class="polubienie"> polubienie</span></div>';
+                            echo '<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['idp']) . '"><span>1</span><span class="polubienie"> polubienie</span></div>';
                         } else if (mysqli_num_rows($sprawdzanie) === 0) {
-                            echo '<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['id']) . '"><span></span><span class="polubienie"> Brak polubień</span></div>';
+                            echo '<div  onclick="pokaz_kto_polubil(this)" class="licznik_polubien" data-postid-licznikpolubien="' . trim($post['idp']) . '"><span></span><span class="polubienie"> Brak polubień</span></div>';
                         }
 
 
                         $liczbakomentarzy = mysqli_query($baza, "SELECT * FROM komentarze where idposta = '$id_posta'");
                         if (mysqli_num_rows($liczbakomentarzy) === 0) {
                             ?>
-                            <div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="<?php echo $post['id'] ?>"><span data-postid-licznikomentarzyp="<?php echo trim($post['id']) ?>"></span><span data-postid-licznikomentarzy="<?php echo trim($post['id']) ?>"> Brak komentarzy</span></div>
+                            <div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="<?php echo $post['idp'] ?>"><span data-postid-licznikomentarzyp="<?php echo trim($post['idp']) ?>"></span><span data-postid-licznikomentarzy="<?php echo trim($post['idp']) ?>"> Brak komentarzy</span></div>
                         <?php } else if (mysqli_num_rows($liczbakomentarzy) === 1) { ?>
-                            <div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="<?php echo $post['id'] ?>"><span data-postid-licznikomentarzyp="<?php echo trim($post['id']) ?>">1</span><span data-postid-licznikomentarzy="<?php echo trim($post['id']) ?>"> komentarz</span></div>
+                            <div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="<?php echo $post['idp'] ?>"><span data-postid-licznikomentarzyp="<?php echo trim($post['idp']) ?>">1</span><span data-postid-licznikomentarzy="<?php echo trim($post['idp']) ?>"> komentarz</span></div>
                         <?php } else { ?>
-                            <div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="<?php echo $post['id'] ?>"><span data-postid-licznikomentarzyp="<?php echo trim($post['id']) ?>"><?php echo mysqli_num_rows($liczbakomentarzy); ?></span><span data-postid-licznikomentarzy="<?php echo trim($post['id']) ?>"> komentarze</span></div>
+                            <div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="<?php echo $post['idp'] ?>"><span data-postid-licznikomentarzyp="<?php echo trim($post['idp']) ?>"><?php echo mysqli_num_rows($liczbakomentarzy); ?></span><span data-postid-licznikomentarzy="<?php echo trim($post['idp']) ?>"> komentarze</span></div>
                         <?php }
                         mysqli_free_result($liczbakomentarzy);
                         ?>
@@ -67,11 +67,11 @@ try {
 
                         if (mysqli_num_rows($sprawdzanie) === 0) {
                             ?>
-                            <button data-postid="<?php echo $post['id'] ?>" onclick="polubposta(this)">👍🏻polub</button>
+                            <button data-postid="<?php echo $post['idp'] ?>" onclick="polubposta(this)">👍🏻polub</button>
                         <?php } else { ?>
-                            <button class="polubione" data-postid="<?php echo $post['id'] ?>" onclick="polubposta(this)">👍🏻polubiłem</button>
+                            <button class="polubione" data-postid="<?php echo $post['idp'] ?>" onclick="polubposta(this)">👍🏻polubiłem</button>
                         <?php } ?>
-                        <button onclick="pokazkomentarze(this)" data-postid="<?php echo $post['id'] ?>">💬Komentarz</button><button data-postid="<?php echo $post['id'] ?>">👝Udostępnij</button>
+                        <button onclick="pokazkomentarze(this)" data-postid="<?php echo $post['idp'] ?>">💬Komentarz</button><button data-postid="<?php echo $post['idp'] ?>">👝Udostępnij</button>
                     </div>
                     <div class="post_komentarze">
 
@@ -83,11 +83,11 @@ try {
 
                         ?>
 
-                        <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['id'] ?>" />
+                        <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['idp'] ?>" />
                         <label>
-                            <div data-postid-kom="<?php echo $post['id'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img src="../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
+                            <div data-postid-kom="<?php echo $post['idp'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img src="../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
                         </label>
-                        <div data-postid-pokakom="<?php echo $post['id'] ?>" class="komentarze_post wysrodkuj" style="display: none;">
+                        <div data-postid-pokakom="<?php echo $post['idp'] ?>" class="komentarze_post wysrodkuj" style="display: none;">
 
                         </div>
                     </div>

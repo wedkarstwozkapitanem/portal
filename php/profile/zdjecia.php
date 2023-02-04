@@ -96,7 +96,7 @@
 
 
         mysqli_escape_string($baza, $id);
-        $sqlpostfoty = "SELECT id,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' ORDER BY id DESC";
+        $sqlpostfoty = "SELECT idp,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' ORDER BY idp DESC";
         if (!$zapytaniepostfoty = mysqli_query($baza, $sqlpostfoty)) {
             if (!file_exists('bledy.txt')) {
                 fopen('bledy/bledy.txt', 'w');
@@ -114,7 +114,7 @@
                     $liczbazdjecprofilu = count($fota) - 1;
 
                     for ($i = 0; $i <= $liczbazdjecprofilu; $i++) {
-                            echo '<a href="/profil/'.$id.'/post/' . $postfoty['id'] . '"><img loading="lazy" src="/foty/'.$uzytkownik['folder']."/posty/".$fota[$i].'" alt="zdjęcie użytkownika"/></a>';
+                            echo '<a href="/profil/'.$id.'/post/' . $postfoty['idp'] . '"><img loading="lazy" src="/foty/'.$uzytkownik['folder']."/posty/".$fota[$i].'" alt="zdjęcie użytkownika"/></a>';
                             $liczbafot = $liczbafot + 1;
                     }
                 }
