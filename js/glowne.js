@@ -234,8 +234,10 @@ function pokaz_kto_polubil(t) {
         poloczenie.onreadystatechange = () => {
             if (poloczenie.readyState === 4 && poloczenie.status === 200) {
             
+                console.log(poloczenie.response);
               let danenowyposta = JSON.parse(poloczenie.response);
               let danenowypost;
+     
               console.log(danenowyposta);
               
 
