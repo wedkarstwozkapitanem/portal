@@ -1,7 +1,7 @@
 <?php
 try {
     include("php/polocz.php");
-    $id_posta = (string)mysqli_real_escape_string($baza,htmlentities($_POST['tresc']));
+    $id_posta = (string)mysqli_real_escape_string($baza,htmlspecialchars($_POST['tresc']));
     $zapytanie_komentarze = "SELECT * FROM `komentarze` where `idposta` = '$id_posta' order by `id` DESC";
     $kometarze = mysqli_query($baza, $zapytanie_komentarze);
     if (mysqli_num_rows($kometarze) > 0) {

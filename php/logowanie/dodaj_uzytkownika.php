@@ -5,16 +5,16 @@ try {
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (!empty(htmlentities($_POST['imie'])) && !empty(htmlentities($_POST['nazwisko'])) && !empty(htmlentities($_POST['data_urodzenia'])) && !empty(htmlentities($_POST['email'])) && !empty(htmlentities($_POST['haslo'])) && !empty(htmlentities($_POST['haslo_powtorz'])) && !empty(htmlentities($_POST['telefon']))) {
+        if (!empty(htmlspecialchars($_POST['imie'])) && !empty(htmlspecialchars($_POST['nazwisko'])) && !empty(htmlspecialchars($_POST['data_urodzenia'])) && !empty(htmlspecialchars($_POST['email'])) && !empty(htmlspecialchars($_POST['haslo'])) && !empty(htmlspecialchars($_POST['haslo_powtorz'])) && !empty(htmlspecialchars($_POST['telefon']))) {
             
-            (string)$imie = mysqli_real_escape_string($baza, htmlentities($_POST['imie']));
-            (string)$nazwisko = mysqli_real_escape_string($baza,  htmlentities($_POST['nazwisko']));
-            (string)$data_urodzenia = mysqli_real_escape_string($baza, htmlentities($_POST['data_urodzenia']));
-            (string)$email = mysqli_real_escape_string($baza, htmlentities($_POST['email']));
-            (string)$haslo = mysqli_real_escape_string($baza, htmlentities($_POST['haslo']));
-            (string)$haslo_powtorzone = mysqli_real_escape_string($baza, htmlentities($_POST['haslo_powtorz']));
+            (string)$imie = mysqli_real_escape_string($baza, htmlspecialchars($_POST['imie']));
+            (string)$nazwisko = mysqli_real_escape_string($baza,  htmlspecialchars($_POST['nazwisko']));
+            (string)$data_urodzenia = mysqli_real_escape_string($baza, htmlspecialchars($_POST['data_urodzenia']));
+            (string)$email = mysqli_real_escape_string($baza, htmlspecialchars($_POST['email']));
+            (string)$haslo = mysqli_real_escape_string($baza, htmlspecialchars($_POST['haslo']));
+            (string)$haslo_powtorzone = mysqli_real_escape_string($baza, htmlspecialchars($_POST['haslo_powtorz']));
             (string)$ip = mysqli_real_escape_string($baza, $_SERVER['REMOTE_ADDR']);
-            (int)$numer_telefonu = mysqli_real_escape_string($baza, htmlentities($_POST['telefon']));
+            (int)$numer_telefonu = mysqli_real_escape_string($baza, htmlspecialchars($_POST['telefon']));
        
             $niedozwoloneznaki = array( "/","<", ">","?",":","*","|","`","[","]","{","}","!","$","#","%","\ ");
             foreach ($niedozwoloneznaki as $x) {
@@ -35,14 +35,14 @@ try {
                             $dodawanie_hasel = mysqli_query($baza, "INSERT INTO `hasla` (email,haslo,ip) VALUES ('$email','$haslo','$ip')");
                             (int) $id_profilu = mysqli_insert_id($baza);
                             $dodawanie_uzytkownika = mysqli_query($baza, "INSERT INTO `uzytkownicy` (id,imie,nazwisko,wiek,numertelefonu) VALUES ('$id_profilu','$imie','$nazwisko','$data_urodzenia','$numer_telefonu')");
-                            $i = mysqli_real_escape_string($baza,htmlentities(strtolower($imie)));
-                            $n =  mysqli_real_escape_string($baza,htmlentities(strtolower($nazwisko)));
+                            $i = mysqli_real_escape_string($baza,htmlspecialchars(strtolower($imie)));
+                            $n =  mysqli_real_escape_string($baza,htmlspecialchars(strtolower($nazwisko)));
                             $folder_profilu =  mysqli_real_escape_string($baza,htmlspecialchars("{$i}_{$n}_{$id_profilu}"));
                             if(mkdir("foty/$folder_profilu", 0777)) {
                                 mkdir("foty/$folder_profilu/posty", 0777);
                                 mkdir("foty/$folder_profilu/wiadomosci", 0777);
                                 mysqli_query($baza, "UPDATE `uzytkownicy` SET `folder` = '$folder_profilu' WHERE `id` = '$id_profilu'");
-                                $_SESSION['uzytkwonik_pixi_id'] = mysqli_real_escape_string($baza,htmlentities("$id_profilu"));
+                                $_SESSION['uzytkwonik_pixi_id'] = mysqli_real_escape_string($baza,htmlspecialchars("$id_profilu"));
                                 echo 'dodano';
                          //       mail($email,"Dziękujemy za rejestracje","Dziękujemy za rejestracje na naszym portalu");
                             } else {

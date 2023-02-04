@@ -1,7 +1,7 @@
 <?php
 try {
     include("php/polocz.php");
-    $sesja =  mysqli_real_escape_string($baza,htmlentities($_SESSION['uzytkwonik_pixi_id']));
+    $sesja =  mysqli_real_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
     ?>
 
 <div class="dodaj_posta">

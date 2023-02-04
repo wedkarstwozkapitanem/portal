@@ -11,7 +11,7 @@ try {
     if (!$_SESSION['uzytkwonik_pixi_id']) {
         session_start();
     } else {
-        $sesja = (int) mysqli_real_escape_string($baza,htmlentities($_SESSION['uzytkwonik_pixi_id']));
+        $sesja = (int) mysqli_real_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
     }
 
 
@@ -321,7 +321,7 @@ if(mysqli_num_rows($znajomi) > 0) {
                         while ($post = mysqli_fetch_assoc($wynik_post)) {
 
 
-                            $idu = htmlentities($post['iduzytkownika']);
+                            $idu = htmlspecialchars($post['iduzytkownika']);
                             mysqli_real_escape_string($baza, $idu);
                             $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$idu'";
                             $wynik_profil = mysqli_query($baza, $zapytanie_profil);
@@ -380,7 +380,7 @@ if(mysqli_num_rows($znajomi) > 0) {
                                     <div class="licznik_posta">
                 
                                         <?php
-                                        (int)$id_posta = htmlentities($post['id']);
+                                        (int)$id_posta = htmlspecialchars($post['id']);
                                         mysqli_escape_string($baza, $id_posta);
                                         $sprawdz = "SELECT `id_uzytkownika`,`id_posta` FROM `polubienia` WHERE `id_posta`= '$id_posta'";
                                         $sprawdzanie = mysqli_query($baza, $sprawdz);

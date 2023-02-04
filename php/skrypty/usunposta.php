@@ -6,7 +6,7 @@ require_once "php/polocz.php";
 if (!$_SESSION['uzytkwonik_pixi_id']) {
     session_start();
 } else {
-    $sesja = (int) mysqli_real_escape_string($baza, htmlentities($_SESSION['uzytkwonik_pixi_id']));
+    $sesja = (int) mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
 }
 
 if (!$sesja) {
@@ -15,7 +15,7 @@ if (!$sesja) {
 
 
 if (isset($_POST['tresc']) && !empty($_POST['tresc'])) {
-    if ((string) $id_posta = (string) mysqli_real_escape_string($baza, htmlentities($_POST['tresc']))) {
+    if ((string) $id_posta = (string) mysqli_real_escape_string($baza, htmlspecialchars($_POST['tresc']))) {
 
         (int)$czymoj = mysqli_num_rows(mysqli_query($baza, "SELECT * FROM `posty` WHERE `id` = '$id_posta' AND `iduzytkownika` = '$sesja'"));
 

@@ -2,7 +2,7 @@
     <button class="zamknij" onclick="document.getElementById('dokladneinformacje').style.display = 'none'">X</button><hr>
 <?php
 include("php/polocz.php");
-$id_posta = (string) mysqli_real_escape_string($baza, htmlentities($_POST['tresc']));
+$id_posta = (string) mysqli_real_escape_string($baza, htmlspecialchars($_POST['tresc']));
 $komentarze = mysqli_query($baza, "SELECT * FROM `polubienia` where `id_posta` = '$id_posta'");
 
 if (mysqli_num_rows($komentarze) > 0) {

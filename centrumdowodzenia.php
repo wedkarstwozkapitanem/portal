@@ -6,7 +6,7 @@ try {
 
 
     if (!empty($_SESSION['uzytkwonik_pixi_id'])) {
-        (string)$sesja = mysqli_real_escape_string($baza,htmlentities($_SESSION['uzytkwonik_pixi_id']));
+        (string)$sesja = mysqli_real_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
     } else {
         echo 'Nie zalogowano';
         header("HTTP/1.1 404 Not Found");
@@ -17,7 +17,7 @@ try {
 
 
     if (!empty($_POST['ppp'])) {
-        (string)$akcja = trim(htmlentities($_POST['ppp']));
+        (string)$akcja = trim(htmlspecialchars($_POST['ppp']));
     } else {
         echo 'Nie prawidłowe żądanie';
         header("HTTP/1.1 404 Not Found");
@@ -29,7 +29,7 @@ try {
     function sprawdzplik($s)
     {
 
-        $skrypt = trim(htmlentities($s));
+        $skrypt = trim(htmlspecialchars($s));
         if (file_exists($skrypt)) {
             include "$skrypt";
         } else {
@@ -46,7 +46,7 @@ try {
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if (!empty($_POST['tresc'])) {
-            $tresc = htmlentities($_POST['tresc']);
+            $tresc = htmlspecialchars($_POST['tresc']);
         }
 
 

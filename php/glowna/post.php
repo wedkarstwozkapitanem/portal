@@ -5,7 +5,7 @@ try {
     if (!$_SESSION['uzytkwonik_pixi_id']) {
         session_start();
     } else {
-        $sesja = (int) mysqli_real_escape_string($baza,htmlentities($_SESSION['uzytkwonik_pixi_id']));
+        $sesja = (int) mysqli_real_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
     }
 
     if (!$sesja) {
@@ -53,8 +53,8 @@ try {
 
 
 //posty
-(int)$idposta = (int) mysqli_real_escape_string($baza,htmlentities($id_2));
-//(int) $id;
+(int)$idposta = (int) mysqli_real_escape_string($baza,htmlspecialchars($id_2));
+(int)$id = (int) $id;
 $zapytanie_post = "SELECT * FROM `posty` where `iduzytkownika` = '$id' AND `id` = '$idposta' AND `usunieto` = 0";
 $wynik_post = mysqli_query($baza, $zapytanie_post);
 
@@ -62,7 +62,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
     while ($post = mysqli_fetch_assoc($wynik_post)) {
 
 
-        $idu = (int) mysqli_real_escape_string($baza,htmlentities($post['iduzytkownika']));
+        $idu = (int) mysqli_real_escape_string($baza,htmlspecialchars($post['iduzytkownika']));
         $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$idu'";
         $wynik_profil = mysqli_query($baza, $zapytanie_profil);
 
@@ -121,7 +121,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
                 <div class="licznik_posta">
 
                     <?php
-                    $id_posta = htmlentities($post['id']);
+                    $id_posta = htmlspecialchars($post['id']);
                     mysqli_escape_string($baza, $id_posta);
                     $sprawdz = "SELECT `id_uzytkownika`,`id_posta` FROM `polubienia` WHERE `id_posta` = '$id_posta'";
                     $sprawdzanie = mysqli_query($baza, $sprawdz);
@@ -186,7 +186,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
                     <?php
 try {
 
-    $id_posta = (int)mysqli_real_escape_string($baza,htmlentities($post['id']));
+    $id_posta = (int)mysqli_real_escape_string($baza,htmlspecialchars($post['id']));
     $zapytanie_komentarze = "SELECT * FROM `komentarze` where `idposta` = '$id_posta' order by `id` DESC";
     $kometarze = mysqli_query($baza, $zapytanie_komentarze);
 

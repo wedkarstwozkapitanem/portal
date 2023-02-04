@@ -2,7 +2,7 @@
 
 try {
     include("php/polocz.php");
-    $sesja = (int) mysqli_real_escape_string($baza,htmlentities($_SESSION['uzytkwonik_pixi_id']));
+    $sesja = (int) mysqli_real_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
     $dane_posta = [];
 
 
@@ -10,8 +10,8 @@ try {
   (int) $i = (int)0;
     while($post = mysqli_fetch_assoc( $zapytanie_post)) {
     $dane_posta[] = $post;
-    (int)$id_uzytkownika = (int) mysqli_real_escape_string($baza,htmlentities($dane_posta[$i]["iduzytkownika"]));
-    (int)$id_posta = (int) mysqli_real_escape_string($baza, htmlentities($dane_posta[$i]["id"]));
+    (int)$id_uzytkownika = (int) mysqli_real_escape_string($baza,htmlspecialchars($dane_posta[$i]["iduzytkownika"]));
+    (int)$id_posta = (int) mysqli_real_escape_string($baza, htmlspecialchars($dane_posta[$i]["id"]));
 
     /*
     $dane_posta[$i] += mysqli_fetch_assoc(mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_uzytkownika'"));

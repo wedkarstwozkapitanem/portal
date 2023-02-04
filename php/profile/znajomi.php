@@ -10,7 +10,7 @@
     if (!$_SESSION['uzytkwonik_pixi_id']) {
         session_start();
     } else {
-        $sesja = (int) mysqli_real_escape_string($baza, htmlentities($_SESSION['uzytkwonik_pixi_id']));
+        $sesja = (int) mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
     }
 
 

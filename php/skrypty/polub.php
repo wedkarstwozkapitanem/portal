@@ -1,8 +1,8 @@
 <?php
 try {
     include("php/polocz.php");
-    $sesja = mysqli_escape_string($baza,htmlentities($_SESSION['uzytkwonik_pixi_id']));
-    $id_posta = mysqli_escape_string($baza,htmlentities($_POST['tresc']));
+    $sesja = mysqli_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
+    $id_posta = mysqli_escape_string($baza,htmlspecialchars($_POST['tresc']));
 
 
     $sprawdz = "SELECT `id_uzytkownika`,`id_posta` FROM `polubienia` WHERE `id_uzytkownika` = '$sesja' AND `id_posta` = '$id_posta'";

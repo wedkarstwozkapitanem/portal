@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 
@@ -102,7 +103,9 @@ body {
 .tytul h1 {
     text-shadow: 0 0 2px #00ff74;
 }
-
+.zaloguj {
+    animation:panel 3s ease;
+}
 
 .wysrodkuj {
     margin-left: auto;
@@ -178,5 +181,12 @@ margin: 8px;
     cursor: pointer;
 }
 
-
+@keyframes panel {
+    0% {
+        opacity:0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 </style>

@@ -2,7 +2,7 @@
 try {
   include("php/polocz.php");
 
-  (string)$uzyt = mysqli_real_escape_string($baza,htmlentities($_POST['tresc']));
+  (string)$uzyt = mysqli_real_escape_string($baza,htmlspecialchars($_POST['tresc']));
 
   $zapytanie = "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` WHERE `imie` LIKE '%$uzyt%' or `nazwisko` LIKE '%$uzyt%' order by `imie` ASC";
 

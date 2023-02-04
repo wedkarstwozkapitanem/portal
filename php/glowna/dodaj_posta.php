@@ -3,12 +3,11 @@ try {
   include("php/polocz.php");
 
 
-
-  (int)$sesja = (int)mysqli_real_escape_string($baza, htmlentities($_SESSION['uzytkwonik_pixi_id']));
+  (int)$sesja = (int)mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($_POST['tresc_artykulu']) || !empty($_FILES['fota_artykulu'])) {
-      $tresc =  mysqli_real_escape_string($baza, htmlentities($_POST['tresc_artykulu']));
+      $tresc =  mysqli_real_escape_string($baza, htmlspecialchars($_POST['tresc_artykulu']));
 
       //upload zdjec
         if (!empty($_FILES['fota_artykulu']) && isset($_FILES['fota_artykulu'])) {
@@ -16,7 +15,7 @@ try {
 
 
 
-        (string)$fota_nazwa = mysqli_real_escape_string($baza, htmlentities($_FILES['fota_artykulu']['name']));
+        (string)$fota_nazwa = mysqli_real_escape_string($baza, htmlspecialchars($_FILES['fota_artykulu']['name']));
         move_uploaded_file($_FILES['fota_artykulu']['tmp_name'], "foty/".$mojfolder."/posty/".$fota_nazwa);
         }
 

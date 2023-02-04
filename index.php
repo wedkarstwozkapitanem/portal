@@ -6,19 +6,20 @@ try {
     include('bazadanych/polocz.php');
 
 
-    (string) $gdzie = htmlentities($_SERVER['REQUEST_URI']);
-    (string) $ktora = htmlentities($gdzie);
+    (string) $gdzie = htmlspecialchars($_SERVER['REQUEST_URI']);
+    (string) $ktora = htmlspecialchars($gdzie);
 
 
     if (!empty($_SESSION['uzytkwonik_pixi_id']) || isset($_SESSION['uzytkwonik_pixi_id'])) {
         session_regenerate_id($_SESSION['uzytkwonik_pixi_id']); //zmiana sesji dla bezbieczeństwa
-        (string) $sesja =  mysqli_real_escape_string($baza,htmlentities($_SESSION['uzytkwonik_pixi_id']));
+        (string) $sesja =  mysqli_real_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
         if (substr($ktora, 1) == 'logowanie' || substr($ktora, 1) == 'rejestracja' || substr($ktora, 1) == 'logowanie/wchodze' || trim(substr($ktora, 1)) == trim('centrumdowodzenia.php')) {
             header('Location:/');
             exit();
         }
     } else {
      if (substr($ktora, 1) != 'logowanie' && substr($ktora, 1) != 'rejestracja' && substr($ktora, 1) != 'logowanie/wchodze' && trim(substr($ktora, 1)) != trim('centrumdowodzenia.php')) {
+     //       $link = $ktora;
             header('Location:/logowanie');
             exit();
         }
@@ -37,10 +38,10 @@ try {
                 (int)$id = "";
                 (int)$id_2 = "";
                 if (!empty($podzial[0])) {
-                    $id = (int) htmlentities($podzial[0]);
+                    $id = (int) htmlspecialchars($podzial[0]);
                 }
                 if (!empty($podzial[2])) {
-                    $id_2 = (int) htmlentities($podzial[2]);
+                    $id_2 = (int) htmlspecialchars($podzial[2]);
                 }
                 include $adres;
                 exit();
@@ -74,7 +75,7 @@ try {
     else if (strpos($ktora, "profil")) {
         (string) $parametry = substr($ktora, 8);
         (array) $podzial = explode('/', $parametry);
-        print_r($podzial[1]);
+    
         if (count($podzial) == 1 || count($podzial) == 3) {
             if (!empty($podzial[1]) == "post") {
                 if ($podzial[2]) {

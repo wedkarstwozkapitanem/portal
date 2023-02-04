@@ -16,13 +16,13 @@ try {
     (bool)$poprawnosc = true;
 
 
-/*    echo htmlentities($_POST['email']);
-    echo htmlentities($_POST['haslo']);
+/*    echo htmlspecialchars($_POST['email']);
+    echo htmlspecialchars($_POST['haslo']);
 */
 
-    if (!empty(htmlentities($_POST['email'])) && !empty(htmlentities($_POST['haslo']))) {
-        (string)$email =  mysqli_real_escape_string($baza,htmlentities($_POST['email']));
-        (string)$haslo =  mysqli_real_escape_string($baza,htmlentities($_POST['haslo']));
+    if (!empty(htmlspecialchars($_POST['email'])) && !empty(htmlspecialchars($_POST['haslo']))) {
+        (string)$email =  mysqli_real_escape_string($baza,htmlspecialchars($_POST['email']));
+        (string)$haslo =  mysqli_real_escape_string($baza,htmlspecialchars($_POST['haslo']));
 
         $zapytanie = mysqli_query($baza, "SELECT * FROM hasla WHERE email = '$email' AND haslo = '$haslo'"); //sprawdzenie czy nie istnieje taki sam email
 
@@ -30,7 +30,7 @@ try {
         if (mysqli_num_rows($zapytanie) > 0) {
             while ($uzytkownik = mysqli_fetch_assoc($zapytanie)) {
                 if ($uzytkownik['email'] == $email && $uzytkownik['haslo'] == $haslo) {
-                    $_SESSION['uzytkwonik_pixi_id'] = mysqli_real_escape_string($baza,htmlentities($uzytkownik['id']));
+                    $_SESSION['uzytkwonik_pixi_id'] = mysqli_real_escape_string($baza,htmlspecialchars($uzytkownik['id']));
                     
                     $_SESSION['poprawnosc'] = true;
                     header('Location:/');
