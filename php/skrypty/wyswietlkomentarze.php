@@ -8,7 +8,7 @@ try {
         while ($komentarz = mysqli_fetch_assoc($kometarze)) {
             $id_komentarz_uzytkownik = $komentarz['iduzytkownika'];
             ?>
-        <article style="margin-top:10px !important">
+        <article style="margin-top:40px !important">
             <div class="komentarz_posta">
                 <?php $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
                 while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
@@ -19,7 +19,7 @@ try {
                         <?php } else { ?>
                             <div class="komentarz_uzytkownik"><img loading="lazy" src="/../foty/uzytkownik.gif" alt="profilowe">
                             <?php } ?>
-                        <div class="komentarz_nazwa"><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?> dodał komentarz <time><?php echo $komentarz['dodanedata'] ?></time> </div>
+                        <div class="komentarz_nazwa"><div><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?></div> </div>
                         </div>
                     </a>
                 <?php
@@ -28,6 +28,7 @@ try {
                 ?>
                 <div class="komentarz_tresc"><?php echo $komentarz['tresc']; ?></div>
             </div>
+            <div class="akcje_komentarz"><div class="polub"> Polub </div><div class="odpowiedz">Odpowiedz</div><div class="data_dodania_komentarza">Dodano: <time><?php echo $komentarz['dodanedata'] ?></time></div></div>
         </article>
 
 
@@ -56,3 +57,13 @@ try {
     exit();
   }
 ?>
+<style>
+.akcje_komentarz {
+    display:flex;
+}
+.akcje_komentarz div {
+    margin-left:10px;
+    font-size:16px;
+    color: #646464c9;
+}
+    </style>

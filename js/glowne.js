@@ -313,7 +313,7 @@ function pokaz_kto_polubil(t) {
               else dol.innerHTML += `<div class="licznik_komentarzy" onclick="pokazkomentarze(this)" data-postid="${danenowypost.idp}"><span data-postid-licznikomentarzyp="${danenowypost.idp}">${danenowypost.licznikomentarzy}</span><span data-postid-licznikomentarzy="${danenowypost.idp}"> komentarze</span></div>`;
               
             
-              dol.innerHTML += `<div class="licznik_udustepnien"><span>${null}</span> udostępnienia</div>`;
+              dol.innerHTML += `<div class="licznik_udustepnien"><span>${0}</span> udostępnienia</div>`;
               
               
               let akcje = document.createElement('div');

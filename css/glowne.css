@@ -1,4 +1,4 @@
- @import url('http://fonts.googleapis.com/css?family=Almendra&subset=latin,latin-ext');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap');
 
 * {
     position: relative;
@@ -11,7 +11,7 @@ body {
     background: black;
     min-height: 100vh;
     color: white;
-    font-family: 'Almendra', fantasy;
+    font-family: 'Courier Prime', 'Courier New', Courier, monospace;
     font-size: 20px;
 }
 
@@ -133,11 +133,11 @@ body {
     max-height: 488px;
     background: wheat;
     position: absolute;
-    left: 5%;
+    left: 1%;
     top: 68px;
     overflow-y: auto;
     overflow-x: hidden;
-    box-shadow: 0 0 4px blue;
+    box-shadow: 0 0 1px blue;
     border-radius: 8px;
     display: none;
     color: green;
@@ -148,11 +148,11 @@ body {
 
 .wyszukiwara_uzyt {
     width: 100%;
+    color:silver;
     min-height: 88px;
     box-shadow: 0 0 4px black;
     text-align: left;
     justify-content: left !important;
-    font-family: 'Almendra', cursive;
 }
 
 .wyszukiwara_uzyt:hover {
@@ -215,9 +215,7 @@ body {
         margin: 1px !important;
     }
 
-    .post_komentarze input {
-        width: 64% !important;
-    }
+
 }
 
 /* menu */
@@ -239,7 +237,7 @@ body {
     margin: 28px auto 0 2px;
     background: rgb(26, 26, 25);
     border-radius: 28px;
-    box-shadow: 0 0 4px #0070ff;
+    box-shadow: 0 0 1px #ffffff;
 }
 
 .dodaj_posta input {
@@ -252,7 +250,7 @@ body {
     font-size: 40px;
     margin: 12px;
     font-family: 'Almendra', cursive;
-    box-shadow: 0 0 4px rgb(0, 13, 255);
+    box-shadow: 0 0 1px rgb(47, 47, 47);
 }
 
 .dodaj_posta button {
@@ -332,7 +330,7 @@ article {
     position: relative;
     width: 100%;
     text-align: left;
-    margin-top: 68px;
+    margin-top: 48px;
 }
 
 .post {
@@ -341,7 +339,7 @@ article {
     background: rgba(45, 45, 46, 0.458);
     min-height: 148px;
     border-radius: 8px;
-    box-shadow: 0 0 4px #00ffe7;
+    box-shadow: 0 0 1px #e3fffc;
     word-break: break-word;
 }
 
@@ -349,7 +347,6 @@ article {
     position: relative;
     width: 98%;
     min-height: 60px;
-    background: rgba(245, 245, 179, 0.338);
     border-radius: 8px;
     padding: 4px;
     margin-left: auto;
@@ -376,11 +373,12 @@ article {
 .post_data {
     left: 10px;
     font-size: 16px;
-    text-shadow: 0 0 2px rgb(0, 21, 255);
 }
 
 .post_data a {
-    color: silver;
+    font-size: 12px;
+    color: #c0c0c07d;
+    font-weight: 100;
 }
 
 .post_data a:hover {
@@ -406,8 +404,6 @@ article {
 
 .post_akcja {
     width: 100%;
-    border-top: 1px dotted silver;
-    border-bottom: 1px dotted silver;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -430,7 +426,6 @@ article {
 }
 
 .licznik_posta {
-    border-top: 1px dotted silver;
     font-size: 15px;
     color: silver;
 }
@@ -485,9 +480,9 @@ article {
 .post_komentarze input {
     width: 78%;
     height: 40px;
-    box-shadow: 0 0 4px #007180;
+    box-shadow: 0 0 1px #f0fdff;
     border-radius: 28px;
-    background: black;
+    background: #00000014;
     border: 0;
     font-size: 28px;
     margin: 10px;
@@ -540,17 +535,18 @@ article {
 }
 
 .komentarz_posta {
-    width: 98%;
-    box-shadow: 0 0 4px silver;
+    width: 100%;
     min-height: 68px;
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.14);
+    background: rgb(255 255 255 / 6%);
     word-break: break-all;
 }
 
 .komentarze_post article {
     margin: 4px !important;
-    width: 100% !important;
+    width: 98% !important;
+    box-shadow: 0 0 1px silver;
+    border-radius:8px;
 }
 
 .komentarz_nazwa {
@@ -586,7 +582,7 @@ article {
 .wszyatkonadzis {
     font-size: 68px;
     color: black;
-    text-shadow: 0 0 4px rgb(255 127 0);
+    text-shadow: 0 0 2px silver;
     animation:swiecocytekst 4s infinite;
 }
 
@@ -635,6 +631,7 @@ article {
     height: 68px;
     width: 68px;
     border-radius: 28px;
+    font-family: fangsong;
 }
 
 .opcjeposta:hover {
