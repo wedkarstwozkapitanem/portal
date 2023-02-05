@@ -57,13 +57,3 @@ try {
     exit();
   }
 ?>
-<style>
-.akcje_komentarz {
-    display:flex;
-}
-.akcje_komentarz div {
-    margin-left:10px;
-    font-size:16px;
-    color: #646464c9;
-}
-    </style>
