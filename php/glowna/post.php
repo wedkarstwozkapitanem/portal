@@ -27,7 +27,7 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil użytkownika</title>
-    <link href="/css/posty.css" rel="stylesheet" type="text/css">
+    <link href="/css/glowne.css" rel="stylesheet" type="text/css">
     <link href="/css/menu.css" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="foty/logo.png">
     <meta name="description" content="Pixi.Twoje miejsce do rozmów,rozrywki i czatu z kapitanem">
@@ -180,7 +180,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
                     <label>
                         <div data-postid-kom="<?php echo $post['idp'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading='lazy' src="/zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
                     </label>
-                    <div data-postid-pokakom="<?php echo $post['idp'] ?>" class="komentarze_post wysrodkuj" >
+                    <div data-postid-pokakom="<?php echo $post['idp'] ?>" class="komentarze_post" >
                   
 
                     <?php

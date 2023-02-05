@@ -1,4 +1,4 @@
-<div class="dymek_polubiony">Ten post został polubiony przez:
+<div class="dymek_polubiony"><div style="max-width: 90%;">Ten post został polubiony przez: </div>
     <button class="zamknij" onclick="document.getElementById('dokladneinformacje').style.display = 'none'">X</button><hr>
 <?php
 include("php/polocz.php");

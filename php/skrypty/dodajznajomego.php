@@ -1,12 +1,13 @@
 <?php
 require_once("php/polocz.php");
 
-    (int)$sesja = mysqli_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
+(int) $sesja = $_SESSION['uzytkwonik_pixi_id']; //mysqli_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
     if(!$sesja) {
     header("HTTP/1.1 404 Not Found");
     exit();
     }
 
+global $baza;
 
 $idp = $_POST['tresc'];
 

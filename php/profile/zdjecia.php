@@ -133,7 +133,7 @@
 
                    
         ?>
-
+    <script src="/js/profil.js"></script>
                     </body>
                     </html>
                     <style>

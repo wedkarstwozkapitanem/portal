@@ -24,7 +24,7 @@ try {
         exit();
     }
 
-
+    global $baza;
 
     function sprawdzplik($s)
     {

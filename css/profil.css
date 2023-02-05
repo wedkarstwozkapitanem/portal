@@ -51,7 +51,7 @@ body {
 }
 
 .znajomi a {
-    width: 28%;
+    width: 148px;
     height: 208px;
     float: left;
     margin: 3px;
@@ -390,4 +390,14 @@ article {
 }
 .wroc a:hover {
     text-decoration: underline;
+}
+
+
+.akcje_komentarz {
+    display:flex;
+}
+.akcje_komentarz div {
+    margin-left:10px;
+    font-size:16px;
+    color: #646464c9;
 }

@@ -505,7 +505,7 @@ if(mysqli_num_rows($znajomi) > 0) {
 
 
 
-    <script src="../js/profil.js"></script>
+    <script src="/js/profil.js"></script>
 
     <script>
         const id_profilu = '<?php echo $id; ?>';

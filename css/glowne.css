@@ -148,11 +148,12 @@ body {
 
 .wyszukiwara_uzyt {
     width: 100%;
-    color:silver;
+    color: #0001ff;
     min-height: 88px;
     box-shadow: 0 0 4px black;
     text-align: left;
     justify-content: left !important;
+    text-shadow: 0 0 1px black;
 }
 
 .wyszukiwara_uzyt:hover {
@@ -249,7 +250,6 @@ body {
     outline: 0;
     font-size: 40px;
     margin: 12px;
-    font-family: 'Almendra', cursive;
     box-shadow: 0 0 1px rgb(47, 47, 47);
 }
 
@@ -267,7 +267,6 @@ body {
     cursor: pointer;
     box-shadow: 0 0 2px green;
     clear: both;
-    font-family: 'Almendra', fantasy;
 }
 
 .dodaj_posta button:hover {
@@ -416,7 +415,6 @@ article {
     height: 28px;
     border-radius: 8px;
     font-size: 15px;
-    font-family: 'Almendra', cursive;
     cursor: pointer;
 }
 
@@ -665,7 +663,6 @@ margin-top:16px;
     width:100%;
     background:silver;
     font-size: 20px;
-    font-family: 'Almendra', cursive;
     padding:8px;
     border-radius:8px;
     font-weight: 888;
@@ -738,4 +735,14 @@ background: wheat;
     .powiadomienia {
         width: 98% !important;
     }
+}
+
+
+.akcje_komentarz {
+    display:flex;
+}
+.akcje_komentarz div {
+    margin-left:10px;
+    font-size:16px;
+    color: #646464c9;
 }

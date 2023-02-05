@@ -137,7 +137,7 @@ echo "<div class='wroc'><a href='/profil/".$id."'>Wróć do profilu</a></div>";
                    
         ?>
 
-
+<script src="/js/profil.js"></script>
 </body>
 </html>
 <style>

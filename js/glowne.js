@@ -40,6 +40,7 @@ if(szukaj){
     szukaj.addEventListener('blur', () => {
         lupa.classList.remove('lupa_aktywna');
         lupa.removeEventListener('click', zatwierdz_wyszukiwanie);
+        
     });
 
     lupa.addEventListener('click', (e) => {
