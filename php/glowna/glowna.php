@@ -30,7 +30,7 @@ try {
     </main>
     <div id="prawa_burta"></div>
     <div style="display:none" id="dokladneinformacje"></div>
-    <script src="../../js/glowne.js"></script>
+    <script src="/js/glowne.js"></script>
 </body>
 <?php
 }

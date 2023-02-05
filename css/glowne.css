@@ -423,17 +423,30 @@ article {
     color: blue;
 }
 
+@keyframes like {
+    0% {
+        font-size: 8px !important;
+    }
+    50% {
+        font-size: 30px;
+    }
+}
+
 .licznik_posta {
     font-size: 15px;
     color: silver;
+    width: 98%;
+    border: 1px dotted silver;
+    margin-left:auto;
+    margin-right: auto;
 }
 
 .licznik_polubien {
     float: left;
     cursor: pointer;
-    width: 33%;
     z-index: 12;
     text-align: center;
+    width: 33%;
 }
 
 .licznik_polubien:hover {
@@ -467,16 +480,17 @@ article {
 .polubione {
     background: blue !important;
     color: wheat !important;
+    animation: like 1s ease;
 }
 
 .post_komentarze {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
+    margin:10px auto 10px auto;
+    width: 98%;
+    border-top:1px dotted silver;
 }
 
 .post_komentarze input {
-    width: 78%;
+    width: 80%;
     height: 40px;
     box-shadow: 0 0 1px #f0fdff;
     border-radius: 28px;
@@ -484,19 +498,19 @@ article {
     border: 0;
     font-size: 28px;
     margin: 10px;
+    margin-left: 20px;
     color: white;
     display: inline;
 }
 
 .dodaj_komentarz {
-    display: inline-block;
     cursor: pointer;
     width: 48px;
-    height: 43px;
-    top: -16px;
+    height: 44px;
     position: absolute;
     z-index: 20;
-    right: -48px;
+    right: 1px;
+    top:22px;
 }
 
 .dodaj_komentarz img {
@@ -511,9 +525,7 @@ article {
 .komentarze_post {
     width: 98%;
     border-radius: 8px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10px;
+    margin: 28px auto 24px auto;
     padding-bottom: 10px;
 }
 

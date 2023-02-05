@@ -342,14 +342,17 @@ function pokaz_kto_polubil(t) {
               let post_kom_dodaj = nowy_postp.appendChild(post_komentarze);
 
         
-              post_kom_dodaj.innerHTML += `<div class="dodaj_komentarz_profilowe"><img loading="lazy" src='${document.getElementById("moje_profilowe_fota").src}' alt='profilowe' /></div>`;
+              post_kom_dodaj.innerHTML += `<div style="margin-left:auto;margin-right:auto;"><div class="dodaj_komentarz_profilowe"><img loading="lazy" src='${document.getElementById("moje_profilowe_fota").src}' alt='profilowe' /></div>`;
             
 
               post_kom_dodaj.innerHTML += `
               <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="${danenowypost.idp}" />
+              <div style="float:right;">
               <label>
                   <div data-postid-kom="${danenowypost.idp}" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading="lazy" src="/../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
               </label>
+              </div>
+              </div>
               <div data-postid-pokakom="${danenowypost.idp}" class="komentarze_post wysrodkuj" style="display: none;">
 `;
 

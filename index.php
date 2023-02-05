@@ -22,7 +22,7 @@ try {
           echo "Nie prawidłowe żądanie";
         exit();
     }
-    if(!$_SERVER['HTTP_COOKIE']) {
+/*    if(!$_SERVER['HTTP_COOKIE']) {
         if (!file_exists('bledy.txt')) {
             fopen('bledy/bledy.txt','a');
           }
@@ -32,7 +32,7 @@ try {
           echo "Cookie nie działa";
         exit();
     }
-
+*/
 if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
 
 } 

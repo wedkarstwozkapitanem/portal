@@ -164,7 +164,7 @@ if (mysqli_num_rows($wynik_post) > 0) {
                     <button onclick="pokazkomentarze(this)" data-postid="<?php echo $post['idp'] ?>">💬Komentarz</button><button data-postid="<?php echo $post['idp'] ?>">👝Udostępnij</button>
                 </div>
                 <div class="post_komentarze">
-
+<div style="margin-left:auto;margin-right:auto;">
                     <?php
                     $profilowe = mysqli_query($baza, "SELECT `profilowe`,`folder` from `uzytkownicy` where `id` = '$sesja'");
                     $prof = mysqli_fetch_row($profilowe);
@@ -177,9 +177,12 @@ if (mysqli_num_rows($wynik_post) > 0) {
                     ?>
 
                     <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['idp'] ?>" />
+                    <div style="float: right;">
                     <label>
                         <div data-postid-kom="<?php echo $post['idp'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading='lazy' src="/zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
                     </label>
+                    </div>
+</div>
                     <div data-postid-pokakom="<?php echo $post['idp'] ?>" class="komentarze_post" >
                   
 
@@ -191,42 +194,53 @@ try {
     $kometarze = mysqli_query($baza, $zapytanie_komentarze);
 
 
-
-    if (mysqli_num_rows($kometarze) > 0) {
-        while ($komentarz = mysqli_fetch_assoc($kometarze)) {
-            $id_komentarz_uzytkownik =  (int)$komentarz['iduzytkownika'];
-            ?>
-
-
-        <article style="margin-top:10px !important">
-            <div class="komentarz_posta">
-                <?php $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
-                while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
-                    ?>
-                    <a href="/profil/<?php echo $uzytkownik_komentarz['id']; ?>">
-                        <div class="komentarz_uzytkownik">
-                            <?php if ($uzytkownik_komentarz['profilowe'] !== "" && $uzytkownik_komentarz['profilowe'] !== "uzytkownik.gif")  { ?>
-                            <img loading='lazy' src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/profilowe/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
-<?php } else { ?>
-    <img loading='lazy' src="/../foty/uzytkownik.gif" alt="profilowe">
-<?php } ?>
-                            <div class="komentarz_nazwa"><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?> dodał komentarz <time><?php echo $komentarz['dodanedata'] ?></time> </div>
-                        </div>
-                    </a>
-                <?php
-                }
-                mysqli_free_result($uzytkownik_komentarza);
-                ?>
-                <div class="komentarz_tresc"><?php echo $komentarz['tresc']; ?></div>
-            </div>
-        </article>
-
-
-<?php
+  
+        (int)$id_posta = (int)$post['idp'];
+if($id_posta) {
+        $zapytanie_komentarze = "SELECT * FROM `komentarze` where `idposta` = '$id_posta' order by `id` DESC";
+        $kometarze = mysqli_query($baza, $zapytanie_komentarze);
+        if (mysqli_num_rows($kometarze) > 0) {
+                                while ($komentarz = mysqli_fetch_assoc($kometarze)) {
+                                    $id_komentarz_uzytkownik = $komentarz['iduzytkownika'];
+                                    ?>
+            <article style="margin-top:4px !important">
+                <div class="komentarz_posta">
+                    <?php $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
+                                            while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
+                                                ?>
+                        <a href="/profil/<?php echo $uzytkownik_komentarz['id']; ?>">
+                        <?php if ($uzytkownik_komentarz['profilowe'] !== "" && $uzytkownik_komentarz['profilowe'] !== "uzytkownik.gif") { ?>
+                            <div class="komentarz_uzytkownik"><img loading="lazy" src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/posty/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
+                            <?php } else { ?>
+                                <div class="komentarz_uzytkownik"><img loading="lazy" src="/../foty/uzytkownik.gif" alt="profilowe">
+                                <?php } ?>
+                            <div class="komentarz_nazwa"><div><?php echo $uzytkownik_komentarz['imie'] . ' ' . $uzytkownik_komentarz['nazwisko']; ?></div> </div>
+                            </div>
+                        </a>
+                    <?php
+                                            }
+                                            mysqli_free_result($uzytkownik_komentarza);
+                                            ?>
+                    <div class="komentarz_tresc"><?php echo $komentarz['tresc']; ?></div>
+                </div>
+                <div class="akcje_komentarz"><div class="polub"> Polub </div><div class="odpowiedz">Odpowiedz</div><div class="data_dodania_komentarza"> <time><?php echo $komentarz['dodanedata'] ?></time></div></div>
+            </article>
+    
+    
+ <?php
+                                } 
+            } else {
+                echo "Błędny id";
+            }
+        } else {
+            echo '<div class="komentarz_tresc" style="text-align:center;color:red;font-size:40px">Brak komentarzy</div>';
         }
-    } else {
-        echo '<div class="komentarz_tresc" style="text-align:center;color:red;font-size:40px">Brak komentarzy</div>';
-    }
+    
+   
+
+
+
+
 
     mysqli_free_result($kometarze);
 } catch (Exception $blod) {

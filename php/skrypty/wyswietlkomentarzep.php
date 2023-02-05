@@ -8,7 +8,7 @@ try {
         while ($komentarz = mysqli_fetch_assoc($kometarze)) {
             $id_komentarz_uzytkownik = $komentarz['iduzytkownika'];
             ?>
-        <article style="margin-top:40px !important">
+        <article style="margin-top:4px !important">
             <div class="komentarz_posta">
                 <?php $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
                 while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
