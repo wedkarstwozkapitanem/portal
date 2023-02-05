@@ -28,7 +28,7 @@ try {
                 ?>
                 <div class="komentarz_tresc"><?php echo $komentarz['tresc']; ?></div>
             </div>
-            <div class="akcje_komentarz"><div class="polub"> Polub </div><div class="odpowiedz">Odpowiedz</div><div class="data_dodania_komentarza">Dodano: <time><?php echo $komentarz['dodanedata'] ?></time></div></div>
+            <div class="akcje_komentarz"><div class="polub"> Polub </div><div class="odpowiedz">Odpowiedz</div><div class="data_dodania_komentarza"> <time><?php echo $komentarz['dodanedata'] ?></time></div></div>
         </article>
 
 
