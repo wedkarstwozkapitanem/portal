@@ -12,12 +12,12 @@
 
 try {
 //kontrola bezpieczeństwa
-    if ($_SERVER["REQUEST_METHOD"] !== "GET" && $_SERVER["REQUEST_METHOD"] !== "POST") {
+    if ($_SERVER["REQUEST_METHOD"] !== "GET" /*&& $_SERVER["REQUEST_METHOD"] !== "POST"*/) {
         if (!file_exists('bledy.txt')) {
             fopen('bledy/bledy.txt','a');
           }
           $plik = fopen('bledy/bledy.txt','a');
-          fwrite($plik, 'Nie prawidłowa metoda żądania GET/POST || '.$_SERVER['REMOTE_ADDR']);
+          fwrite($plik, 'Nie prawidłowa metoda żądania POST '.$_SERVER['REMOTE_ADDR']).'|| \n';
           fclose($plik);
           echo "Nie prawidłowe żądanie";
         exit();
