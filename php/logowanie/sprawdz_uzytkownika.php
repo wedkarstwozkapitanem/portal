@@ -1,12 +1,26 @@
 
 <?php
 try {
+    /*
     session_set_cookie_params(
         [
             'path' => '/',
             'samesite' => 'Lax',
         ]
     );
+*/
+    session_start();
+    session_set_cookie_params(
+        [
+            'expires' => 86400,
+            'path' => '/',
+    //      'domain' => 'domain.example',
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'Strict',
+        ]
+        );
+
 
     
     include("php/polocz.php");

@@ -1,4 +1,15 @@
 <?php
+    session_cache_expire(30);
+    session_set_cookie_params(
+        [
+            'path' => '/',
+            'lifetime' => 3600,
+    //      'domain' => 'domain.example',
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'Strict',
+        ]
+        );
 
 try {
 //kontrola bezpieczeństwa
