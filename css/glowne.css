@@ -560,7 +560,7 @@ article {
     float: left;
     z-index: 28;
     margin:4px;
-    border:1px solid black;
+    box-shadow: 0 0 1px black;
 }
 
 .komentarz_tresc {
@@ -740,9 +740,14 @@ background: wheat;
 
 .akcje_komentarz {
     display:flex;
+    left:10%;
 }
 .akcje_komentarz div {
     margin-left:10px;
-    font-size:12px;
+    font-size:15px;
     color: #646464c9;
+    cursor: pointer;
+}
+.akcje_komentarz div:hover {
+color:wheat;
 }

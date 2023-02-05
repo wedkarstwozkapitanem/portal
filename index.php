@@ -1,8 +1,49 @@
 <?php
 
 try {
-    session_start();
+//kontrola bezpieczeństwa
+    if ($_SERVER["REQUEST_METHOD"] !== "GET" && $_SERVER["REQUEST_METHOD"] !== "POST") {
+        if (!file_exists('bledy.txt')) {
+            fopen('bledy/bledy.txt','a');
+          }
+          $plik = fopen('bledy/bledy.txt','a');
+          fwrite($plik, 'Nie prawidłowa metoda żądania GET/POST || '.$_SERVER['REMOTE_ADDR']);
+          fclose($plik);
+          echo "Nie prawidłowe żądanie";
+        exit();
+    }
+    if($_SERVER['SCRIPT_NAME'] !== '/index.php'){
+        if (!file_exists('bledy.txt')) {
+            fopen('bledy/bledy.txt','a');
+          }
+          $plik = fopen('bledy/bledy.txt','a');
+          fwrite($plik, 'Skrypt nie ten || '.$_SERVER['REMOTE_ADDR']);
+          fclose($plik);
+          echo "Nie prawidłowe żądanie";
+        exit();
+    }
+    if(!$_SERVER['HTTP_COOKIE']) {
+        if (!file_exists('bledy.txt')) {
+            fopen('bledy/bledy.txt','a');
+          }
+          $plik = fopen('bledy/bledy.txt','a');
+          fwrite($plik, 'Cookie nie działa || '.$_SERVER['REMOTE_ADDR']);
+          fclose($plik);
+          echo "Cookie nie działa";
+        exit();
+    }
 
+if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
+
+} 
+
+
+
+
+
+
+
+    session_start();
     include('bazadanych/polocz.php');
 
 
