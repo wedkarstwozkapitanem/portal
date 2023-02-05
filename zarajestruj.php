@@ -8,6 +8,8 @@ try {
         ]
     );
     include "bazadanych/polocz.php";
+    global $baza;
+    
     if (!empty($_SESSION['uzytkwonik_pixi_id'])) {
         $sesja = htmlentities($_SESSION['uzytkwonik_pixi_id']);
         header('Location:/');

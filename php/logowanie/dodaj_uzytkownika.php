@@ -1,6 +1,7 @@
 <?php
 try {
     include("php/polocz.php");
+    global $baza;
     session_start();
 
 

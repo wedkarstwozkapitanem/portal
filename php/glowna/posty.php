@@ -2,6 +2,8 @@
 
 try {
     include("php/polocz.php");
+  global $baza;
+
     $sesja = (int) mysqli_real_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
     $dane_posta = [];
 

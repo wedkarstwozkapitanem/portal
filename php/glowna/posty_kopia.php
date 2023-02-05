@@ -1,6 +1,7 @@
 <?php
 try {
     include("php/polocz.php");
+    global $baza;
     $sesja = (int) $_SESSION['uzytkwonik_pixi_id'];
     $zapytanie_post = "SELECT * FROM posty order by id desc";
     $wynik_post = mysqli_query($baza, $zapytanie_post);

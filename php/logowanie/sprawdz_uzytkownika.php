@@ -24,7 +24,7 @@ try {
 
     
     include("php/polocz.php");
-
+    global $baza;
 
 
     (bool)$poprawnosc = true;

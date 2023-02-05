@@ -1,11 +1,11 @@
 <?php
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        header('Location:/logowanie');
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
         exit();
     }
 
     include "php/polocz.php";
+    global $baza;
 
     if (!$_SESSION['uzytkwonik_pixi_id']) {
         session_start();

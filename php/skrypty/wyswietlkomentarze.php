@@ -1,6 +1,8 @@
 <?php
 try {
     include("php/polocz.php");
+    global $baza;
+    
     $id_posta = (string)mysqli_real_escape_string($baza,htmlspecialchars($_POST['tresc']));
     $zapytanie_komentarze = "SELECT * FROM `komentarze` where `idposta` = '$id_posta' order by `id` DESC";
     $kometarze = mysqli_query($baza, $zapytanie_komentarze);

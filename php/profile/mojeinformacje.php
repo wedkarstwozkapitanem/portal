@@ -1,6 +1,7 @@
 <?php
 
 include "php/polocz.php";
+global $baza;
 
 if (!$_SESSION['uzytkwonik_pixi_id']) {
     session_start();

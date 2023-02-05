@@ -1,6 +1,7 @@
 <?php
 try {
   include("php/polocz.php");
+  global $baza;
 
   (string)$uzyt = mysqli_real_escape_string($baza,htmlspecialchars($_POST['tresc']));
 

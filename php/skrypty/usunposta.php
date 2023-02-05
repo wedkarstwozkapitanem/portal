@@ -1,7 +1,6 @@
 <?php
-$baza = mysqli_connect('localhost', 'root', '', 'serwis_kapitana');
-
 require_once "php/polocz.php";
+global $baza;
 
 if (!$_SESSION['uzytkwonik_pixi_id']) {
     session_start();

@@ -1,5 +1,6 @@
 <?php
 require_once("php/polocz.php");
+global $baza;
 
 (int) $sesja = $_SESSION['uzytkwonik_pixi_id']; //mysqli_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
     if(!$sesja) {

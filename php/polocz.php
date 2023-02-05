@@ -50,5 +50,5 @@ if ($_SERVER['SERVER_NAME'] == "localhost" ) {
     exit();
   }
 }
-
+global $baza;
 ?>

@@ -46,7 +46,8 @@ if(!$_SERVER['HTTP_COOKIE']) {
 
 
 
-    include("bazadanych/polocz.php");
+    require_once("bazadanych/polocz.php");
+    global $baza;
     session_start();
 
 

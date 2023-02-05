@@ -1,5 +1,4 @@
 <?php
-    session_cache_expire(30);
     session_set_cookie_params(
         [
             'path' => '/',
@@ -56,6 +55,7 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
 
     session_start();
     include('bazadanych/polocz.php');
+    global $baza;
 
 
     (string) $gdzie = htmlspecialchars($_SERVER['REQUEST_URI']);

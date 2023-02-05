@@ -1,6 +1,7 @@
 <?php
 
 include("php/polocz.php");
+global $baza;
 
     $sesja = mysqli_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
 

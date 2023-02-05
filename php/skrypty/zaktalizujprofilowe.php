@@ -1,7 +1,7 @@
 <?php
 
-
 require_once "php/polocz.php";
+global $baza;
 
 if (!$_SESSION['uzytkwonik_pixi_id']) {
     session_start();
@@ -10,13 +10,16 @@ if (!$_SESSION['uzytkwonik_pixi_id']) {
 }
 
 if (!$sesja) {
+    echo "Brak sesji";
     exit();
 }
 
 
+
 if (isset($_POST['tresc']) && !empty($_POST['tresc'])) {
+ 
     if ((string) $id_posta = (string) mysqli_real_escape_string($baza, htmlspecialchars($_POST['tresc']))) {
-        $fota_zap = mysqli_query($baza, "SELECT foty FROM `posty` where `id` = '$id_posta' AND `iduzytkownika` = '$sesja' LIMIT 1");
+        $fota_zap = mysqli_query($baza, "SELECT foty FROM `posty` where `idp` = '$id_posta' AND `iduzytkownika` = '$sesja' LIMIT 1");
         if (mysqli_num_rows($fota_zap) == 1) {
             $fota = mysqli_fetch_array($fota_zap)[0];
 
