@@ -436,9 +436,9 @@ article {
     font-size: 15px;
     color: silver;
     width: 98%;
-    border: 1px dotted silver;
-    margin-left:auto;
-    margin-right: auto;
+    border-top: 1px dotted silver;
+    margin:8px auto 8px auto;
+    padding-top: 4px;
 }
 
 .licznik_polubien {
@@ -502,7 +502,14 @@ article {
     color: white;
     display: inline;
 }
-
+@media  (max-width: 888px){
+    .post_komentarze input {
+        width: 60%;
+    }
+    .licznik_posta {
+        font-size: 12px;
+    }
+}
 .dodaj_komentarz {
     cursor: pointer;
     width: 48px;
@@ -510,7 +517,7 @@ article {
     position: absolute;
     z-index: 20;
     right: 1px;
-    top:22px;
+    top:8px;
 }
 
 .dodaj_komentarz img {
