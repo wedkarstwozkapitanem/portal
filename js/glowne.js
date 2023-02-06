@@ -346,12 +346,15 @@ function pokaz_kto_polubil(t) {
             
 
               post_kom_dodaj.innerHTML += `
+              <form onsubmit="return false">
               <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="${danenowypost.idp}" />
               <div style="float:right;">
               <label>
-                  <div data-postid-kom="${danenowypost.idp}" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading="lazy" src="/../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
+                  <div data-postid-kom="${danenowypost.idp}" class="dodaj_komentarz"><img loading="lazy" src="/../zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
+                  <input data-postid-kom="${danenowypost.idp}" onclick="dodajkomentarza(this)" style="display:none" type="submit" hidden />
               </label>
               </div>
+              </form>
               </div>
               <div data-postid-pokakom="${danenowypost.idp}" class="komentarze_post wysrodkuj" style="display: none;">
 `;

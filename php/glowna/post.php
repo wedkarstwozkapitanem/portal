@@ -175,13 +175,15 @@ try {
                                                 echo "<div class='dodaj_komentarz_profilowe'><img loading='lazy' src='/foty/uzytkownik.gif' alt='profilowe' /></div>";
                                             }
                                             ?>
-
-                                            <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['idp'] ?>" />
-                                            <div style="float: right;">
-                                                <label>
-                                                    <div data-postid-kom="<?php echo $post['idp'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading='lazy' src="/zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
-                                                </label>
-                                            </div>
+                                            <form onsubmit="return false">
+                                                <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['idp'] ?>" />
+                                                <div style="float: right;">
+                                                    <label>
+                                                        <div data-postid-kom="<?php echo $post['idp'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading='lazy' src="/zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
+                                                        <input data-postid-kom="<?php echo $post['idp'] ?>" onclick="dodajkomentarza(this)" style="display:none" type="submit" hidden />
+                                                    </label>
+                                                </div>
+                                            </form>
                                         </div>
                                         <div data-postid-pokakom="<?php echo $post['idp'] ?>" class="komentarze_post">
 
@@ -202,12 +204,12 @@ try {
                                                     if (mysqli_num_rows($kometarze) > 0) {
                                                         while ($komentarz = mysqli_fetch_assoc($kometarze)) {
                                                             $id_komentarz_uzytkownik = $komentarz['iduzytkownika'];
-                                                            ?>
+                                            ?>
                                                             <article style="margin-top:4px !important">
                                                                 <div class="komentarz_posta">
                                                                     <?php $uzytkownik_komentarza = mysqli_query($baza, "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$id_komentarz_uzytkownik'");
                                                                     while ($uzytkownik_komentarz = mysqli_fetch_assoc($uzytkownik_komentarza)) {
-                                                                        ?>
+                                                                    ?>
                                                                         <a href="/profil/<?php echo $uzytkownik_komentarz['id']; ?>">
                                                                             <?php if ($uzytkownik_komentarz['profilowe'] !== "" && $uzytkownik_komentarz['profilowe'] !== "uzytkownik.gif") { ?>
                                                                                 <div class="komentarz_uzytkownik"><img loading="lazy" src="/../foty/<?php echo $uzytkownik_komentarz['folder'] ?>/posty/<?php echo $uzytkownik_komentarz['profilowe'] ?>" alt="profilowe">
@@ -238,7 +240,7 @@ try {
                                                     } else {
                                                         echo '<div class="komentarz_tresc" style="text-align:center;color:red;font-size:40px">Brak komentarzy</div>';
                                                     }
-                                                }  else {
+                                                } else {
                                                     echo "Błędny id";
                                                 }
 

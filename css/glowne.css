@@ -517,7 +517,7 @@ article {
     position: absolute;
     z-index: 20;
     right: 1px;
-    top:8px;
+    top:20px;
 }
 
 .dodaj_komentarz img {
@@ -525,9 +525,7 @@ article {
     height: 100%;
 }
 
-.post_komentarze form {
-    border: 1px dotted silver;
-}
+
 
 .komentarze_post {
     width: 98%;
