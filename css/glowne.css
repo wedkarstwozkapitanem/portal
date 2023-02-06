@@ -28,7 +28,7 @@ body {
     width: 100%;
     height: 68px;
     border-radius: 4px;
-    box-shadow: 0 0 4px rgb(40, 118, 33);
+    box-shadow: 0 0 1px silver;
     font-size: 48px;
     z-index: 28;
 }
@@ -767,4 +767,14 @@ background: wheat;
 }
 .akcje_komentarz div:hover {
 color:wheat;
+}
+
+.marginpost {
+    width:48%;
+    margin-top:68px;
+}
+@media screen and (max-width:888px) {
+    .marginpost {
+        width: 98% !important;
+    }
 }

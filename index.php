@@ -1,4 +1,5 @@
 <?php
+    session_name('sesja_pixi');
     session_set_cookie_params(
         [
             'path' => '/',
@@ -11,7 +12,22 @@
         );
 
 try {
+    session_start();
+
 //kontrola bezpieczeństwa
+    if (isset($_SESSION['ip'])) {
+        if ($_SESSION['ip'] !== htmlspecialchars($_SERVER['REMOTE_ADDR'])) {
+            if (!file_exists('bledy.txt')) {
+                fopen('bledy/bledy.txt', 'a');
+            }
+            $plik = fopen('bledy/bledy.txt', 'a');
+            fwrite($plik, 'Atak hakerski przechwycenie adresu sesji ' . $_SERVER['REMOTE_ADDR']) . ' || \n';
+            fclose($plik);
+            echo "Atak hakerski karateka już na Ciebie czeka";
+            exit();
+        }
+    }
+
     if ($_SERVER["REQUEST_METHOD"] !== "GET" && $_SERVER["REQUEST_METHOD"] !== "POST") {
         if (!file_exists('bledy.txt')) {
             fopen('bledy/bledy.txt','a');
@@ -49,11 +65,6 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
 
 
 
-
-
-
-
-    session_start();
     include('bazadanych/polocz.php');
     global $baza;
 

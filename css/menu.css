@@ -108,7 +108,7 @@ body {
 .opcje {
     position: absolute;
     right: 0;
-    top: -48px;
+    top: 0px;
 }
 
 #wyszukiwarka .wysrodkuj {

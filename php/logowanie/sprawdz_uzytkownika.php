@@ -9,6 +9,7 @@ try {
         ]
     );
 */
+    session_name('sesja_pixi');
     session_start();
     session_set_cookie_params(
         [
@@ -45,7 +46,7 @@ try {
             while ($uzytkownik = mysqli_fetch_assoc($zapytanie)) {
                 if ($uzytkownik['email'] == $email && $uzytkownik['haslo'] == $haslo) {
                     $_SESSION['uzytkwonik_pixi_id'] = mysqli_real_escape_string($baza,htmlspecialchars($uzytkownik['id']));
-                    
+                    $_SESSION['ip'] = htmlspecialchars($_SERVER['REMOTE_ADDR']);
                     $_SESSION['poprawnosc'] = true;
                     header('Location:/');
                 }

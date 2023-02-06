@@ -1,5 +1,17 @@
 <?php
 try {
+    session_name('sesja_pixi');
+    session_start();
+    session_set_cookie_params(
+        [
+            'expires' => 86400,
+            'path' => '/',
+    //      'domain' => 'domain.example',
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'Strict',
+        ]
+        );
     include("php/polocz.php");
     global $baza;
     session_start();
@@ -46,6 +58,7 @@ try {
                                 $_SESSION['uzytkwonik_pixi_id'] = mysqli_real_escape_string($baza,htmlspecialchars("$id_profilu"));
                                 echo 'dodano';
                          //       mail($email,"Dziękujemy za rejestracje","Dziękujemy za rejestracje na naszym portalu");
+                                $_SESSION['ip'] = htmlspecialchars($_SERVER['REMOTE_ADDR']);
                             } else {
                             mysqli_query($baza,"DELETE FROM `uzytkownicy` WHERE `id` = '$id_profilu");
                             };

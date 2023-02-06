@@ -29,7 +29,6 @@ try {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Profil użytkownika</title>
         <link href="/css/glowne.css" rel="stylesheet" type="text/css">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css">
         <link rel="shortcut icon" href="foty/logo.png">
         <meta name="description" content="Pixi.Twoje miejsce do rozmów,rozrywki i czatu z kapitanem">
     </head>
@@ -42,11 +41,11 @@ try {
         ?>
 
 
-        <div id="cala-strona">
+        <div id="cala-strona" class="wysrodkowanie">
 
 
 
-            <div id="glowna_tresc_p">
+            <div id="glowna_tresc_p" class="marginpost" >
                 <?php
 
 

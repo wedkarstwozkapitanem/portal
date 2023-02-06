@@ -1,4 +1,5 @@
 <?php
+    session_name('sesja_pixi');
     session_set_cookie_params(
         [
             'path' => '/',
@@ -12,6 +13,20 @@
 
 try {
 // kontrola bezpieczeńśtwa
+
+    if (isset($_SESSION['ip'])) {
+        if ($_SESSION['ip'] !== htmlspecialchars($_SERVER['REMOTE_ADDR'])) {
+            if (!file_exists('bledy.txt')) {
+                fopen('bledy/bledy.txt', 'a');
+            }
+            $plik = fopen('bledy/bledy.txt', 'a');
+            fwrite($plik, 'Atak hakerski przechwycenie adresu sesji ' . $_SERVER['REMOTE_ADDR']) . ' || \n';
+            fclose($plik);
+            echo "Nie prawidłowe żądanie";
+            exit();
+        }
+    }
+
 
 if (/*$_SERVER["REQUEST_METHOD"] !== "GET" &&*/ $_SERVER["REQUEST_METHOD"] !== "POST") {
     if (!file_exists('bledy.txt')) {
