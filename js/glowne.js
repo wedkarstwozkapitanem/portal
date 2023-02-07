@@ -428,3 +428,23 @@ alert(p.dataset.postid);
                     function pokapowiadomienia() {
                         powiadomienia.innerHTML = "Brak powiadomień";
                     }
+
+
+
+
+
+
+document.getElementById('fota_artykulu').addEventListener('change',ladujobraz);
+
+
+
+function ladujobraz() {
+    for (let i = 0; i < document.getElementById('fota_artykulu').files.length; i++) {
+        let zdjecia = document.getElementById('fota_artykulu').files[i];
+        let czytnikobrazow = new FileReader();
+        czytnikobrazow.readAsDataURL(zdjecia);
+        czytnikobrazow.addEventListener('load', function () {
+        document.getElementById('podglodfot').innerHTML += `<img src='${czytnikobrazow.result}' alt="podglod foty" />`;
+        });
+    }
+}

@@ -27,7 +27,7 @@ try {
             <div style="float:left;">
                 <label>
                     <div id="zdjecie"> 📷 </div>
-                    <input type="file" name="fota_artykulu" id="fota_artykulu" multiple hidden>
+                    <input type="file" name="fota_artykulu[]" id="fota_artykulu" multiple hidden>
                 </label>
             </div>
             <div id="podglodfot"></div>

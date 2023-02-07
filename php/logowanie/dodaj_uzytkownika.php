@@ -3,16 +3,6 @@ try {
     session_save_path("bazadanych/sesje");
     session_name('sesja_pixi');
     session_start();
-    session_set_cookie_params(
-        [
-            'expires' => 86400,
-            'path' => '/',
-    //      'domain' => 'domain.example',
-            'secure' => true,
-            'httponly' => true,
-            'samesite' => 'Strict',
-        ]
-        );
     include("php/polocz.php");
     global $baza;
     session_start();
