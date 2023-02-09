@@ -90,7 +90,7 @@ try {
                                 echo 'uzytkownik.gif';
                             }
                             echo '" alt="profilowe" /></div>
-                   <div class="wyrownaj"> <div style="height:68px"><h1>' . $uzytkownik['imie'] . '  ' . $uzytkownik['nazwisko'] . '</h1></div></div>
+                   <div> <div style="height:68px"><h1>' . $uzytkownik['imie'] . '  ' . $uzytkownik['nazwisko'] . '</h1></div></div>
                 
             </div>
       <!--  </center> -->
@@ -130,7 +130,7 @@ try {
   
                 <h2 style="width:58%;float:left;text-align:center;">Informacje:</h2><a style="position:relative;top:28px;margin-left:12px;" href="/profil/' . $uzytkownik['id'] . '/informacje">Zobacz szczegółowe informacje</a><div style="clear:both;"></div>';
                             if ($sesja == $uzytkownik['id']) { //mój profil
-                                echo '<center><button class="profiledytujinformacje" id="profiledytujinformacje"> Edytuj informacje </button></center>';
+                                echo '<button class="profiledytujinformacje" id="profiledytujinformacje"> Edytuj informacje </button>';
 
                                 echo '
                     <div class="wyrownaj">
@@ -307,9 +307,9 @@ try {
 <div style="top:10px;" class="posty">Posty:</div>
 <hr>
 
-            <center>';
+           ';
                             if ($sesja == $uzytkownik['id']) {
-                                echo '<button class="profiledytujinformacje dodaj-post" style="margin-top:68px !important;margin-bottom:68px !important">Dodaj posta </button>
+                                echo '<div class="wyrownaj"><button class="profiledytujinformacje dodaj-post" style="margin-top:68px !important;">Dodaj posta </button></div>
             ';
                             }
                         }
@@ -477,7 +477,7 @@ try {
                 ?>
                         </div>
 
-                        </center>
+                      
                         <div class="dodajPosta" style="display:none;">
                             <div class="dodawanie_postow">
                                 <?php

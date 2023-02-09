@@ -98,6 +98,7 @@ body {
     margin: 4px;
     border-radius: 8px;
     cursor: pointer;
+    top:0px;
 }
 
 #menu div ul li:hover {
@@ -108,7 +109,7 @@ body {
 .opcje {
     position: absolute;
     right: 0;
-    top: 0px;
+    top: -50px;
 }
 
 #wyszukiwarka .wysrodkuj {
