@@ -2,16 +2,22 @@ RewriteEngine On
 
 
 RewriteBase /
+
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 
-
 RewriteRule ^(.+)$ index.php [QSA,L]
-
 RewriteRule ^/css/([a-zA-Z]+)/$ /css/$i
-
-
 AddType application/x-httpd-php .html .htm
 
 
 Options -Indexes
+
+ErrorDocument 400 /bledy/niedostepna.htm
+ErrorDocument 402 /bledy/niedostepna.htm
+ErrorDocument 403 /bledy/niedostepna.htm
+ErrorDocument 404 /bledy/niedostepna.htm
+ErrorDocument 405 /bledy/niedostepna.htm
+ErrorDocument 406 /bledy/niedostepna.htm
+ErrorDocument 407 /bledy/niedostepna.htm
+ErrorDocument 408 /bledy/niedostepna.htm

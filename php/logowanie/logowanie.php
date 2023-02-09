@@ -24,7 +24,7 @@
                 <div class="poprawnosc" id="poprawnosc_email"></div>
                 <input type="email" name="email" id="email" placeholder="Email" />
                 <div class="poprawnosc" id="poprawnosc_haslo"></div>
-                <input type="password" name="haslo" id="haslo" placeholder="Hasło">
+                <input type="password" name="haslo" id="haslo" placeholder="Hasło" autocomplete="off">
                 <input class="przycisk" id="przycisk" type="submit" value="Zaloguj się">
                 </form>
             </div>

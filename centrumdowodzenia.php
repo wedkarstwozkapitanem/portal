@@ -11,7 +11,9 @@
             'samesite' => 'Strict',
         ]
         );
-
+        require_once("bazadanych/polocz.php");
+        global $baza;
+        session_start();
 try {
 // kontrola bezpieczeńśtwa
 
@@ -62,12 +64,10 @@ if(!$_SERVER['HTTP_COOKIE']) {
 
 
 
-    require_once("bazadanych/polocz.php");
-    global $baza;
-    session_start();
 
 
-    if (!empty($_SESSION['uzytkwonik_pixi_id'])) {
+
+    if (isset($_SESSION['uzytkwonik_pixi_id'])) {
         (string)$sesja = mysqli_real_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
     } else {
         echo 'Nie zalogowano';

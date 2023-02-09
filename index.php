@@ -14,8 +14,15 @@
 
 try {
     session_start();
-
+  //  session_regenerate_id($_SESSION['uzytkwonik_pixi_id']); //zmiana sesji dla bezbieczeństwa
 //kontrola bezpieczeństwa
+if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
+    if( !isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'on') {
+        header("Location: https://kaptain.ct8.pl/logowanie");
+}
+} 
+
+
     if (isset($_SESSION['ip'])) {
         if ($_SESSION['ip'] !== htmlspecialchars($_SERVER['REMOTE_ADDR'])) {
             if (!file_exists('bledy.txt')) {
@@ -60,9 +67,6 @@ try {
         exit();
     }
 */
-if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
-
-} 
 
 
 
@@ -75,7 +79,6 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
 
 
     if (!empty($_SESSION['uzytkwonik_pixi_id']) || isset($_SESSION['uzytkwonik_pixi_id'])) {
-        session_regenerate_id($_SESSION['uzytkwonik_pixi_id']); //zmiana sesji dla bezbieczeństwa
         (string) $sesja =  mysqli_real_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
         if (substr($ktora, 1) == 'logowanie' || substr($ktora, 1) == 'rejestracja' || substr($ktora, 1) == 'logowanie/wchodze' || trim(substr($ktora, 1)) == trim('centrumdowodzenia.php')) {
             header('Location:/');

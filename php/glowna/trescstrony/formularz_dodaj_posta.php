@@ -22,7 +22,7 @@ try {
         <?php } ?>
     </div>
     <form action="dodawanie_tresci" method="POST" enctype="multipart/form-data">
-        <input type="text" placeholder="Napisz co słychać?" name="tresc_artykulu" id="tresc_artykulu">
+        <input type="text" placeholder="Napisz co słychać?" name="tresc_artykulu" id="tresc_artykulu" autocomplete="off">
         <div class="publikacja">
             <div style="float:left;">
                 <label>

@@ -25,9 +25,7 @@ function komunikacja(akcja) {
 
 
 window.onload = () => {
-    console.log(profilinoformacje);
 
-    wczytywanie_postow();
 
 if(szukaj){
     szukaj.addEventListener('input', wyszukiwarka);
@@ -47,6 +45,9 @@ if(szukaj){
         e.preventDefault();
     })
 }
+
+
+wczytywanie_postow();
 }
 
 function zatwierdz_wyszukiwanie() {
@@ -235,7 +236,7 @@ function pokaz_kto_polubil(t) {
         poloczenie.onreadystatechange = () => {
             if (poloczenie.readyState === 4 && poloczenie.status === 200) {
             
-                console.log(poloczenie.response);
+             //   console.log(poloczenie.response);
               let danenowyposta = JSON.parse(poloczenie.response);
               let danenowypost;
      

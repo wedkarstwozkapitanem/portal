@@ -30,7 +30,7 @@
 
                 <input id="email" name="email" type="email" placeholder="Wpisz email">
 
-                <input type="password" name="haslo" id="haslo" placeholder="Wpisz hasło">
+                <input type="password" name="haslo" id="haslo" placeholder="Wpisz hasło" autocomplete="off">
 
                 <input type="password" name="haslo_powtorz" id="haslo_powtorz" placeholder="Powtórz hasło">
 

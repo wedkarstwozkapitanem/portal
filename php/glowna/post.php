@@ -19,6 +19,21 @@ try {
         exit();
     }
 
+
+
+
+
+
+
+
+    //posty
+    (int)$idposta = (int) mysqli_real_escape_string($baza, htmlspecialchars($id_2));
+    (int)$id = (int) $id;
+    $zapytanie_post = "SELECT * FROM `posty` where `iduzytkownika` = '$id' AND `idp` = '$idposta' AND `usunieto` = 0";
+    $wynik_post = mysqli_query($baza, $zapytanie_post);
+
+    if (mysqli_num_rows($wynik_post) > 0) {
+        while ($post = mysqli_fetch_assoc($wynik_post)) {
 ?>
     <!DOCTYPE html>
     <html lang="pl">
@@ -46,20 +61,8 @@ try {
 
 
             <div id="glowna_tresc_p" class="marginpost" >
-                <?php
 
-
-
-
-                //posty
-                (int)$idposta = (int) mysqli_real_escape_string($baza, htmlspecialchars($id_2));
-                (int)$id = (int) $id;
-                $zapytanie_post = "SELECT * FROM `posty` where `iduzytkownika` = '$id' AND `idp` = '$idposta' AND `usunieto` = 0";
-                $wynik_post = mysqli_query($baza, $zapytanie_post);
-
-                if (mysqli_num_rows($wynik_post) > 0) {
-                    while ($post = mysqli_fetch_assoc($wynik_post)) {
-
+<?php
 
                         $idu = (int) mysqli_real_escape_string($baza, htmlspecialchars($post['iduzytkownika']));
                         $zapytanie_profil = "SELECT `id`,`imie`,`nazwisko`,`profilowe`,`folder` FROM `uzytkownicy` where `id` = '$idu'";
