@@ -65,7 +65,7 @@ try {
                     ?>
 
 
-                    <div id="cala-strona">
+                    <div id="calastrona">
 
 
                         <div id="caly_profil">
