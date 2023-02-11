@@ -17,16 +17,7 @@
 <?php
 global $baza;
 global $sesja;
-echo '<div style="position: absolute;
-top: 1px;
-background: blue;
-color: black;
-font-size: 28px;
-border: 1px solid black;
-border-radius: 28px;
-left: 40px;
-min-width: 28px;
-text-align: center;">'.mysqli_num_rows(mysqli_query($baza,"SELECT * FROM `powiadomienia` WHERE `id_odbiorcy` = '$sesja'")).'</div>';
+echo '<div id="licznikpowiadomien">'.mysqli_num_rows(mysqli_query($baza,"SELECT * FROM `powiadomienia` WHERE `id_odbiorcy` = '$sesja'")).'</div>';
 ?>
 
 
@@ -38,7 +29,7 @@ text-align: center;">'.mysqli_num_rows(mysqli_query($baza,"SELECT * FROM `powiad
 </div>
 </nav>
 <aside class="powiadomienia" style="display:none;">
-    <h4>Powiadomienia:</h4>
+    <h4>Dziennik pokładowy:</h4>
     <hr>
     <div id="powiadomienia">
     

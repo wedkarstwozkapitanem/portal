@@ -4,7 +4,7 @@
     session_set_cookie_params(
         [
             'path' => '/',
-            'lifetime' => 3600,
+            'lifetime' => 3600*24,
     //      'domain' => 'domain.example',
             'secure' => true,
             'httponly' => true,

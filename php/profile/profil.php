@@ -111,10 +111,10 @@ try {
                                 if (mysqli_num_rows($czyznaj) > 0) {
                                     while ($czyznajomy = $czyznaj->fetch_assoc()) {
                                         if ($czyznajomy['czyprzyjeto'] == 1) {
-                                            echo '<button onclick="dodajznajomego()" style="right:108px;background:white !important;" class="dodajznajomego" id="dodajznaj" > Znajomi </button>';
+                                            echo '<button onclick="dodajznajomego()" style="right:108px;background:white !important;color:blue !important;" class="dodajznajomego" id="dodajznaj" > Znajomi </button>';
                                         } else {
                                             if ($czyznajomy['iduzytkownika'] == $sesja) {
-                                                echo '<button onclick="dodajznajomego();" style="right:108px;background:silver !important;" class="dodajznajomego" id="dodajznaj" > Zaproszenie wysłane </button>';
+                                                echo '<button onclick="dodajznajomego();" style="right:108px;background:silver !important;color:blue !important;" class="dodajznajomego" id="dodajznaj" > Zaproszenie wysłane </button>';
                                             } else {
                                                 echo '<button onclick="dodajznajomego();" style="right:108px;background:yellow !important;" class="dodajznajomego" id="dodajznaj" > Przyjmij zaproszenie </button>';
                                             }

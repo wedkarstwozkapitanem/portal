@@ -10,7 +10,7 @@ global $baza;
 
 global $baza;
 
-$idp = $_POST['tresc'];
+$idp = mysqli_real_escape_string($baza, htmlspecialchars($_POST['tresc']));
 
 $czyznaj = "SELECT * FROM (SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja') as p where `iduzytkownika` = '$idp' OR `iduzytkownik` = '$idp' LIMIT 1";
 $czyznajom = mysqli_query($baza, $czyznaj);
@@ -20,6 +20,13 @@ $czyznajom = mysqli_query($baza, $czyznaj);
 (string)$sql = "";
 if (mysqli_num_rows($czyznajom) === 0) {
     $sql = "INSERT INTO `znajomi` (iduzytkownika,iduzytkownik,czyprzyjeto) VALUES ('$sesja', '$idp',0)";
+    if(mysqli_query($baza, $sql)) {
+        $id_tresci = (int) $id_posta;
+        $typ = (int)4;
+        $id_odbiorcy = (int) $idp;
+        $id_znajomego = $id_odbiorcy;
+        include 'php/powiadomienia/dodajpowiadomienie.php';
+    }
 } else {
     $czyznajomy = mysqli_fetch_assoc($czyznajom);
     $czyprzyjeto = $czyznajomy['czyprzyjeto'];
@@ -28,15 +35,24 @@ if (mysqli_num_rows($czyznajom) === 0) {
     if ($czyprzyjeto == 0) {
         if ($czyznajomy['iduzytkownik'] == $sesja) {
             $sql = "UPDATE `znajomi` SET `czyprzyjeto` = '1' where `id`='$id'";
+            if(mysqli_query($baza, $sql)) {
+                $id_tresci = (int) $id_posta;
+                $typ = (int)5;
+                $id_odbiorcy = (int) $idp;
+                $id_znajomego = $id_odbiorcy;
+                include 'php/powiadomienia/dodajpowiadomienie.php';
+            }
         } else {
             $sql = "DELETE FROM `znajomi` WHERE id ='$id'";
+            mysqli_query($baza, $sql);
         }
     } else {
         $sql = "DELETE FROM `znajomi` WHERE id ='$id'";
+        mysqli_query($baza, $sql);
     }
     
 }
-mysqli_query($baza, $sql);
+
 
 
 /*

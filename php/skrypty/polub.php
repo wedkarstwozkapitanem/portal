@@ -11,11 +11,23 @@ try {
 
     if (mysqli_num_rows($sprawdzanie) === 0) {
         $zapytanie = "INSERT INTO `polubienia` (`id_uzytkownika`,`id_posta`) VALUES ($sesja,$id_posta)";
+        if(mysqli_query($baza, $zapytanie)) {
+      
+        $id_tresci = (int)$id_posta;
+        $typ = (int)3;
+        $czyjpost = mysqli_fetch_array(mysqli_query($baza,"SELECT `iduzytkownika` FROM `posty` where `idp` = '$id_posta'"));
+        $id_znajomego = $czyjpost[0];
+        if ($id_znajomego !== $sesja) {
+        include 'php/powiadomienia/dodajpowiadomienie.php';
+        }
+        }
+        
     } else {
         $zapytanie = "DELETE FROM `polubienia` where `id_uzytkownika` = '$sesja' AND `id_posta` = '$id_posta'";
+        mysqli_query($baza, $zapytanie);
     }
 
-    mysqli_query($baza, $zapytanie);
+    
     mysqli_free_result($sprawdzanie);
     mysqli_close($baza);
 } catch (Exception $blod) {
