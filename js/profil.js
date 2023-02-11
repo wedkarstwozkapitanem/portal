@@ -231,5 +231,5 @@ function pokaz_kto_polubil(t) {
 })
 
 function pokapowiadomienia() {
-    powiadomienia.innerHTML = "Brak powiadomień";
+    polocz('wyswietl_powiadomienia','','#powiadomienia');
 }

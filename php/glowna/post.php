@@ -181,7 +181,7 @@ try {
                                                 <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['idp'] ?>" />
                                                 <div style="float: right;">
                                                     <label>
-                                                        <div data-postid-kom="<?php echo $post['idp'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img loading='lazy' src="/zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
+                                                        <div data-postid-kom="<?php echo $post['idp'] ?>" class="dodaj_komentarz" onclick="dodajkomentarza(this)"><img id="mojeprofilowe" loading='lazy' src="/zdjecia/wyslij.png" alt="dodaj_komentarz"></div>
                                                         <input data-postid-kom="<?php echo $post['idp'] ?>" onclick="dodajkomentarza(this)" style="display:none" type="submit" hidden />
                                                     </label>
                                                 </div>

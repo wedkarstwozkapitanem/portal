@@ -16,7 +16,7 @@ try {
 
         $zdjecie = $_FILES['fota_artykulu']['tmp_name'];
         for ((int) $i = 0; $i < count($zdjecie); $i++) {
-          (string) $fota_nazwap = uniqid() . '.' . basename($_FILES['fota_artykulu']['name'][$i]);
+          (string) $fota_nazwap = uniqid() . '' . mysqli_real_escape_string($baza, htmlspecialchars(basename($_FILES['fota_artykulu']['name'][$i])));
           move_uploaded_file($_FILES['fota_artykulu']['tmp_name'][$i], "foty/" . $mojfolder . "/posty/" . $fota_nazwap);
 
 
@@ -37,7 +37,8 @@ try {
                   }
                 }
               }
-  
+              $id_znajomego = (int)$sesja;
+              include 'php/powiadomienia/dodajpowiadomienie.php';
               echo 'Dodano';
             } else {
               echo 'Błąd';
@@ -61,6 +62,9 @@ try {
                 }
               }
             }
+
+            $id_znajomego = (int)$sesja;
+            include 'php/powiadomienia/dodajpowiadomienie.php';
 
 
 

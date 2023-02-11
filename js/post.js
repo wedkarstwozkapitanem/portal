@@ -114,13 +114,56 @@ function polubposta(p) {
 
 
 
-
+/*
 function dodajkomentarza(p) {
     let idposta = p.dataset.postidKom;
     let tresc_komentarza = document.querySelector(`[data-postid-kom='${idposta}']`).value;
     if (idposta) {
         if (tresc_komentarza) {
             dodaj_tresc('dodajkomentarz', idposta, tresc_komentarza);
+            document.querySelector(`[data-postid-kom='${idposta}']`).value = "";
+            pokazkomentarze(idposta);
+           let licznikoment = document.querySelector(`[data-postid-licznikomentarzy="${idposta}"]`);
+           let licznikomp = document.querySelector(`[data-postid-licznikomentarzyp="${idposta}"]`);
+           if (licznikomp.innerHTML === "") {
+            licznikomp.innerHTML = "1";
+            licznikoment.innerHTML = " komentarz";
+           } else {
+            licznikomp.innerHTML = parseFloat(licznikomp.innerHTML) + parseFloat(1);
+            licznikoment.innerHTML = " komentarze";
+           }
+        } else {
+            alert("Napisz treść komentarza");
+        }
+    } else {
+        alert("Błąd");
+    }
+}
+*/
+
+function dodajkomentarza(p) {
+    let idposta = p.dataset.postidKom;
+    let tresc_komentarza = document.querySelector(`[data-postid-kom='${idposta}']`).value;
+    if (idposta) {
+        if (tresc_komentarza.value !== "") {
+
+            let nowykom = document.createElement('div');
+            nowykom.innerHTML = `<article style="margin-top:10px !important;opacity:0.4;">
+            <div class="komentarz_posta">
+                                    <a href="">
+                                            <div class="komentarz_uzytkownik"><img loading="lazy" src='${document.getElementById("mojeprofilowe").src}' alt='profilowe' /> alt="profilowe">
+                                            <div class="komentarz_nazwa">Ja dodał komentarz </div>
+                        </div>
+                    </a>
+                                <div class="komentarz_tresc">${tresc_komentarza}</div>
+            </div>
+        </article>`;
+            document.querySelector(`[data-postid-pokakom='${idposta}']`).appendChild(nowykom);
+
+
+            dodaj_tresc('dodajkomentarz', idposta, tresc_komentarza);
+
+
             document.querySelector(`[data-postid-kom='${idposta}']`).value = "";
             pokazkomentarze(idposta);
            let licznikoment = document.querySelector(`[data-postid-licznikomentarzy="${idposta}"]`);
@@ -198,5 +241,5 @@ function menuposta(p) {
         })
 
         function pokapowiadomienia() {
-            powiadomienia.innerHTML = "Brak powiadomień";
+            polocz('wyswietl_powiadomienia','','#powiadomienia');
         }

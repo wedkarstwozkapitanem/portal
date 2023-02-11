@@ -10,10 +10,16 @@ try {
         if (!empty($_POST['tresc']) || !empty($_POST['fota'])) {
             (string)$komentarz_tresc = mysqli_real_escape_string($baza,htmlspecialchars($_POST['tresc']));
 
-            $zapytanie = "INSERT INTO `komentarze` (`iduzytkownika`,`idposta`,`tresc`)
- VALUES ('$sesja','$id_posta','$komentarz_tresc')";
+            $zapytanie = "INSERT INTO `komentarze` (`iduzytkownika`,`idposta`,`tresc`) VALUES ('$sesja','$id_posta','$komentarz_tresc')";
 
-            mysqli_query($baza, $zapytanie);
+            if(mysqli_query($baza, $zapytanie)) {
+              $id_tresci = (int) $id_posta;
+              $typ = (int)2;
+              $odbiorca = mysqli_fetch_assoc(mysqli_query($baza,"SELECT iduzytkownika FROM `posty` where `idp` = '$id_posta'"));
+              $id_odbiorcy = (int)$odbiorca['iduzytkownika'];
+              $id_znajomego = $id_odbiorcy;
+              include 'php/powiadomienia/dodajpowiadomienie.php';
+            }
         }
     }
 } catch (Exception $blod) {
