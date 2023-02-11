@@ -116,6 +116,9 @@ if(!$_SERVER['HTTP_COOKIE']) {
             case 'posty':
                 sprawdzplik("php/glowna/posty.php");
                 break;
+            case 'wyswietl_powiadomienia':
+                sprawdzplik("php/powiadomienia/wyswietl_powiadomienia.php");
+                break;
             case 'polubienie':
                 sprawdzplik("php/skrypty/polub.php");
                 break;

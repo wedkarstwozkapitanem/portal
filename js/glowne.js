@@ -427,7 +427,7 @@ alert(p.dataset.postid);
                     })
 
                     function pokapowiadomienia() {
-                        powiadomienia.innerHTML = "Brak powiadomień";
+                        polocz('wyswietl_powiadomienia','','#powiadomienia');
                     }
 
 

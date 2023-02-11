@@ -10,9 +10,9 @@ try {
       (string)$tresc =  mysqli_real_escape_string($baza, htmlspecialchars($_POST['tresc_artykulu']));
       (string)$fota_nazwa = "";
       //upload zdjec
-      
-        if (!empty($_FILES['fota_artykulu']) && isset($_FILES['fota_artykulu']) && $_FILES['fota_artykulu']['tmp_name'][0] !== "") {
-        (string)$mojfolder = mysqli_fetch_array(mysqli_query($baza,"SELECT `folder` FROM `uzytkownicy` where `id`='$sesja'"))[0];
+
+      if (!empty($_FILES['fota_artykulu']) && isset($_FILES['fota_artykulu']) && $_FILES['fota_artykulu']['tmp_name'][0] !== "") {
+        (string)$mojfolder = mysqli_fetch_array(mysqli_query($baza, "SELECT `folder` FROM `uzytkownicy` where `id`='$sesja'"))[0];
 
         $zdjecie = $_FILES['fota_artykulu']['tmp_name'];
         for ((int) $i = 0; $i < count($zdjecie); $i++) {
@@ -22,24 +22,55 @@ try {
 
           if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`foty`) VALUES ('$sesja','$tresc','$fota_nazwap')")) {
             if (!mysqli_error($baza) || !mysqli_errno($baza)) {
+
+              $id_tresci = (int) mysqli_insert_id($baza);
+              $typ = (int)1;
+  
+  
+              $sqlczyznaj = "SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja'";
+              $czyznaj = mysqli_query($baza, $sqlczyznaj);
+              if (mysqli_num_rows($czyznaj) > 0) {
+                while ($czyznajomy = $czyznaj->fetch_assoc()) {
+                  if ($czyznajomy['czyprzyjeto'] == 1) {
+                    $czyznajomy['iduzytkownika'] == $sesja ?  $id_znajomego = $czyznajomy['iduzytkownik']: $id_znajomego = $czyznajomy['iduzytkownika'];
+                    include 'php/powiadomienia/dodajpowiadomienie.php';
+                  }
+                }
+              }
+  
               echo 'Dodano';
             } else {
               echo 'Błąd';
             }
           }
-
-
-
         }
-        } else {
-          if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`foty`) VALUES ('$sesja','$tresc','$fota_nazwa')")) {
-            if (!mysqli_error($baza) || !mysqli_errno($baza)) {
-              echo 'Dodano';
-            } else {
-              echo 'Błąd';
+      } else {
+        if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`foty`) VALUES ('$sesja','$tresc','$fota_nazwa')")) {
+          if (!mysqli_error($baza) || !mysqli_errno($baza)) {
+            $id_tresci = (int) mysqli_insert_id($baza);
+            $typ = (int)1;
+
+
+            $sqlczyznaj = "SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja'";
+            $czyznaj = mysqli_query($baza, $sqlczyznaj);
+            if (mysqli_num_rows($czyznaj) > 0) {
+              while ($czyznajomy = $czyznaj->fetch_assoc()) {
+                if ($czyznajomy['czyprzyjeto'] == 1) {
+                  $czyznajomy['iduzytkownika'] == $sesja ?  $id_znajomego = $czyznajomy['iduzytkownik']: $id_znajomego = $czyznajomy['iduzytkownika'];
+                  include 'php/powiadomienia/dodajpowiadomienie.php';
+                }
+              }
             }
+
+
+
+
+            echo 'Dodano';
+          } else {
+            echo 'Błąd';
           }
         }
+      }
 
 
 
@@ -47,7 +78,7 @@ try {
     }
   }
 
-    header('Location:/');
+   header('Location:/');
 
   exit();
 } catch (Exception $blod) {

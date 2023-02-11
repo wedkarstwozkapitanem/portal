@@ -517,7 +517,7 @@ article {
     position: absolute;
     z-index: 20;
     right: 1px;
-    top:8px;
+    top:6px !important;
 }
 
 .dodaj_komentarz img {

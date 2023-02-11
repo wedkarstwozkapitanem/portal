@@ -13,7 +13,24 @@
     </div>
     <div class="opcje">
         <ul>
-            <li id="powiad">💌</li>
+            <li id="powiad">💌
+<?php
+global $baza;
+global $sesja;
+echo '<div style="position: absolute;
+top: 1px;
+background: blue;
+color: black;
+font-size: 28px;
+border: 1px solid black;
+border-radius: 28px;
+left: 40px;
+width: 28px;
+text-align: center;">'.mysqli_num_rows(mysqli_query($baza,"SELECT * FROM `powiadomienia` WHERE `id_odbiorcy` = '$sesja'")).'</div>';
+?>
+
+
+            </li>
            <a href="/wylogowanie"> <li>🚪</li></a>
         </ul>
 
