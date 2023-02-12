@@ -15,34 +15,47 @@ try {
         (string)$mojfolder = mysqli_fetch_array(mysqli_query($baza, "SELECT `folder` FROM `uzytkownicy` where `id`='$sesja'"))[0];
 
         $zdjecie = $_FILES['fota_artykulu']['tmp_name'];
-        for ((int) $i = 0; $i < count($zdjecie); $i++) {
-          (string) $fota_nazwap = uniqid() . '' . mysqli_real_escape_string($baza, htmlspecialchars(basename($_FILES['fota_artykulu']['name'][$i])));
-          move_uploaded_file($_FILES['fota_artykulu']['tmp_name'][$i], "foty/" . $mojfolder . "/posty/" . $fota_nazwap);
+        for ((int) $i = 0; $i < (int)count($zdjecie); $i++) {
+          if ((int)htmlspecialchars($_FILES['fota_artykulu']['error'][$i]) === (int)0) {
+            if ((string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpeg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpg') {
+              if ((int)htmlspecialchars($_FILES['fota_artykulu']['size'][$i]) <= (int)5000000) {
+
+                (string) $fota_nazwap = mysqli_real_escape_string($baza, htmlspecialchars(uniqid() . '' . htmlspecialchars(basename($_FILES['fota_artykulu']['name'][$i]))));
+                move_uploaded_file(htmlspecialchars($_FILES['fota_artykulu']['tmp_name'][$i]), "foty/" . $mojfolder . "/posty/" . $fota_nazwap);
 
 
-          if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`foty`) VALUES ('$sesja','$tresc','$fota_nazwap')")) {
-            if (!mysqli_error($baza) || !mysqli_errno($baza)) {
+                if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`foty`) VALUES ('$sesja','$tresc','$fota_nazwap')")) {
+                  if (!mysqli_error($baza) || !mysqli_errno($baza)) {
 
-              $id_tresci = (int) mysqli_insert_id($baza);
-              $typ = (int)1;
-  
-  
-              $sqlczyznaj = "SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja'";
-              $czyznaj = mysqli_query($baza, $sqlczyznaj);
-              if (mysqli_num_rows($czyznaj) > 0) {
-                while ($czyznajomy = $czyznaj->fetch_assoc()) {
-                  if ($czyznajomy['czyprzyjeto'] == 1) {
-                    $czyznajomy['iduzytkownika'] == $sesja ?  $id_znajomego = $czyznajomy['iduzytkownik']: $id_znajomego = $czyznajomy['iduzytkownika'];
+                    $id_tresci = (int) mysqli_insert_id($baza);
+                    $typ = (int)1;
+
+
+                    $sqlczyznaj = "SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja'";
+                    $czyznaj = mysqli_query($baza, $sqlczyznaj);
+                    if (mysqli_num_rows($czyznaj) > 0) {
+                      while ($czyznajomy = $czyznaj->fetch_assoc()) {
+                        if ($czyznajomy['czyprzyjeto'] == 1) {
+                          $czyznajomy['iduzytkownika'] == $sesja ?  $id_znajomego = $czyznajomy['iduzytkownik'] : $id_znajomego = $czyznajomy['iduzytkownika'];
+                          include 'php/powiadomienia/dodajpowiadomienie.php';
+                        }
+                      }
+                    }
+                    $id_znajomego = (int)$sesja;
                     include 'php/powiadomienia/dodajpowiadomienie.php';
+                    echo 'Dodano';
+                  } else {
+                    echo 'Błąd';
                   }
                 }
+              } else {
+                echo "Załoczony plik jest za duży";
               }
-              $id_znajomego = (int)$sesja;
-              include 'php/powiadomienia/dodajpowiadomienie.php';
-              echo 'Dodano';
             } else {
-              echo 'Błąd';
+              echo "Nie prawidłowy plik";
             }
+          } else {
+            echo "Błąd podczas przesyłania pliku";
           }
         }
       } else {
@@ -57,7 +70,7 @@ try {
             if (mysqli_num_rows($czyznaj) > 0) {
               while ($czyznajomy = $czyznaj->fetch_assoc()) {
                 if ($czyznajomy['czyprzyjeto'] == 1) {
-                  $czyznajomy['iduzytkownika'] == $sesja ?  $id_znajomego = $czyznajomy['iduzytkownik']: $id_znajomego = $czyznajomy['iduzytkownika'];
+                  $czyznajomy['iduzytkownika'] == $sesja ?  $id_znajomego = $czyznajomy['iduzytkownik'] : $id_znajomego = $czyznajomy['iduzytkownika'];
                   include 'php/powiadomienia/dodajpowiadomienie.php';
                 }
               }
@@ -82,7 +95,7 @@ try {
     }
   }
 
-   header('Location:/');
+  header('Location:/');
 
   exit();
 } catch (Exception $blod) {

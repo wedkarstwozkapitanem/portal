@@ -152,6 +152,9 @@ if(!$_SERVER['HTTP_COOKIE']) {
             case 'edytowanie_profilu':
                 sprawdzplik("php/skrypty/edytowanie_profilu.php");
                 break;
+            case 'udustepnij':
+                sprawdzplik("php/skrypty/udustepnij.php");
+                break;
             default:
                 echo "Nie prawidłowe żądanie";
                 header("HTTP/1.1 404 Not Found");

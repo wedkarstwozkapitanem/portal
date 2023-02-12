@@ -34,6 +34,8 @@ try {
 
     if (mysqli_num_rows($wynik_post) > 0) {
         while ($post = mysqli_fetch_assoc($wynik_post)) {
+            if((int)$post['udustepniono'] === (int)0) {
+
 ?>
     <!DOCTYPE html>
     <html lang="pl">
@@ -163,7 +165,7 @@ try {
                                         <?php } else { ?>
                                             <button class="polubione" data-postid="<?php echo $post['idp'] ?>" onclick="polubposta(this)">👍🏻polubiłem</button>
                                         <?php } ?>
-                                        <button onclick="pokazkomentarze(this)" data-postid="<?php echo $post['idp'] ?>">💬Komentarz</button><button data-postid="<?php echo $post['idp'] ?>">👝Udostępnij</button>
+                                        <button onclick="pokazkomentarze(this)" data-postid="<?php echo $post['idp'] ?>">💬Komentarz</button><button onclick="udustepnij(this)" data-postid="<?php echo $post['idp'] ?>">👝Udostępnij</button>
                                     </div>
                                     <div class="post_komentarze">
                                         <div style="margin-left:auto;margin-right:auto;">
@@ -238,6 +240,9 @@ try {
 
 
                                             <?php
+
+
+
                                                         }
                                                     } else {
                                                         echo '<div class="komentarz_tresc" style="text-align:center;color:red;font-size:40px">Brak komentarzy</div>';
@@ -245,7 +250,7 @@ try {
                                                 } else {
                                                     echo "Błędny id";
                                                 }
-
+                                            
 
 
 
@@ -281,7 +286,23 @@ try {
                 <?php
                             mysqli_free_result($sprawdzanie);
                         }
+                    } else {
+/**udustepnienia**/
+
+
+echo "<a href='' > Kliknij tutaj aby zobaczyć post </a>";
+
+
+
+
+
+
+
+
+
+
                     }
+                }
                 } else {
                     include "bledy/nieznaleziono.php";
                 }

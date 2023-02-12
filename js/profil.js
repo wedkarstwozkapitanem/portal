@@ -233,3 +233,10 @@ function pokaz_kto_polubil(t) {
 function pokapowiadomienia() {
     polocz('wyswietl_powiadomienia','','#powiadomienia');
 }
+
+
+
+function udustepnij(p) {
+    let idposta = p.dataset.postid;
+    polocz('udustepnij', idposta,'');
+}

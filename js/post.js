@@ -39,7 +39,7 @@ function polocz(akcja, wyslij, odbierz) {
         if (poloczenie.readyState === 4 && poloczenie.status === 200) {
             if (odbierz) {
                 document.querySelector(`${odbierz}`).innerHTML = poloczenie.response;
-            } // else console.log(poloczenie.response);
+            } else console.log(poloczenie.response);
         } else {
             console.log('ładowanie');
         }
@@ -183,6 +183,11 @@ function dodajkomentarza(p) {
     }
 }
 
+
+function udustepnij(p) {
+    let idposta = p.dataset.postid;
+    polocz('udustepnij', idposta,'');
+}
 
 
 

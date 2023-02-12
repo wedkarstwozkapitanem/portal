@@ -182,7 +182,10 @@ function dodajkomentarza(p) {
 }
 
 
-
+function udustepnij(p) {
+    let idposta = p.dataset.postid;
+    polocz('udustepnij', idposta,'');
+}
 
 
 function pokazkomentarze(p) {
