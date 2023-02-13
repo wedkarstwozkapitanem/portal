@@ -231,3 +231,24 @@ h4 {
     font-size: 20px;
     margin:4px;
 }
+.powiadomienia::-webkit-scrollbar {
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #5600ff;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #929292;
+}
+
+::-webkit-scrollbar {
+    background-color: #000000;
+    width: 24px;
+}
+
+::-webkit-scrollbar-track {
+    border: 2px solid #008cff;
+}

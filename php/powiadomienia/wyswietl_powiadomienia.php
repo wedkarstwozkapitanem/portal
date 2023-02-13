@@ -18,8 +18,8 @@ try {
 <div class="powiadomienie">
 <div class="powiadomienie_uzytkownik"><img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/></div>
 <div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . '</div> <div>Dodał posta</div>
-</div>
 <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
+</div>
 </a>
           ';
                         } else {
@@ -28,8 +28,8 @@ try {
                 <div  class="powiadomienie">
                 <div class="powiadomienie_uzytkownik"><img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/></div>
                 Twój post został opublikowany
-                </div>
                 <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
+                </div>
                 </a>
                           ';
                         }
@@ -41,8 +41,8 @@ try {
   <div class="powiadomienie">
   <div class="powiadomienie_uzytkownik"><img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/></div>
   <div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . '</div> <div>Dodał komentarz</div>
-  </div>
   <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
+  </div>
   </a>
             ';
                         break;
@@ -53,8 +53,8 @@ try {
             <div class="powiadomienie">
             <div class="powiadomienie_uzytkownik"><img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/></div>
             <div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . '</div> <div>Polubił twój post</div>
-            </div>
             <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
+            </div>
             </a>
                       ';
                         break;
@@ -65,8 +65,8 @@ try {
             <div class="powiadomienie">
             <div class="powiadomienie_uzytkownik"><img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/></div>
             <div style="text-align:center;">' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . ' wysłał Ci zaproszenie do grona znajomych</div>
-            </div>
             <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
+            </div>
             </a>
                       ';
                         break;
@@ -77,8 +77,8 @@ try {
             <div class="powiadomienie">
             <div class="powiadomienie_uzytkownik"><img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/></div>
             <div style="text-align:center;">' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . ' przyjął/a twoje zaproszenie do znajomych</div>
-            </div>
             <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
+            </div>
             </a>
                       ';
 

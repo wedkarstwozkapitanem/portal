@@ -742,9 +742,9 @@ background: wheat;
     position: fixed;
     right: 8px;
     width: 388px;
-    background: wheat;
+    background: black;
     border-radius: 8px;
-    color:black;
+    color:white;
     top:70px;
     text-align: center;
     z-index: 48;
@@ -754,10 +754,13 @@ background: wheat;
     align-items: center;
 }
 
-
+.powiadomienia::-webkit-scrollbar {
+    width:10px;
+}
 
 .powiadomienie {
-    text-align:left;width:98%;min-height:48px;background:white;border-radius:8px;border:1px solid black;font-size:20px;color:black;
+    text-align:left;width:98%;min-height:48px;border-radius:8px;font-size:20px;color:white;
+    margin:28px 4px 8px 12px; 
 }
 .powiadomienie:hover {
     background:silver;
@@ -828,4 +831,24 @@ width: 68px;
 height: 68px;
 border:2px solid silver;
 margin-left:8px;
+}
+
+
+
+::-webkit-scrollbar-thumb {
+    background: #5600ff;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #929292;
+}
+
+::-webkit-scrollbar {
+    background-color: #000000;
+    width: 24px;
+}
+
+::-webkit-scrollbar-track {
+    border: 2px solid #008cff;
 }

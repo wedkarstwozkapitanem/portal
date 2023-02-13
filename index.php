@@ -14,7 +14,8 @@
 
 try {
     session_start();
-  //  session_regenerate_id($_SESSION['uzytkwonik_pixi_id']); //zmiana sesji dla bezbieczeństwa
+    if(isset($_SESSION['uzytkwonik_pixi_id'])) session_regenerate_id($_SESSION['uzytkwonik_pixi_id']);
+     //zmiana sesji dla bezbieczeństwa
 //kontrola bezpieczeństwa
 if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
     if( !isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'on') {
@@ -32,7 +33,7 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
             fwrite($plik, 'Atak hakerski przechwycenie adresu sesji ' . $_SERVER['REMOTE_ADDR']) . ' || \n';
             fclose($plik);
             echo "Atak hakerski karateka już na Ciebie czeka";
-            exit();
+            throw new Exception("Atak hakerski");
         }
     }
 
@@ -44,7 +45,7 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
           fwrite($plik, 'Nie prawidłowa metoda żądania POST '.$_SERVER['REMOTE_ADDR']).'|| \n';
           fclose($plik);
           echo "Nie prawidłowe żądanie";
-        exit();
+        throw new Exception("Nie prawidłowe żądanie");
     }
     if($_SERVER['SCRIPT_NAME'] !== '/index.php'){
         if (!file_exists('bledy.txt')) {
@@ -54,7 +55,7 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
           fwrite($plik, 'Skrypt nie ten || '.$_SERVER['REMOTE_ADDR']);
           fclose($plik);
           echo "Nie prawidłowe żądanie";
-        exit();
+          throw new Exception("Nie ten skrypt");
     }
 /*    if(!$_SERVER['HTTP_COOKIE']) {
         if (!file_exists('bledy.txt')) {
@@ -70,7 +71,7 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
 
 
 
-    include('bazadanych/polocz.php');
+    if(!include('bazadanych/polocz.php')) throw new Exception("Brak bazy");
     global $baza;
 
 

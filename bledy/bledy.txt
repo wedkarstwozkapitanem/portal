@@ -1,5 +1,0 @@
-Błąd Exception: Nie prawidłowy id in C:\xampp\htdocs\php\glowna\post.php:34
-Stack trace:
-#0 C:\xampp\htdocs\index.php(113): include()
-#1 C:\xampp\htdocs\index.php(149): sprawdzeniestrony('profil', 'php/glowna/post...')
-#2 {main}

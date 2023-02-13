@@ -30,9 +30,8 @@ try {
 
 
     //posty
-    if(!(int)$idposta = (int) mysqli_real_escape_string($baza, htmlspecialchars($id_2))) {
-        throw new Exception("Nie prawidłowy id");
-    }
+    if(!(int)$idposta = (int) mysqli_real_escape_string($baza, htmlspecialchars($id_2))) exit();
+    
     (int)$id = (int) $id;
     $zapytanie_post = "SELECT * FROM `posty` where `iduzytkownika` = '$id' AND `idp` = '$idposta' AND `usunieto` = 0";
     if(!$wynik_post = mysqli_query($baza, $zapytanie_post)) {
@@ -345,7 +344,7 @@ echo "<a href='' > Kliknij tutaj aby zobaczyć post </a>";
     exit();
 }
     ?>
-
+    <a href="/"><div style="color:blue;position:fixed;bottom:0px;">WSTECZ</div></a>
     <div style="display:none" id="dokladneinformacje"></div>
     <script src="/js/post.js" type="text/javascript"> </script>
 

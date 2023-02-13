@@ -67,7 +67,7 @@ try {
 
     $_SESSION['poprawnosc'] = $poprawnosc;
 
-    if(!mysqli_free_result($zapytanie)) throw new Exception("Brak danych");
+    if($zapytanie) mysqli_free_result($zapytanie);
     mysqli_close($baza);
 
     header('Location:/');
