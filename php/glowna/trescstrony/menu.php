@@ -15,9 +15,14 @@
         <ul>
             <li id="powiad">💌
 <?php
+try {
 global $baza;
 global $sesja;
 echo '<div id="licznikpowiadomien">'.mysqli_num_rows(mysqli_query($baza,"SELECT * FROM `powiadomienia` WHERE `id_odbiorcy` = '$sesja'")).'</div>';
+} catch (Exception $p) {
+    echo 0;
+}
+
 ?>
 
 

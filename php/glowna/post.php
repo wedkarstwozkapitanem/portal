@@ -5,8 +5,11 @@ try {
 
     if (!$_SESSION['uzytkwonik_pixi_id']) {
         session_start();
+        throw new Exception("Nie można utworzyć sesji");
     } else {
-        $sesja = (int) mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
+        if(!$sesja = (int) mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']))) {
+            throw new Exception("Sesji brak");
+        }
     }
 
     if (!$sesja) {
@@ -16,7 +19,7 @@ try {
 
     if (!$id) {
         include "bledy/nieznaleziono.php";
-        exit();
+        throw new Exception("Brak id");
     }
 
 
@@ -27,10 +30,14 @@ try {
 
 
     //posty
-    (int)$idposta = (int) mysqli_real_escape_string($baza, htmlspecialchars($id_2));
+    if(!(int)$idposta = (int) mysqli_real_escape_string($baza, htmlspecialchars($id_2))) {
+        throw new Exception("Nie prawidłowy id");
+    }
     (int)$id = (int) $id;
     $zapytanie_post = "SELECT * FROM `posty` where `iduzytkownika` = '$id' AND `idp` = '$idposta' AND `usunieto` = 0";
-    $wynik_post = mysqli_query($baza, $zapytanie_post);
+    if(!$wynik_post = mysqli_query($baza, $zapytanie_post)) {
+        throw new Exception ("Nie udało się wczytać posta");
+    }
 
     if (mysqli_num_rows($wynik_post) > 0) {
         while ($post = mysqli_fetch_assoc($wynik_post)) {
@@ -304,7 +311,9 @@ echo "<a href='' > Kliknij tutaj aby zobaczyć post </a>";
                     }
                 }
                 } else {
-                    include "bledy/nieznaleziono.php";
+                    if(!include "bledy/nieznaleziono.php") {
+                        throw new Exception("Błąd");
+                    }
                 }
 
 

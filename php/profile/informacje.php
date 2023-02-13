@@ -1,16 +1,18 @@
 <?php
-
+try {
     if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
-        exit();
+        throw new Exception("Nie prawidłowe żądanie informacje");
     }
 
-    include "php/polocz.php";
+    if(!include "php/polocz.php") {
+        throw new Exception("Nie udało się uzyskać dostępu do bazy danych");
+    }
 global $baza;
 
     if (!$_SESSION['uzytkwonik_pixi_id']) {
         session_start();
     } else {
-        $sesja = (int) mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
+        if(!$sesja = (int) mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']))) throw new Exception("Nie można utworzyć sesji");
     }
 
 
@@ -31,13 +33,7 @@ global $baza;
 <?php
         $id = mysqli_real_escape_string($baza, $id);
         (string) $sqluzytkownik = "SELECT * FROM `uzytkownicy` WHERE `id` = '$id' LIMIT 1";
-        try {
-            $zapytanieuzytkownik = mysqli_query($baza, $sqluzytkownik);
-        } catch (Exception $blod) {
-            echo "błąd";
-            header('Location:/');
-            exit();
-        }
+        if($zapytanieuzytkownik = mysqli_query($baza, $sqluzytkownik)) {
 
         
             if (mysqli_num_rows($zapytanieuzytkownik) > 0) {
@@ -143,6 +139,7 @@ global $baza;
 
                             }
                         }
+                    } else throw new Exception("Nie udało się połaczyć z bazą info...");
 
                    
         ?>
@@ -176,3 +173,24 @@ global $baza;
         color:black;
     }
 </style>
+<?php
+} catch (Exception $blod) {
+    if (!file_exists('bledy.txt')) {
+        fopen('bledy/bledy.txt', 'a');
+    }
+    $plik = fopen('bledy/bledy.txt', 'a');
+    fwrite($plik, 'Błąd ' . $blod);
+    fclose($plik);
+    exit();
+} catch (PDOException $blod) {
+    if (!file_exists('bledy.txt')) {
+        fopen('bledy/bledy.txt', 'a');
+    }
+    $plik = fopen('bledy/bledy.txt', 'a');
+    fwrite($plik, 'Błąd ' . $blod);
+    fclose($plik);
+    exit();
+}
+
+
+?>

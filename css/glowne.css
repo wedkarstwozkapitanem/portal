@@ -286,6 +286,7 @@ body {
     float: left;
     width: 50%;
     height: 68px;
+    overflow-x: auto;
 }
 
 #zdjecie {
@@ -782,6 +783,7 @@ border: 1px solid black;
 border-radius: 28px;
 left: 40px;
 min-width: 28px;
+z-index: 12;
 text-align: center;
 }
 

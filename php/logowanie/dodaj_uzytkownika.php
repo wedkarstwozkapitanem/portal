@@ -25,18 +25,17 @@ try {
                 if (strpos($imie, "$x") || strpos($nazwisko,"$x") || strpos($data_urodzenia,"$x") || strpos($email,"$x") || strpos($haslo,"$x") || strpos($haslo_powtorzone,"$x") || strpos($ip,"$x")) {
                     echo "niedozwoloneznaki";
                     echo $x;
-                    exit();
+                    throw new Exception("Nie dozwolone znaki");
                 }
             }
 
-            $zapytanie = mysqli_query($baza, "SELECT * FROM `hasla` WHERE `email` = '$email'"); //sprawdzenie czy nie istnieje taki sam email
-            if (mysqli_num_rows($zapytanie) <= 0) {
-
-                if ($haslo === $haslo_powtorzone) {
-                    if (count_chars($haslo) >= 4) {
+            if($zapytanie = mysqli_query($baza, "SELECT * FROM `hasla` WHERE `email` = '$email'")) { //sprawdzenie czy nie istnieje taki sam email
+            if ((int)mysqli_num_rows($zapytanie) === (int)0) {
+                if ((string)$haslo === (string)$haslo_powtorzone) {
+                    if ((int)count_chars($haslo) >= (int)4) {
                         try {
 
-                            $dodawanie_hasel = mysqli_query($baza, "INSERT INTO `hasla` (email,haslo,ip) VALUES ('$email','$haslo','$ip')");
+                            if($dodawanie_hasel = mysqli_query($baza, "INSERT INTO `hasla` (email,haslo,ip) VALUES ('$email','$haslo','$ip')")) {
                             (int) $id_profilu = mysqli_insert_id($baza);
                             $dodawanie_uzytkownika = mysqli_query($baza, "INSERT INTO `uzytkownicy` (id,imie,nazwisko,wiek,numertelefonu) VALUES ('$id_profilu','$imie','$nazwisko','$data_urodzenia','$numer_telefonu')");
                             $i = mysqli_real_escape_string($baza,htmlspecialchars(strtolower($imie)));
@@ -51,9 +50,13 @@ try {
                          //       mail($email,"Dziękujemy za rejestracje","Dziękujemy za rejestracje na naszym portalu");
                                 $_SESSION['ip'] = htmlspecialchars($_SERVER['REMOTE_ADDR']);
                             } else {
-                            mysqli_query($baza,"DELETE FROM `uzytkownicy` WHERE `id` = '$id_profilu");
-                            };
-
+                            if(!mysqli_query($baza,"DELETE FROM `uzytkownicy` WHERE `id` = '$id_profilu")) {
+                                throw new Exception("Wystąpił błąd przy tworzeniu folderu");
+                            }
+                            }
+                        } else {
+                            throw new Exception("Nie udało się dodać użytkowniak");
+                        }
                             
 
                             
@@ -97,9 +100,14 @@ try {
 
             mysqli_close($baza); //zamknij połoczenie
         } else {
-            echo 'Nie prawdiłowe dane!';
+            throw new Exception("Nie udało się połączyć z bazą");
         }
+    } else {
+        throw new Exception("Nie prawdiłowe dane");
     }
+} else {
+    throw new Exception("Nie prawidłowe żądanie");
+}
 } catch (Exception $blod) {
     if (!file_exists('bledy.txt')) {
       fopen('bledy/bledy.txt','a');

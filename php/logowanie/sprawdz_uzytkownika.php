@@ -25,7 +25,7 @@ try {
 
 
     
-    include("php/polocz.php");
+    if(!include("php/polocz.php")) throw new Exception("Nie udało sie uzyskać bazy");
     global $baza;
 
 
@@ -40,7 +40,7 @@ try {
         (string)$email =  mysqli_real_escape_string($baza,htmlspecialchars($_POST['email']));
         (string)$haslo =  mysqli_real_escape_string($baza,htmlspecialchars($_POST['haslo']));
 
-        $zapytanie = mysqli_query($baza, "SELECT * FROM hasla WHERE email = '$email' AND haslo = '$haslo'"); //sprawdzenie czy nie istnieje taki sam email
+        if($zapytanie = mysqli_query($baza, "SELECT * FROM hasla WHERE email = '$email' AND haslo = '$haslo'")) { //sprawdzenie czy nie istnieje taki sam email
 
 
         if (mysqli_num_rows($zapytanie) > 0) {
@@ -57,6 +57,9 @@ try {
             $poprawnosc = false;
             echo 'Nie prawidłowe dane';
         }
+    } else  throw new Exception("Nie udało się połączyć z bazą w celu sptawdzenia użytkowanika");
+    
+
     } else {
         $poprawnosc = false;
         echo 'Brak danych';
@@ -64,7 +67,7 @@ try {
 
     $_SESSION['poprawnosc'] = $poprawnosc;
 
-    mysqli_free_result($zapytanie);
+    if(!mysqli_free_result($zapytanie)) throw new Exception("Brak danych");
     mysqli_close($baza);
 
     header('Location:/');

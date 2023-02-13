@@ -16,11 +16,15 @@ try {
 </head>
 
 <body>
-    <?php include "trescstrony/menu.php" ?>
+    <?php if(!include "trescstrony/menu.php") {
+      throw new Exception("Nie można wczytać menu");
+    } ?>
     <div id="lewa_burta"></div>
     <main>
         <div id="glowna_tresc">
-            <?php include "trescstrony//formularz_dodaj_posta.php"; ?>
+            <?php if(!include "trescstrony//formularz_dodaj_posta.php") {
+              throw new Exception("Nie można wyświetlić formularza dodwania artykółów");
+            } ?>
             <div id="przeglodaj">
 
             </div>

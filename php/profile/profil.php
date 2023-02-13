@@ -1,17 +1,17 @@
 <?php
 try {
 
-    if ($_SERVER['REQUEST_METHOD'] !== 'GET') {
-        exit();
-    }
+    if($_SERVER['REQUEST_METHOD'] !== 'GET') throw new Exception("Nie prawidłowe żądanie profil");
 
-    include "php/polocz.php";
+    if(!include "php/polocz.php") {
+        throw new Exception("Nie udało się uzyksać dostępu do bazy danych");
+    }
     global $baza;
 
     if (!$_SESSION['uzytkwonik_pixi_id']) {
         session_start();
     } else {
-        $sesja = (int) mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
+        if(!$sesja = (int) mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']))) throw new Exception("Nie można utworzyć sesji");
     }
 
 
@@ -32,13 +32,10 @@ try {
     <?php
     $id = mysqli_real_escape_string($baza, $id);
     (string) $sqluzytkownik = "SELECT * FROM `uzytkownicy` WHERE `id` = '$id' LIMIT 1";
-    try {
-        $zapytanieuzytkownik = mysqli_query($baza, $sqluzytkownik);
-    } catch (Exception $blod) {
-        echo "błąd";
-        header('Location:/');
-        exit();
+    if(!$zapytanieuzytkownik = mysqli_query($baza, $sqluzytkownik)) {
+        throw new Exception("Nie można znależć użytkownika");
     }
+   
 
     try {
         if (mysqli_num_rows($zapytanieuzytkownik) > 0) {
@@ -59,9 +56,7 @@ try {
 
                 <body>
                     <?php
-                    if (!include "php/glowna/trescstrony/menu.php") {
-                        echo "Nie można wyświetlić menu";
-                    };
+                    if (!include "php/glowna/trescstrony/menu.php") throw new Exception("Nie da się wyświetlić menu");
                     ?>
 
 
@@ -107,7 +102,7 @@ try {
 
 
                                 $sqlczyznaj = "SELECT * FROM (SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja') as p where `iduzytkownika` = '$id' OR `iduzytkownik` = '$id' LIMIT 1";
-                                $czyznaj = mysqli_query($baza, $sqlczyznaj);
+                                if($czyznaj = mysqli_query($baza, $sqlczyznaj)) {
                                 if (mysqli_num_rows($czyznaj) > 0) {
                                     while ($czyznajomy = $czyznaj->fetch_assoc()) {
                                         if ($czyznajomy['czyprzyjeto'] == 1) {
@@ -123,7 +118,8 @@ try {
                                 } else {
                                     echo '<button onclick="dodajznajomego();" style="right:108px;" class="dodajznajomego" id="dodajznaj"> Dodaj do znajomych </button>';
                                 }
-                            }
+                            } else throw new Exception("Nie udało się sprawdzić znajomności");
+                        }
                             echo '<div class="profilwszystko">
         <div class="lewa_burta">
             <div class="lewa_burta_info">

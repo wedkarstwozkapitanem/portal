@@ -225,6 +225,7 @@ border-radius: 28px;
 left: 40px;
 min-width: 28px;
 text-align: center;
+z-index: 12;
 }
 h4 {
     font-size: 20px;
