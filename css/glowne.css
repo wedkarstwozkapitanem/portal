@@ -239,18 +239,19 @@ body {
     background: rgb(26, 26, 25);
     border-radius: 28px;
     box-shadow: 0 0 1px #ffffff;
+    padding-bottom: 12px;
 }
 
 .dodaj_posta input {
     width: 88%;
-    background: rgb(78, 71, 71);
+    background: rgb(78 71 71 / 0%);
     height: 60px;
     border-radius: 28px;
     color: rgb(255, 255, 255);
     outline: 0;
     font-size: 40px;
     margin: 12px;
-    box-shadow: 0 0 1px rgb(47, 47, 47);
+    border:0;
 }
 
 .dodaj_posta button {
@@ -262,7 +263,8 @@ body {
     margin: 10px;
     border: 0;
     font-size: 40px;
-    color: orangered;
+    color: wheat;
+    text-shadow: 0 0 3px black;
     border-radius: 28px;
     cursor: pointer;
     box-shadow: 0 0 2px green;
@@ -275,7 +277,7 @@ body {
 }
 
 #tresc_artykulu:focus {
-    box-shadow: 0 0 4px orange !important;
+    box-shadow: 0 0 4px wheat !important;
 }
 
 .publikacja {
@@ -285,7 +287,7 @@ body {
 #podglodfot {
     float: left;
     width: 50%;
-    height: 68px;
+    height: 80px;
     overflow-x: auto;
 }
 
@@ -752,14 +754,18 @@ background: wheat;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 0 4px silver;
 }
 
 .powiadomienia::-webkit-scrollbar {
     width:10px;
 }
+.powiadomienia h4 {
+    font-size: 40px;
+}
 
 .powiadomienie {
-    text-align:left;width:98%;min-height:48px;border-radius:8px;font-size:20px;color:white;
+    text-align:left;width:96%;min-height:48px;border-radius:8px;font-size:20px;color:white;
     margin:28px 4px 8px 12px; 
 }
 .powiadomienie:hover {
@@ -794,7 +800,7 @@ text-align: center;
 @media (max-device-width: 888px) {
     .powiadomienia {
         width: 98% !important;
-        right: 2px !important;
+        right: 4px !important;
     }
     .akcje_komentarz {
         left:0 !important;
@@ -829,8 +835,9 @@ color:wheat;
 #podglodfot img {
 width: 68px;
 height: 68px;
-border:2px solid silver;
+box-shadow: 0 0 4px black;
 margin-left:8px;
+border-radius: 20px;
 }
 
 
@@ -838,17 +845,21 @@ margin-left:8px;
 ::-webkit-scrollbar-thumb {
     background: #5600ff;
     cursor: pointer;
+    border-radius: 28px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #929292;
+    cursor: pointer;
 }
 
 ::-webkit-scrollbar {
     background-color: #000000;
     width: 24px;
+    border-radius: 28px;
 }
 
 ::-webkit-scrollbar-track {
-    border: 2px solid #008cff;
+    border: 0;
+    border-radius: 48px;
 }
