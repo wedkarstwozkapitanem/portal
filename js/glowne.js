@@ -289,7 +289,8 @@ function pokaz_kto_polubil(t) {
 
                         let tresc = document.createElement('div');
                         tresc.className = 'post_tresc';
-                        tresc.innerText = danenowypost.tresc;
+                        
+                        tresc.innerHTML = danenowypost.tresc;
                         let tresc_posta = nowy_postp.appendChild(tresc);
 
                           if(danenowypost.foty != "") {

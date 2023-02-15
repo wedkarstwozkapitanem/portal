@@ -358,7 +358,7 @@ try {
 
                                             </div>
                                             <div class="post_tresc">
-                                                <?php echo $post['tresc'] ?>
+                                                <?php echo nl2br($post['tresc']) ?>
                                                 <div class="post_zdjecia">
                                                     <?php
                                                     if ($post['foty'] != "" && isset($post['foty'])) {

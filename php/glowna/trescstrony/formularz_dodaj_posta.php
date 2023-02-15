@@ -28,9 +28,8 @@ try {
                         <option value="0">PRYWATNY</option>
                     </select>
                 </div>
-
-                <input type="text" placeholder="Napisz co słychać?" name="tresc_artykulu" id="tresc_artykulu" autocomplete="off">
-                <!--<textarea name="tresc_artykulu" id="tresc_artykulu">Napisz co słychać?</textarea>-->
+                <textarea type="text" placeholder="Napisz co słychać?" name="tresc_artykulu" id="tresc_artykulu" autocomplete="off"></textarea>
+                <!--<input type="text" placeholder="Napisz co słychać?" name="tresc_artykulu" id="tresc_artykulu" autocomplete="off"> -->
                 <div class="publikacja">
                     <div style="float:left;">
                         <label>

@@ -37,7 +37,7 @@ try {
                       $id_tresci = (int) mysqli_insert_id($baza);
                       $typ = (int)1;
 
-
+                      if ((int)$czypubliczny === (int)1) {
                       $sqlczyznaj = "SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja'";
                       $czyznaj = mysqli_query($baza, $sqlczyznaj);
                       if (mysqli_num_rows($czyznaj) > 0) {
@@ -48,6 +48,7 @@ try {
                           }
                         }
                       }
+                    }
                       $id_znajomego = (int)$sesja;
                       include 'php/powiadomienia/dodajpowiadomienie.php';
                       echo 'Dodano';
@@ -75,9 +76,8 @@ try {
               $id_tresci = (int) mysqli_insert_id($baza);
               $typ = (int)1;
 
-
-              $sqlczyznaj = "SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja'";
-              if ($czypubliczny === 1) {
+              if ((int)$czypubliczny === (int)1) {
+                $sqlczyznaj = "SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja'";
                 if ($czyznaj = mysqli_query($baza, $sqlczyznaj)) {
                   if (mysqli_num_rows($czyznaj) > 0) {
                     while ($czyznajomy = $czyznaj->fetch_assoc()) {
@@ -91,18 +91,18 @@ try {
                   }
                 }
               }
-            $id_znajomego = (int)$sesja;
-            if (!include 'php/powiadomienia/dodajpowiadomienie.php') {
-              throw new Exception("Nie udało wysłać powiadomień");
+              $id_znajomego = (int)$sesja;
+              if (!include 'php/powiadomienia/dodajpowiadomienie.php') {
+                throw new Exception("Nie udało wysłać powiadomień");
+              }
+              echo 'Dodano';
+            } else {
+              echo 'Błąd';
+              throw new Exception("Wystąpił błąd podczas dodawania");
             }
-            echo 'Dodano';
-          } else {
-            echo 'Błąd';
-            throw new Exception("Wystąpił błąd podczas dodawania");
-          }
-        } else throw new Exception("Nie udało się dodać posta do bazy");
-      } else echo "Pusta tresc";
-    }
+          } else throw new Exception("Nie udało się dodać posta do bazy");
+        } else echo "Pusta tresc";
+      }
 
 
       if (!mysqli_close($baza)) {

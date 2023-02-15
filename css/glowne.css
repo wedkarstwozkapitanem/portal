@@ -245,13 +245,17 @@ body {
 .dodaj_posta textarea,.dodaj_posta input {
     width: 88%;
     background: rgb(78 71 71 / 0%);
-    height: 60px;
+    min-height: 60px;
     border-radius: 28px;
     color: rgb(255, 255, 255);
     outline: 0;
     font-size: 40px;
     margin: 12px;
     border:0;
+}
+
+.dodaj_posta textarea::-webkit-scrollbar {
+    width: 8px;
 }
 
 .dodaj_posta button {
@@ -374,9 +378,9 @@ article {
 
 .post_imie {
     left: 10px;
-    text-shadow: 0 0 4px rgb(0, 0, 255);
+    text-shadow: 0 0 1px black;
     font-size: 28px;
-    color: wheat;
+    color: white;
 }
 
 .post_data {
@@ -398,7 +402,7 @@ article {
     margin: 20px;
     text-align: center;
     font-size: 28px;
-    text-shadow: 0 0 4px rgb(51, 0, 255);
+    text-shadow: 0 0 1px black;
 }
 
 .post_zdjecia {

@@ -119,7 +119,10 @@ try {
 
                                             </div>
                                             <div class="post_tresc">
-                                                <?php echo $post['tresc'] ?>
+                                                <?php
+                                                $tresc  = nl2br($post['tresc']); 
+                                                echo $tresc;
+                                                ?>
                                                 <div class="post_zdjecia">
                                                     <?php
                                                     if ($post['foty'] != "" && isset($post['foty'])) {
