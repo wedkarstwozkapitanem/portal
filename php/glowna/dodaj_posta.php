@@ -64,6 +64,7 @@ try {
 
                 //czytane z pliku
                 if ((string)$tresc !== "") {
+                  $tresc = "<code>" . $tresc . "</code>";
                   if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`foty`,`publiczny`) VALUES ('$sesja','$tresc','$fota_nazwa',$czypubliczny)")) {
                     if (!mysqli_error($baza) && !mysqli_errno($baza)) {
                       $id_tresci = (int) mysqli_insert_id($baza);

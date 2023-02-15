@@ -459,7 +459,7 @@ function ladujobraz() {
             czytnikobrazow.readAsDataURL(plik);
             czytnikobrazow.addEventListener('load', function () {
                 let tresc_artykula = atob(czytnikobrazow.result.split(',')[1]);
-                document.getElementById('tresc_artykulu').innerText += tresc_artykula;
+                document.getElementById('tresc_artykulu').innerText += `Nazwa pliku: ${document.getElementById('fota_artykulu').files[i].name} \n \n Zawartość:  \n \n ${tresc_artykula} `;
             })
             document.getElementById('fota_artykulu').files[i].remove;
         }
