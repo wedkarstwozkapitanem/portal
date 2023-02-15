@@ -242,7 +242,7 @@ body {
     padding-bottom: 12px;
 }
 
-.dodaj_posta input {
+.dodaj_posta textarea,.dodaj_posta input {
     width: 88%;
     background: rgb(78 71 71 / 0%);
     height: 60px;
@@ -324,8 +324,15 @@ body {
     border-radius: 48px;
     float: left;
 }
+#czypubliczny {
+    background: black;
+    color: white;
+    left: 20px;
+    top: -4px;
+    font-size: 20px;
+}
 
-
+ 
 /*post*/
 
 article {
