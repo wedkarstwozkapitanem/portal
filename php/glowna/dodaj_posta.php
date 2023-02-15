@@ -1,6 +1,6 @@
 <?php
 
-echo $_POST['czypubliczny'];
+
 try {
   if (!include("php/polocz.php")) {
     throw new Exception("Brak danych połączenia bazy");
@@ -61,10 +61,13 @@ try {
                   echo "Załoczony plik jest za duży";
                 }
               } else {
-
+try {
                 //czytane z pliku
                 if ((string)$tresc !== "") {
-                  $tresc = "<code>" . $tresc . "</code>";
+                  $tresc = str_replace("[/kod/]",'<div class=kod_skrypt_posta><code>',$tresc);
+                  $tresc = str_replace("[/kodkoniec/]","</code></div>",$tresc);
+                  //$tresc = mysqli_real_escape_string($baza,$tresc);
+                
                   if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`foty`,`publiczny`) VALUES ('$sesja','$tresc','$fota_nazwa',$czypubliczny)")) {
                     if (!mysqli_error($baza) && !mysqli_errno($baza)) {
                       $id_tresci = (int) mysqli_insert_id($baza);
@@ -96,6 +99,9 @@ try {
                     }
                   } else throw new Exception("Nie udało się dodać posta do bazy");
                 } else echo "Pusta tresc";
+              } catch (Exception $e) {
+                echo $e;
+                      }
 
                 //       echo "Nie prawidłowy plik";
               }
@@ -105,7 +111,9 @@ try {
           } else {
             throw new Exception("Nie można przesłać pliku");
           }
+          
         }
+
       } else {
         if ((string)$tresc !== "") {
           if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`foty`,`publiczny`) VALUES ('$sesja','$tresc','$fota_nazwa',$czypubliczny)")) {
