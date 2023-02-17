@@ -96,7 +96,11 @@
 
 
         mysqli_escape_string($baza, $id);
+        if((int)$sesja !== (int)$id) {
+            $sqlpostfoty = "SELECT idp,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' AND `posty`.`publiczny` = 1 ORDER BY idp DESC";
+        } else {
         $sqlpostfoty = "SELECT idp,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' ORDER BY idp DESC";
+        }
         if (!$zapytaniepostfoty = mysqli_query($baza, $sqlpostfoty)) {
             if (!file_exists('bledy.txt')) {
                 fopen('bledy/bledy.txt', 'w');

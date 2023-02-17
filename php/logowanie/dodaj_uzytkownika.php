@@ -32,7 +32,7 @@ try {
             if($zapytanie = mysqli_query($baza, "SELECT * FROM `hasla` WHERE `email` = '$email'")) { //sprawdzenie czy nie istnieje taki sam email
             if ((int)mysqli_num_rows($zapytanie) === (int)0) {
                 if ((string)$haslo === (string)$haslo_powtorzone) {
-                    if ((int)count_chars($haslo) >= (int)4) {
+                    if ((int)strlen($haslo) >= (int)4) {
                         try {
 
                             if($dodawanie_hasel = mysqli_query($baza, "INSERT INTO `hasla` (email,haslo,ip) VALUES ('$email','$haslo','$ip')")) {

@@ -23,6 +23,7 @@ try {
 
         $zdjecie = $_FILES['fota_artykulu']['tmp_name'];
         for ((int) $i = 0; $i < (int)count($zdjecie); $i++) {
+         /**/  echo $_FILES['fota_artykulu']['type'][$i];
           if (is_uploaded_file($_FILES['fota_artykulu']['tmp_name'][$i])) {
             if ((int)htmlspecialchars($_FILES['fota_artykulu']['error'][$i]) === (int)0) {
               if ((string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpeg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/png' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/gif') {
@@ -60,7 +61,53 @@ try {
                 } else {
                   echo "Załoczony plik jest za duży";
                 }
-              } else {
+              } else if($_FILES['fota_artykulu']['type'][$i]=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+              {
+
+echo "excell";
+
+                if ((int)htmlspecialchars($_FILES['fota_artykulu']['size'][$i]) <= (int)5000000) {
+
+                  (string) $fota_nazwap = mysqli_real_escape_string($baza, htmlspecialchars(uniqid() . '' . trim(htmlspecialchars(basename($_FILES['fota_artykulu']['name'][$i])))));
+                  move_uploaded_file(htmlspecialchars($_FILES['fota_artykulu']['tmp_name'][$i]), "foty/" . $mojfolder . "/posty/" . $fota_nazwap);
+
+                  (string)$tresc = $tresc.'<div><a href="foty/'.$mojfolder.'/posty/'.$fota_nazwap.'" >Plik excela: '.(string)htmlspecialchars($_FILES['fota_artykulu']['name'][$i]).'</a></div>';
+
+                  if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`publiczny`) VALUES ('$sesja','$tresc','$czypubliczny')")) {
+                    if (!mysqli_error($baza) && !mysqli_errno($baza)) {
+
+                      $id_tresci = (int) mysqli_insert_id($baza);
+                      $typ = (int)1;
+
+                      if ((int)$czypubliczny === (int)1) {
+                        $sqlczyznaj = "SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja'";
+                        $czyznaj = mysqli_query($baza, $sqlczyznaj);
+                        if (mysqli_num_rows($czyznaj) > 0) {
+                          while ($czyznajomy = $czyznaj->fetch_assoc()) {
+                            if ($czyznajomy['czyprzyjeto'] == 1) {
+                              $czyznajomy['iduzytkownika'] == $sesja ?  $id_znajomego = $czyznajomy['iduzytkownik'] : $id_znajomego = $czyznajomy['iduzytkownika'];
+                              if (!include 'php/powiadomienia/dodajpowiadomienie.php') throw new Exception("Nie udało się wysłać");
+                            }
+                          }
+                        }
+                      }
+                      $id_znajomego = (int)$sesja;
+                      include 'php/powiadomienia/dodajpowiadomienie.php';
+                      echo 'Dodano';
+                    } else {
+                      echo 'Błąd';
+                    }
+                  }
+                } else {
+                  echo "Załoczony plik jest za duży";
+                }
+
+
+
+
+
+              }
+              else {
 try {
                 //czytane z pliku
                 if ((string)$tresc !== "") {

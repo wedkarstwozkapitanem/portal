@@ -453,13 +453,17 @@ function ladujobraz() {
             czytnikobrazow.addEventListener('load', function () {
                 document.getElementById('podglodfot').innerHTML += `<img src='${czytnikobrazow.result}' alt="podglod foty" />`;
             });
-        } else {
+        } else if  (document.getElementById('fota_artykulu').files[i].type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+            document.getElementById('podglodfot').innerHTML += "Plik excala";  
+        }
+        
+        else {
             let plik = document.getElementById('fota_artykulu').files[i];
             let czytnikobrazow = new FileReader();
             czytnikobrazow.readAsDataURL(plik);
             czytnikobrazow.addEventListener('load', function () {
                 let tresc_artykula = atob(czytnikobrazow.result.split(',')[1]);
-                document.getElementById('tresc_artykulu').innerHTML += ` Nazwa pliku: ${document.getElementById('fota_artykulu').files[i].name} \n \n Zawartość:  \n \n [/kod/] ${tresc_artykula} [/kodkoniec/] `;
+                document.getElementById('tresc_artykulu').innerHTML += `Nazwa pliku: ${document.getElementById('fota_artykulu').files[i].name}  [/kod/] ${tresc_artykula} [/kodkoniec/] \n `;
             })
             document.getElementById('fota_artykulu').files[i].remove;
         }

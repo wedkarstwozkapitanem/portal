@@ -1,9 +1,9 @@
 <?php
 try {
 
-    if($_SERVER['REQUEST_METHOD'] !== 'GET') throw new Exception("Nie prawidłowe żądanie profil");
+    if ($_SERVER['REQUEST_METHOD'] !== 'GET') throw new Exception("Nie prawidłowe żądanie profil");
 
-    if(!include "php/polocz.php") {
+    if (!include "php/polocz.php") {
         throw new Exception("Nie udało się uzyksać dostępu do bazy danych");
     }
     global $baza;
@@ -11,7 +11,7 @@ try {
     if (!$_SESSION['uzytkwonik_pixi_id']) {
         session_start();
     } else {
-        if(!$sesja = (int) mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']))) throw new Exception("Nie można utworzyć sesji");
+        if (!$sesja = (int) mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']))) throw new Exception("Nie można utworzyć sesji");
     }
 
 
@@ -32,10 +32,10 @@ try {
     <?php
     $id = mysqli_real_escape_string($baza, $id);
     (string) $sqluzytkownik = "SELECT * FROM `uzytkownicy` WHERE `id` = '$id' LIMIT 1";
-    if(!$zapytanieuzytkownik = mysqli_query($baza, $sqluzytkownik)) {
+    if (!$zapytanieuzytkownik = mysqli_query($baza, $sqluzytkownik)) {
         throw new Exception("Nie można znależć użytkownika");
     }
-   
+
 
     try {
         if (mysqli_num_rows($zapytanieuzytkownik) > 0) {
@@ -102,24 +102,24 @@ try {
 
 
                                 $sqlczyznaj = "SELECT * FROM (SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja') as p where `iduzytkownika` = '$id' OR `iduzytkownik` = '$id' LIMIT 1";
-                                if($czyznaj = mysqli_query($baza, $sqlczyznaj)) {
-                                if (mysqli_num_rows($czyznaj) > 0) {
-                                    while ($czyznajomy = $czyznaj->fetch_assoc()) {
-                                        if ($czyznajomy['czyprzyjeto'] == 1) {
-                                            echo '<button onclick="dodajznajomego()" style="right:108px;background:white !important;color:blue !important;" class="dodajznajomego" id="dodajznaj" > Znajomi </button>';
-                                        } else {
-                                            if ($czyznajomy['iduzytkownika'] == $sesja) {
-                                                echo '<button onclick="dodajznajomego();" style="right:108px;background:silver !important;color:blue !important;" class="dodajznajomego" id="dodajznaj" > Zaproszenie wysłane </button>';
+                                if ($czyznaj = mysqli_query($baza, $sqlczyznaj)) {
+                                    if (mysqli_num_rows($czyznaj) > 0) {
+                                        while ($czyznajomy = $czyznaj->fetch_assoc()) {
+                                            if ($czyznajomy['czyprzyjeto'] == 1) {
+                                                echo '<button onclick="dodajznajomego()" style="right:108px;background:white !important;color:blue !important;" class="dodajznajomego" id="dodajznaj" > Znajomi </button>';
                                             } else {
-                                                echo '<button onclick="dodajznajomego();" style="right:108px;background:yellow !important;" class="dodajznajomego" id="dodajznaj" > Przyjmij zaproszenie </button>';
+                                                if ($czyznajomy['iduzytkownika'] == $sesja) {
+                                                    echo '<button onclick="dodajznajomego();" style="right:108px;background:silver !important;color:blue !important;" class="dodajznajomego" id="dodajznaj" > Zaproszenie wysłane </button>';
+                                                } else {
+                                                    echo '<button onclick="dodajznajomego();" style="right:108px;background:yellow !important;" class="dodajznajomego" id="dodajznaj" > Przyjmij zaproszenie </button>';
+                                                }
                                             }
                                         }
+                                    } else {
+                                        echo '<button onclick="dodajznajomego();" style="right:108px;" class="dodajznajomego" id="dodajznaj"> Dodaj do znajomych </button>';
                                     }
-                                } else {
-                                    echo '<button onclick="dodajznajomego();" style="right:108px;" class="dodajznajomego" id="dodajznaj"> Dodaj do znajomych </button>';
-                                }
-                            } else throw new Exception("Nie udało się sprawdzić znajomności");
-                        }
+                                } else throw new Exception("Nie udało się sprawdzić znajomności");
+                            }
                             echo '<div class="profilwszystko">
         <div class="lewa_burta">
             <div class="lewa_burta_info">
@@ -209,7 +209,11 @@ try {
                             echo '<div class="lewa_burta_info"><h2 style="width: 44%;float: left;">Zdjęcia:</h2><a href="/profil/' . $uzytkownik['id'] . '/zdjecia" style="position:relative;top:28px;margin-left:8px;">Przejdz do wszystkich zdjęć</a><div style="clear:both"></div><div class="zdjecia_profilu">';
                             //posty
                             mysqli_escape_string($baza, $id);
+                            if((int)$sesja !== (int)$uzytkownik['id']) {
+                                $sqlpostfoty = "SELECT idp,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' AND `posty`.`publiczny` = 1 ORDER BY idp DESC LIMIT 9";
+                            } else {
                             $sqlpostfoty = "SELECT idp,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' ORDER BY idp DESC LIMIT 9";
+                            }
                             if (!$zapytaniepostfoty = mysqli_query($baza, $sqlpostfoty)) {
                                 if (!file_exists('bledy.txt')) {
                                     fopen('bledy/bledy.txt', 'w');
@@ -311,7 +315,11 @@ try {
                         }
 
 
-                        $zapytanie_post = "SELECT * FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 ORDER BY `idp` DESC";
+                        if ((int)$sesja !== (int)$id) {
+                            $zapytanie_post = "SELECT * FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND `publiczny` = 1 ORDER BY `idp` DESC";
+                        } else {
+                            $zapytanie_post = "SELECT * FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 ORDER BY `idp` DESC";
+                        }
                         $wynik_post = mysqli_query($baza, $zapytanie_post);
 
                         if (mysqli_num_rows($wynik_post) > 0) {
@@ -473,7 +481,7 @@ try {
                 ?>
                         </div>
 
-                      
+
                         <div class="dodajPosta" style="display:none;">
                             <div class="dodawanie_postow">
                                 <?php
