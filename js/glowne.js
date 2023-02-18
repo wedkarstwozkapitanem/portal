@@ -58,15 +58,23 @@ function polocz(akcja, wyslij, odbierz) {
     let poloczenie = new XMLHttpRequest();
     poloczenie.open('POST', 'centrumdowodzenia.php', true);
     poloczenie.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+
+    poloczenie.onprogress = (postep) => {
+        if (odbierz) {
+            document.querySelector(`${odbierz}`).innerHTML = `<progress value=${poloczenie.loaded} max=${poloczenie.total}></progress>`;
+        }
+    };
+
     poloczenie.onreadystatechange = () => {
         if (poloczenie.readyState === 4 && poloczenie.status === 200) {
             if (odbierz) {
                 document.querySelector(`${odbierz}`).innerHTML = poloczenie.response;
             } else console.log(poloczenie.response);
-        } else {
-            console.log('ładowanie');
         }
     }
+    
+
     poloczenie.send(`ppp=${akcja}&tresc=${wyslij}`);
 }
 
@@ -226,8 +234,7 @@ function pokaz_kto_polubil(t) {
 
 
 
-
-
+let wysokoscposta = document.querySelector('.dodaj_posta').clientHeight;
 
 
 
@@ -236,15 +243,30 @@ function wczytywanie_postow() {
     let poloczenie = new XMLHttpRequest();
     poloczenie.open('POST', 'centrumdowodzenia.php', true);
     poloczenie.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    poloczenie.onprogress = (postep) => {
+            if(postep.lengthComputable) {
+            document.querySelector('#przeglodaj').innerHTML += `<progress style="width:100%;height:200px;" id="postepppost" class="postep" value="${poloczenie.loaded}px" max="${poloczenie.total}px"></progress>`;
+            }
+        };
+
+    poloczenie.addEventListener('load',() => {
+        if(document.getElementById("postepppost")) {
+        document.getElementById("postepppost").remove();
+        }
+    });
+
     poloczenie.onreadystatechange = () => {
         if (poloczenie.readyState === 4 && poloczenie.status === 200) {
+            
 
-            //   console.log(poloczenie.response);
+            console.log(poloczenie.response);
             let danenowyposta = JSON.parse(poloczenie.response);
             let danenowypost;
 
             console.log(danenowyposta);
 
+          
 
             for (let i = 0; i < danenowyposta.length; i++) {
 
@@ -365,14 +387,24 @@ function wczytywanie_postow() {
               <div data-postid-pokakom="${danenowypost.idp}" class="komentarze_post wysrodkuj" style="display: none;">
 `;
 
+       
             }
 
-
+            
         }
     }
     poloczenie.send(`ppp=posty`);
 }
 
+
+
+
+window.addEventListener('scroll', () => {
+if(window.scrollY > wysokoscposta) {
+wczytywanie_postow();
+wysokoscposta += document.querySelectorAll('#przeglodaj article')[document.querySelectorAll('.post').length-1].clientHeight + 48;
+}
+})
 
 
 

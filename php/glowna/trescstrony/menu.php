@@ -1,6 +1,6 @@
 
 <nav id="menu">
-   <a href="/" style="color:orange;"><div class="tytul">P</div></a>
+   <a href="/" style="color:orange;"><div class="tytul"><img src="/foty/uzytkownik.gif" alt="logo"/></div></a>
 
     <div id="wyszukiwarka" class="wysrodkuj">
         <form action="" method="POST" id="szukaj_na_forum">
