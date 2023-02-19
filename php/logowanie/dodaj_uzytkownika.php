@@ -47,6 +47,13 @@ try {
                                 mysqli_query($baza, "UPDATE `uzytkownicy` SET `folder` = '$folder_profilu' WHERE `id` = '$id_profilu'");
                                 $_SESSION['uzytkwonik_pixi_id'] = mysqli_real_escape_string($baza,htmlspecialchars("$id_profilu"));
                                 echo 'dodano';
+
+                                $id_tresci = "";
+                                $typ = (int)6;                  
+                                $id_znajomego = (int)mysqli_insert_id($baza);
+                                if (!include 'php/powiadomienia/dodajpowiadomienie.php') {
+                                  throw new Exception("Nie udało wysłać powiadomień");
+                                }
                          //       mail($email,"Dziękujemy za rejestracje","Dziękujemy za rejestracje na naszym portalu");
                                 $_SESSION['ip'] = htmlspecialchars($_SERVER['REMOTE_ADDR']);
                             } else {

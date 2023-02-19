@@ -1,6 +1,6 @@
 
 <nav id="menu">
-   <a href="/" style="color:orange;"><div class="tytul"><img src="/foty/uzytkownik.gif" alt="logo"/></div></a>
+   <a href="/" style="color:orange;"><div class="tytul"><img src="/zdjecia/logo.png" alt="logo"/></div></a>
 
     <div id="wyszukiwarka" class="wysrodkuj">
         <form action="" method="POST" id="szukaj_na_forum">
@@ -18,7 +18,7 @@
 try {
 global $baza;
 global $sesja;
-echo '<div id="licznikpowiadomien">'.mysqli_num_rows(mysqli_query($baza,"SELECT * FROM `powiadomienia` WHERE `id_odbiorcy` = '$sesja'")).'</div>';
+echo '<div id="licznikpowiadomien">'.mysqli_num_rows(mysqli_query($baza,"SELECT * FROM `powiadomienia` WHERE `id_odbiorcy` = '$sesja' AND `powiadomienia`.`wyswietlono` = 0")).'</div>';
 } catch (Exception $p) {
     echo 0;
 }
@@ -39,3 +39,22 @@ echo '<div id="licznikpowiadomien">'.mysqli_num_rows(mysqli_query($baza,"SELECT 
     <div id="powiadomienia">
     
 </aside>
+
+
+
+<script>
+/*    const body = document.querySelector('body');
+
+    let menu = document.createElement('div');
+    menu.id = 'menu';
+    let meni = body.appendChild(menu);
+
+    let tytul = document.createElement('div');
+    tytul.className = 'tytul';
+    tytul.addEventListener('click', () => {
+        window.location.href = '/';
+    });
+    tytul.innerHTML = '<img src="/zdjecia/logo.png" alt="logo"/>';
+    meni.appendChild(tytul);
+    */
+</script>

@@ -14,30 +14,39 @@ try {
                         $informacjeonadawcy = mysqli_fetch_assoc(mysqli_query($baza, "SELECT * FROM `uzytkownicy` where `id`='$id_nadawcy'"));
                         if ($id_nadawcy !== $sesja) {
                             echo '
-<a href="/profil/' . $id_nadawcy . '/post/' . $powiadomienie['id_tresci'] . '">
-<div class="powiadomienie"><div class="powiadomienie_uzytkownik">';
-if((string)$informacjeonadawcy['profilowe'] !== (string)"") {
-echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>'; 
-} else {
-    echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>'; 
-}
-echo '</div><div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . '</div> <div>Dodał posta</div>
+<a href="/profil/' . $id_nadawcy . '/post/' . $powiadomienie['id_tresci'] . '">';
+                            if ((bool)$powiadomienie['wyswietlono'] === (bool)0) {
+                                echo '<div class="powiadomienie niewys">';
+                            } else {
+                                echo '<div class="powiadomienie">';
+                            }
+                            echo '<div class="powiadomienie_uzytkownik">';
+                            if ((string)$informacjeonadawcy['profilowe'] !== (string)"") {
+                                echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
+                            } else {
+                                echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>';
+                            }
+                            echo '</div><div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . '</div> <div>Dodał posta</div>
 <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
 </div>
 </a>
           ';
                         } else {
                             echo '
-                <a href="/profil/' . $id_nadawcy . '/post/' . $powiadomienie['id_tresci'] . '">
-                <div  class="powiadomienie">
-                <div class="powiadomienie_uzytkownik">';
-                if((string)$informacjeonadawcy['profilowe'] !== (string)"") {
-              echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
-                        } else {
-                            echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>'; 
-                        }
-                        
-                echo '</div> Twój post został opublikowany
+                <a href="/profil/' . $id_nadawcy . '/post/' . $powiadomienie['id_tresci'] . '">';
+                            if ((bool)$powiadomienie['wyswietlono'] === (bool)0) {
+                                echo '<div class="powiadomienie niewys">';
+                            } else {
+                                echo '<div class="powiadomienie">';
+                            }
+                            echo '              <div class="powiadomienie_uzytkownik">';
+                            if ((string)$informacjeonadawcy['profilowe'] !== (string)"") {
+                                echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
+                            } else {
+                                echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>';
+                            }
+
+                            echo '</div> Twój post został opublikowany
                 <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
                 </div>
                 </a>
@@ -48,14 +57,20 @@ echo '</div><div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['na
                         $informacjeonadawcy = mysqli_fetch_assoc(mysqli_query($baza, "SELECT * FROM `uzytkownicy` where `id`='$id_nadawcy'"));
                         echo '
   <a href="/profil/' . $powiadomienie['id_odbiorcy'] . '/post/' . $powiadomienie['id_tresci'] . '">
-  <div class="powiadomienie">
+  ';
+                        if ((bool)$powiadomienie['wyswietlono'] === (bool)0) {
+                            echo '<div class="powiadomienie niewys">';
+                        } else {
+                            echo '<div class="powiadomienie">';
+                        }
+                        echo '
   <div class="powiadomienie_uzytkownik">';
-  if ((string)$informacjeonadawcy['profilowe'] !== (string)"") {
-  echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
-  } else {
-    echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>';
-  }
-  echo '</div>
+                        if ((string)$informacjeonadawcy['profilowe'] !== (string)"") {
+                            echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
+                        } else {
+                            echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>';
+                        }
+                        echo '</div>
   <div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . '</div> <div>Dodał komentarz</div>
   <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
   </div>
@@ -66,17 +81,23 @@ echo '</div><div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['na
                         $informacjeonadawcy = mysqli_fetch_assoc(mysqli_query($baza, "SELECT * FROM `uzytkownicy` where `id`='$id_nadawcy'"));
                         echo '
             <a href="/profil/' . $powiadomienie['id_odbiorcy'] . '/post/' . $powiadomienie['id_tresci'] . '">
-            <div class="powiadomienie">
+            ';
+                        if ((bool)$powiadomienie['wyswietlono'] === (bool)0) {
+                            echo '<div class="powiadomienie niewys">';
+                        } else {
+                            echo '<div class="powiadomienie">';
+                        }
+                        echo '
             <div class="powiadomienie_uzytkownik">';
 
-            if ((string)$informacjeonadawcy['profilowe'] !== (string)"") {
-            echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
-            } else {
-                echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>';
-            }
+                        if ((string)$informacjeonadawcy['profilowe'] !== (string)"") {
+                            echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
+                        } else {
+                            echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>';
+                        }
 
 
-            echo '</div>
+                        echo '</div>
             <div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . '</div> <div>Polubił twój post</div>
             <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
             </div>
@@ -87,14 +108,20 @@ echo '</div><div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['na
                         $informacjeonadawcy = mysqli_fetch_assoc(mysqli_query($baza, "SELECT * FROM `uzytkownicy` where `id`='$id_nadawcy'"));
                         echo '
             <a href="/profil/' . $powiadomienie['id_uzytkownika'] . '">
-            <div class="powiadomienie">
+            ';
+                        if ((bool)$powiadomienie['wyswietlono'] === (bool)0) {
+                            echo '<div class="powiadomienie niewys">';
+                        } else {
+                            echo '<div class="powiadomienie">';
+                        }
+                        echo '
             <div class="powiadomienie_uzytkownik">';
-            if((string)$informacjeonadawcy['profilowe'] !== (string)"") {
-            echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
-            } else {
-            echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>';
-            }
-            echo '</div>
+                        if ((string)$informacjeonadawcy['profilowe'] !== (string)"") {
+                            echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
+                        } else {
+                            echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>';
+                        }
+                        echo '</div>
             <div style="text-align:center;">' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . ' wysłał Ci zaproszenie do grona znajomych</div>
             <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
             </div>
@@ -105,14 +132,20 @@ echo '</div><div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['na
                         $informacjeonadawcy = mysqli_fetch_assoc(mysqli_query($baza, "SELECT * FROM `uzytkownicy` where `id`='$id_nadawcy'"));
                         echo '
             <a href="/profil/' . $powiadomienie['id_uzytkownika'] . '">
-            <div class="powiadomienie">
+            ';
+                        if ((bool)$powiadomienie['wyswietlono'] === (bool)0) {
+                            echo '<div class="powiadomienie niewys">';
+                        } else {
+                            echo '<div class="powiadomienie">';
+                        }
+                        echo '
             <div class="powiadomienie_uzytkownik">';
-            if((string)$informacjeonadawcy['profilowe'] !== (string)"") {
-          echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
-            } else {
-          echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>';
-            }
-          echo '</div>
+                        if ((string)$informacjeonadawcy['profilowe'] !== (string)"") {
+                            echo '<img width="100%" height="100%" src="/foty/' . $informacjeonadawcy['folder'] . '/profilowe/' . $informacjeonadawcy['profilowe'] . '" alt="profilowe"/>';
+                        } else {
+                            echo '<img width="100%" height="100%" src="/foty/uzytkownik.gif" alt="profilowe"/>';
+                        }
+                        echo '</div>
             <div style="text-align:center;">' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['nazwisko'] . ' przyjął/a twoje zaproszenie do znajomych</div>
             <div class="powiadomienie_data"><time>' . $powiadomienie['datadodania'] . '</time></div>
             </div>
@@ -120,6 +153,7 @@ echo '</div><div>' . $informacjeonadawcy['imie'] . ' ' . $informacjeonadawcy['na
                       ';
 
                         break;
+                        
                 }
             }
         } else {

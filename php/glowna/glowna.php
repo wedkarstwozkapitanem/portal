@@ -25,10 +25,7 @@ try {
             <?php if(!include "trescstrony//formularz_dodaj_posta.php") {
               throw new Exception("Nie można wyświetlić formularza dodwania artykółów");
             } ?>
-            <div id="przeglodaj">
-
-            </div>
-            <div class="wszyatkonadzis">To już wszystko na dziś</div>
+            <div id="przeglodaj"></div>
         </div>
 
     </main>
@@ -56,3 +53,11 @@ catch (Exception $blod) {
     exit();
   }
   ?>
+
+
+<script>
+const body = document.querySelector('body');
+
+
+
+</script>

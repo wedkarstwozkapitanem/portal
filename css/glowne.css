@@ -224,7 +224,7 @@ body {
 #glowna_tresc {
     width: 50%;
     min-height: 268px;
-    margin: 108px auto 88px auto;
+    margin: 108px auto 488px auto;
     z-index: 4;
     overflow-y: auto;
     overflow-x: hidden;
@@ -354,6 +354,8 @@ article {
     box-shadow: 0 0 1px #e3fffc;
     word-break: break-word;
 }
+
+
 
 .post_informacje {
     position: relative;
@@ -608,10 +610,12 @@ article {
 
 
 .wszyatkonadzis {
-    font-size: 68px;
+    font-size: 48px;
     color: black;
-    text-shadow: 0 0 2px silver;
+    text-shadow: 0 0 2px orange;
     animation:swiecocytekst 4s infinite;
+    margin-top:88px;
+    word-break: break-word;
 }
 
 @keyframes swiecocytekst {
@@ -805,7 +809,12 @@ min-width: 28px;
 z-index: 12;
 text-align: center;
 }
-
+.niewys {
+    background: #c0c0c00a !important;
+}
+.niewys:hover {
+    background: silver !important;
+}
 
 @media (max-device-width: 888px) {
     .powiadomienia {
@@ -879,3 +888,4 @@ border-radius: 20px;
 .kod_skrypt_posta {
     background:black !important;
 }
+

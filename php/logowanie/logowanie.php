@@ -22,7 +22,7 @@
                     }}catch (Exception $blod) {if (!file_exists('bledy.txt')) {fopen('bledy/bledy.txt','a');}$plik = fopen('bledy/bledy.txt','a');fwrite($plik, 'Błąd ' . $blod);fclose($plik);exit();}  ?></div>
                 <form action="/logowanie/wchodze" method="post" id="zaloguj">
                 <div class="poprawnosc" id="poprawnosc_email"></div>
-                <input type="email" name="email" id="email" placeholder="Email" />
+                <input type="email" name="email" id="email" placeholder="Email" autocomplete="off"/>
                 <div class="poprawnosc" id="poprawnosc_haslo"></div>
                 <input type="password" name="haslo" id="haslo" placeholder="Hasło" autocomplete="off">
                 <input class="przycisk" id="przycisk" type="submit" value="Zaloguj się">

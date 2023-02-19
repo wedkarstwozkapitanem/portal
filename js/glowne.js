@@ -234,7 +234,7 @@ function pokaz_kto_polubil(t) {
 
 
 
-let wysokoscposta = document.querySelector('.dodaj_posta').clientHeight;
+let wysokoscposta = document.querySelector('.dodaj_posta').clientHeight+48;
 
 
 
@@ -267,8 +267,8 @@ function wczytywanie_postow() {
             console.log(danenowyposta);
 
           
-
-            for (let i = 0; i < danenowyposta.length; i++) {
+if(danenowyposta.length > 0) {
+                for (let i = 0; i < danenowyposta.length; i++) {
 
                 danenowypost = danenowyposta[i];
                 let artykul = document.createElement('article');
@@ -386,8 +386,14 @@ function wczytywanie_postow() {
               </div>
               <div data-postid-pokakom="${danenowypost.idp}" class="komentarze_post wysrodkuj" style="display: none;">
 `;
-
-       
+            }
+            } else {
+                if(gdzie.innerText.trim() !== "") {
+                gdzie.innerHTML += "<div class='wszyatkonadzis'>To już wszystko na dziś</div>"; 
+                } else {
+                    gdzie.innerHTML += "<div class='wszyatkonadzis'>Nie ma nic dzisiaj do wyświetlenia zajrzyj tutaj póżniej</div>";
+                }
+                window.removeEventListener('scroll', pobieraniepostascrol);
             }
 
             
@@ -397,14 +403,16 @@ function wczytywanie_postow() {
 }
 
 
-
-
-window.addEventListener('scroll', () => {
-if(window.scrollY > wysokoscposta) {
-wczytywanie_postow();
-wysokoscposta += document.querySelectorAll('#przeglodaj article')[document.querySelectorAll('.post').length-1].clientHeight + 48;
+function pobieraniepostascrol() {
+    if(window.scrollY > wysokoscposta) {
+        wczytywanie_postow();
+        wysokoscposta += document.querySelectorAll('#przeglodaj article')[document.querySelectorAll('.post').length-1].clientHeight+28;
+        }
 }
-})
+
+window.addEventListener('scroll', pobieraniepostascrol);
+
+
 
 
 

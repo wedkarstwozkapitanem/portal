@@ -89,18 +89,15 @@ try {
                 
             </div>
       <!--  </center> -->
-        </div>
-        <div class="wyrownaj">';
+        </div>';
 
 
-
-                            echo '</div>';
-
-                            if ($id != $sesja) {
-                                echo '<button onclick="otworzdymekwiadomosc(' . $uzytkownik['id'] . ')" style="left:108px;" class="dodajznajomego wiad"> Napisz wiadomość </button>';
+                            if ((int)$id !== (int)$sesja) {
+                                
+                                echo '<div style="top:68px;"><div style="margin-bottom:10px;"><button onclick="otworzdymekwiadomosc(' . $uzytkownik['id'] . ')" style="left:108px;" class="dodajznajomego wiad"> Napisz wiadomość </button></div>';
 
 
-
+echo '<div>';
                                 $sqlczyznaj = "SELECT * FROM (SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja') as p where `iduzytkownika` = '$id' OR `iduzytkownik` = '$id' LIMIT 1";
                                 if ($czyznaj = mysqli_query($baza, $sqlczyznaj)) {
                                     if (mysqli_num_rows($czyznaj) > 0) {
@@ -119,6 +116,7 @@ try {
                                         echo '<button onclick="dodajznajomego();" style="right:108px;" class="dodajznajomego" id="dodajznaj"> Dodaj do znajomych </button>';
                                     }
                                 } else throw new Exception("Nie udało się sprawdzić znajomności");
+                                echo '</div></div>';
                             }
                             echo '<div class="profilwszystko">
         <div class="lewa_burta">

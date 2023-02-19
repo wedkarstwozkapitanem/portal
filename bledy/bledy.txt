@@ -1,6 +1,0 @@
-Błąd mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'int)'1004'' at line 1 in C:\xampp\htdocs\php\glowna\posty.php:37
-Stack trace:
-#0 C:\xampp\htdocs\php\glowna\posty.php(37): mysqli_query(Object(mysqli), 'UPDATE `powiado...')
-#1 C:\xampp\htdocs\centrumdowodzenia.php(96): include('C:\\xampp\\htdocs...')
-#2 C:\xampp\htdocs\centrumdowodzenia.php(117): sprawdzplik('php/glowna/post...')
-#3 {main}

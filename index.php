@@ -1,27 +1,35 @@
 <?php
-    session_save_path("bazadanych/sesje");
-    session_name('sesja_pixi');
-    session_set_cookie_params(
-        [
-            'path' => '/',
-            'lifetime' => 3600*24,
-    //      'domain' => 'domain.example',
-            'secure' => true,
-            'httponly' => true,
-            'samesite' => 'Strict',
-        ]
-        );
+
+    header("Content-Security-Policy: 'default-src' 'self';");
+    header("Content-Security-Policy: 'script-src' 'self';");
+    header("Content-Security-Policy: 'object-src' 'self';");
+    header("Content-Security-Policy: 'script-src' 'https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap';");
+    header("Content-Security-Policy: 'font-src' 'https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap';");
+
+
+session_save_path("bazadanych/sesje");
+session_name('sesja_pixi');
+session_set_cookie_params(
+    [
+        'path' => '/',
+        'lifetime' => 3600 * 24 * 28,
+        //      'domain' => 'domain.example',
+        'secure' => true,
+        'httponly' => true,
+        'samesite' => 'Strict',
+    ]
+);
 
 try {
     session_start();
-    if(isset($_SESSION['uzytkwonik_pixi_id'])) session_regenerate_id($_SESSION['uzytkwonik_pixi_id']);
-     //zmiana sesji dla bezbieczeństwa
-//kontrola bezpieczeństwa
-if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
-    if( !isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'on') {
-        header("Location: https://kaptain.ct8.pl/logowanie");
-}
-} 
+    if (isset($_SESSION['uzytkwonik_pixi_id'])) session_regenerate_id($_SESSION['uzytkwonik_pixi_id']);
+    //zmiana sesji dla bezbieczeństwa
+    //kontrola bezpieczeństwa
+    if ($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
+        if (!isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'on') {
+            header("Location: https://kaptain.ct8.pl/logowanie");
+        }
+    }
 
 
     if (isset($_SESSION['ip'])) {
@@ -32,32 +40,33 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
             $plik = fopen('bledy/bledy.txt', 'a');
             fwrite($plik, 'Atak hakerski przechwycenie adresu sesji ' . $_SERVER['REMOTE_ADDR']) . ' || \n';
             fclose($plik);
-            echo "Atak hakerski karateka już na Ciebie czeka";
+            //     echo "Atak hakerski karateka już na Ciebie czeka";
+            header('Location:/');
             throw new Exception("Atak hakerski");
         }
     }
 
     if ($_SERVER["REQUEST_METHOD"] !== "GET" && $_SERVER["REQUEST_METHOD"] !== "POST") {
         if (!file_exists('bledy.txt')) {
-            fopen('bledy/bledy.txt','a');
-          }
-          $plik = fopen('bledy/bledy.txt','a');
-          fwrite($plik, 'Nie prawidłowa metoda żądania POST '.$_SERVER['REMOTE_ADDR']).'|| \n';
-          fclose($plik);
-          echo "Nie prawidłowe żądanie";
+            fopen('bledy/bledy.txt', 'a');
+        }
+        $plik = fopen('bledy/bledy.txt', 'a');
+        fwrite($plik, 'Nie prawidłowa metoda żądania POST ' . $_SERVER['REMOTE_ADDR']) . '|| \n';
+        fclose($plik);
+        echo "Nie prawidłowe żądanie";
         throw new Exception("Nie prawidłowe żądanie");
     }
-    if($_SERVER['SCRIPT_NAME'] !== '/index.php'){
+    if ($_SERVER['SCRIPT_NAME'] !== '/index.php') {
         if (!file_exists('bledy.txt')) {
-            fopen('bledy/bledy.txt','a');
-          }
-          $plik = fopen('bledy/bledy.txt','a');
-          fwrite($plik, 'Skrypt nie ten || '.$_SERVER['REMOTE_ADDR']);
-          fclose($plik);
-          echo "Nie prawidłowe żądanie";
-          throw new Exception("Nie ten skrypt");
+            fopen('bledy/bledy.txt', 'a');
+        }
+        $plik = fopen('bledy/bledy.txt', 'a');
+        fwrite($plik, 'Skrypt nie ten || ' . $_SERVER['REMOTE_ADDR']);
+        fclose($plik);
+        echo "Nie prawidłowe żądanie";
+        throw new Exception("Nie ten skrypt");
     }
-/*    if(!$_SERVER['HTTP_COOKIE']) {
+    /*    if(!$_SERVER['HTTP_COOKIE']) {
         if (!file_exists('bledy.txt')) {
             fopen('bledy/bledy.txt','a');
           }
@@ -71,7 +80,7 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
 
 
 
-    if(!include('bazadanych/polocz.php')) throw new Exception("Brak bazy");
+    if (!include('bazadanych/polocz.php')) throw new Exception("Brak bazy");
     global $baza;
 
 
@@ -80,14 +89,14 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
 
 
     if (!empty($_SESSION['uzytkwonik_pixi_id']) || isset($_SESSION['uzytkwonik_pixi_id'])) {
-        (string) $sesja =  mysqli_real_escape_string($baza,htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
+        (string) $sesja =  mysqli_real_escape_string($baza, htmlspecialchars($_SESSION['uzytkwonik_pixi_id']));
         if (substr($ktora, 1) == 'logowanie' || substr($ktora, 1) == 'rejestracja' || substr($ktora, 1) == 'logowanie/wchodze' || trim(substr($ktora, 1)) == trim('centrumdowodzenia.php')) {
             header('Location:/');
             exit();
         }
     } else {
-     if (substr($ktora, 1) != 'logowanie' && substr($ktora, 1) != 'rejestracja' && substr($ktora, 1) != 'logowanie/wchodze' && trim(substr($ktora, 1)) != trim('centrumdowodzenia.php')) {
-     //       $link = $ktora;
+        if (substr($ktora, 1) != 'logowanie' && substr($ktora, 1) != 'rejestracja' && substr($ktora, 1) != 'logowanie/wchodze' && trim(substr($ktora, 1)) != trim('centrumdowodzenia.php')) {
+            //       $link = $ktora;
             header('Location:/logowanie');
             exit();
         }
@@ -124,7 +133,6 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
             exit();
             //      include "bledy/404.htm";
         }
-
     }
 
 
@@ -143,35 +151,27 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
     else if (strpos($ktora, "profil")) {
         (string) $parametry = substr($ktora, 8);
         (array) $podzial = explode('/', $parametry);
-    
+
         if (count($podzial) == 1 || count($podzial) == 3) {
             if (!empty($podzial[1]) == "post") {
                 if ($podzial[2]) {
                     sprawdzeniestrony('profil', 'php/glowna/post.php');
+                } else {
+                    header('Location:/profil/' . $podzial[0]);
                 }
-                 else {
-                    header('Location:/profil/'.$podzial[0]);
-                }
-            }
-            else {
+            } else {
                 sprawdzeniestrony('profil', 'php/profile/profil.php');
             }
-        }  else if($podzial[1] == "zdjecia") {
+        } else if ($podzial[1] == "zdjecia") {
             sprawdzeniestrony('profil', 'php/profile/zdjecia.php');
-        }
-          else if($podzial[1] == "informacje") {
+        } else if ($podzial[1] == "informacje") {
             sprawdzeniestrony('profil', 'php/profile/informacje.php');
-        }
-        else if($podzial[1] == "znajomi") {
+        } else if ($podzial[1] == "znajomi") {
             sprawdzeniestrony('profil', 'php/profile/znajomi.php');
-        }
-        
-        
-        else {
+        } else {
             include "bledy/nieznaleziono.php";
             exit();
         }
-
     } else if (strpos($ktora, 'logowanie')) {
         if ($ktora == '/logowanie') {
             sprawdzeniestrony('logowanie', "php/logowanie/logowanie.php");
@@ -188,8 +188,7 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
         } else {
             sprawdzeniestrony('rejestracja', 'php/logowanie/rejestracja.php');
             exit();
-        }
-        ;
+        };
     } else if ($ktora == '/dodawanie_tresci')
         sprawdzeniestrony('dodawanie_tresci', 'php/glowna/dodaj_posta.php');
     else if ($ktora == '/zarajestruj.php')
@@ -201,31 +200,31 @@ if($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
     }
 } catch (Exception $blod) {
     if (!file_exists('bledy.txt')) {
-      fopen('bledy/bledy.txt','a');
+        fopen('bledy/bledy.txt', 'a');
     }
-    $plik = fopen('bledy/bledy.txt','a');
+    $plik = fopen('bledy/bledy.txt', 'a');
     fwrite($plik, 'Błąd ' . $blod);
     fclose($plik);
     echo "Błąd";
     exit();
-  } catch (PDOException $blod) {
+} catch (PDOException $blod) {
     if (!file_exists('bledy.txt')) {
-      fopen('bledy/bledy.txt','a');
+        fopen('bledy/bledy.txt', 'a');
     }
-    $plik = fopen('bledy/bledy.txt','a');
+    $plik = fopen('bledy/bledy.txt', 'a');
     fwrite($plik, 'Błąd ' . $blod);
     fclose($plik);
     echo "Błąd";
     exit();
 } catch (\Exception $blod) {
     if (!file_exists('bledy.txt')) {
-        fopen('bledy/bledy.txt','a');
-      }
-      $plik = fopen('bledy/bledy.txt','a');
-      fwrite($plik, 'Błąd ' . $blod);
-      fclose($plik);
-      echo "Błąd";
-      exit();
+        fopen('bledy/bledy.txt', 'a');
+    }
+    $plik = fopen('bledy/bledy.txt', 'a');
+    fwrite($plik, 'Błąd ' . $blod);
+    fclose($plik);
+    echo "Błąd";
+    exit();
 }
 
 
