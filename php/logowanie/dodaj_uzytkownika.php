@@ -5,7 +5,7 @@ try {
     session_start();
     include("php/polocz.php");
     global $baza;
-    session_start();
+
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -97,10 +97,8 @@ try {
                 }
             } else {
                 echo ' email';
-                mysqli_num_rows($zapytanie);
             }
-            mysqli_free_result($zapytanie); //zwolnij pamięc
-
+            // if(mysqli_free_result($zapytanie)) //zwolnij pamięc
 
             //mysqli_fetch_all($zapytanie);//pobierz do tablicy
 
