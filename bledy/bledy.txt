@@ -1,0 +1,193 @@
+Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd Exception: Brak id in C:\xampp\htdocs\php\glowna\post.php:22
+Stack trace:
+#0 C:\xampp\htdocs\index.php(123): include()
+#1 C:\xampp\htdocs\index.php(158): sprawdzeniestrony('profil', 'php/glowna/post...')
+#2 {main}Błąd mysqli_sql_exception: Host 'public-gprs524160.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\php\polocz.php:16
+Stack trace:
+#0 C:\xampp\htdocs\php\polocz.php(16): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\bazadanych\polocz.php(2): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\index.php(83): include('C:\\xampp\\htdocs...')
+#3 {main}Błąd mysqli_sql_exception: Host 'public-gprs524160.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\php\polocz.php:16
+Stack trace:
+#0 C:\xampp\htdocs\php\polocz.php(16): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\bazadanych\polocz.php(2): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\index.php(83): include('C:\\xampp\\htdocs...')
+#3 {main}Błąd mysqli_sql_exception: Host 'public-gprs524160.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\php\polocz.php:16
+Stack trace:
+#0 C:\xampp\htdocs\php\polocz.php(16): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\bazadanych\polocz.php(2): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\index.php(83): include('C:\\xampp\\htdocs...')
+#3 {main}Błąd mysqli_sql_exception: Host 'public-gprs524160.centertel.pl' is not allowed to connect to this MySQL server in C:\xampp\htdocs\php\polocz.php:16
+Stack trace:
+#0 C:\xampp\htdocs\php\polocz.php(16): mysqli_connect('pma.ct8.pl', 'm32573_kapitan', Object(SensitiveParameterValue), 'm32573_wedkarst...')
+#1 C:\xampp\htdocs\bazadanych\polocz.php(2): include('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\index.php(83): include('C:\\xampp\\htdocs...')
+#3 {main}

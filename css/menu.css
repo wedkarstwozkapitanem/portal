@@ -36,6 +36,12 @@ body {
     border-radius: 28px;
 }
 
+@media screen and (max-device-width:1200px) {
+    .tytul {
+        display: none;
+    }
+}
+
 #wyszukiwarka {
     left: 24%;
     top: 0;
@@ -177,6 +183,10 @@ body {
 @media (max-width: 1008px) {
     #glowna_tresc_p {
         width: 100% !important;
+    }
+    #wyszukiwarka 
+    {
+        left:0 !important;
     }
 }
 

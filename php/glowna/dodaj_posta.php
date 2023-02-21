@@ -92,7 +92,7 @@ try {
                   (string) $fota_nazwap = mysqli_real_escape_string($baza, htmlspecialchars(uniqid() . '' . trim(htmlspecialchars(basename($_FILES['fota_artykulu']['name'][$i])))));
                   move_uploaded_file(htmlspecialchars($_FILES['fota_artykulu']['tmp_name'][$i]), "foty/" . $mojfolder . "/posty/" . $fota_nazwap);
 
-                  (string)$tresc = $tresc.'<div><a href="foty/'.$mojfolder.'/posty/'.$fota_nazwap.'" >Plik excela: '.(string)htmlspecialchars($_FILES['fota_artykulu']['name'][$i]).'</a></div>';
+                  (string)$tresc = $tresc.'<div><a href="/foty/'.$mojfolder.'/posty/'.$fota_nazwap.'" >Plik excela: '.(string)htmlspecialchars($_FILES['fota_artykulu']['name'][$i]).'</a></div>';
 
                   if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`publiczny`) VALUES ('$sesja','$tresc','$czypubliczny')")) {
                     if (!mysqli_error($baza) && !mysqli_errno($baza)) {

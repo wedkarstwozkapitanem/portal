@@ -431,6 +431,7 @@ article {
     border-radius: 8px;
     font-size: 15px;
     cursor: pointer;
+    z-index: 28;
 }
 
 .post_akcja button:hover {
@@ -612,9 +613,10 @@ article {
 .wszyatkonadzis {
     font-size: 48px;
     color: black;
-    text-shadow: 0 0 2px orange;
+    text-shadow: 0 0 1px black;
     animation:swiecocytekst 4s infinite;
     margin-top:88px;
+    color:white;
     word-break: break-word;
 }
 

@@ -85,19 +85,12 @@ try {
                                 echo 'uzytkownik.gif';
                             }
                             echo '" alt="profilowe" /></div>
-                   <div> <div style="height:68px"><h1>' . $uzytkownik['imie'] . '  ' . $uzytkownik['nazwisko'] . '</h1></div></div>
-                
-            </div>
-      <!--  </center> -->
-        </div>';
+                   <div class="nazwauzytkownika"> <h1>' . $uzytkownik['imie'] . '  ' . $uzytkownik['nazwisko'] . '</h1></div>';
 
-
+                            echo '<div>';
                             if ((int)$id !== (int)$sesja) {
-                                
-                                echo '<div style="top:68px;"><div style="margin-bottom:10px;"><button onclick="otworzdymekwiadomosc(' . $uzytkownik['id'] . ')" style="left:108px;" class="dodajznajomego wiad"> Napisz wiadomość </button></div>';
-
-
-echo '<div>';
+                                echo '<div  class="znajomosc"><div style="margin-bottom:10px;"><button onclick="otworzdymekwiadomosc(' . $uzytkownik['id'] . ')" style="left:108px;" class="dodajznajomego wiad"> Napisz wiadomość </button></div>';
+                                //    echo '<div style="min-height:328px;">';
                                 $sqlczyznaj = "SELECT * FROM (SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja') as p where `iduzytkownika` = '$id' OR `iduzytkownik` = '$id' LIMIT 1";
                                 if ($czyznaj = mysqli_query($baza, $sqlczyznaj)) {
                                     if (mysqli_num_rows($czyznaj) > 0) {
@@ -116,13 +109,31 @@ echo '<div>';
                                         echo '<button onclick="dodajznajomego();" style="right:108px;" class="dodajznajomego" id="dodajznaj"> Dodaj do znajomych </button>';
                                     }
                                 } else throw new Exception("Nie udało się sprawdzić znajomności");
-                                echo '</div></div>';
+                                //  echo '</div>';
                             }
+
+                            echo '</div>
+      <!--  </center> -->';
+
+
+                            echo '</div>';
+
+
+
+                            echo '
+        </div>';
+
+
+                            //  echo '</div>';
+
+
+
+
                             echo '<div class="profilwszystko">
         <div class="lewa_burta">
             <div class="lewa_burta_info">
   
-                <h2 style="width:58%;float:left;text-align:center;">Informacje:</h2><a style="position:relative;top:28px;margin-left:12px;" href="/profil/' . $uzytkownik['id'] . '/informacje">Zobacz szczegółowe informacje</a><div style="clear:both;"></div>';
+                <h2 style="width:58%;float:left;text-align:center;margin:0;top:0;">Informacje:</h2><a class="ukryjtelefon" style="position:relative;top:28px;margin-left:12px;" href="/profil/' . $uzytkownik['id'] . '/informacje">Zobacz szczegółowe informacje</a><div style="clear:both;"></div>';
                             if ($sesja == $uzytkownik['id']) { //mój profil
                                 echo '<button class="profiledytujinformacje" id="profiledytujinformacje"> Edytuj informacje </button>';
 
@@ -204,13 +215,13 @@ echo '<div>';
 
 
 
-                            echo '<div class="lewa_burta_info"><h2 style="width: 44%;float: left;">Zdjęcia:</h2><a href="/profil/' . $uzytkownik['id'] . '/zdjecia" style="position:relative;top:28px;margin-left:8px;">Przejdz do wszystkich zdjęć</a><div style="clear:both"></div><div class="zdjecia_profilu">';
+                            echo '<div class="lewa_burta_info"><h2 style="width: 44%;float: left;">Zdjęcia:</h2><a class="ukryjtelefon" href="/profil/' . $uzytkownik['id'] . '/zdjecia" style="position:relative;top:28px;margin-left:8px;">Przejdz do wszystkich zdjęć</a><div style="clear:both"></div><div class="zdjecia_profilu">';
                             //posty
                             mysqli_escape_string($baza, $id);
-                            if((int)$sesja !== (int)$uzytkownik['id']) {
+                            if ((int)$sesja !== (int)$uzytkownik['id']) {
                                 $sqlpostfoty = "SELECT idp,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' AND `posty`.`publiczny` = 1 ORDER BY idp DESC LIMIT 9";
                             } else {
-                            $sqlpostfoty = "SELECT idp,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' ORDER BY idp DESC LIMIT 9";
+                                $sqlpostfoty = "SELECT idp,foty FROM `posty` WHERE `iduzytkownika` = '$id' AND `usunieto` = 0 AND foty !='' ORDER BY idp DESC LIMIT 9";
                             }
                             if (!$zapytaniepostfoty = mysqli_query($baza, $sqlpostfoty)) {
                                 if (!file_exists('bledy.txt')) {
@@ -262,7 +273,7 @@ echo '<div>';
 
 
                             echo '<div class="lewa_burta_info">
-                        <h2 style="width: 44%;float: left;height: 0px;">Znajomi:</h2><a href="/profil/' . $uzytkownik['id'] . '/znajomi" style="position:relative;top:28px;margin-left:8px;">Zobacz wszystkich znajomych</a><div style="clear:both"></div><div class="znajomi">';
+                        <h2 style="width: 44%;float: left;height: 0px;">Znajomi:</h2><a class="ukryjtelefon" href="/profil/' . $uzytkownik['id'] . '/znajomi" style="position:relative;top:28px;margin-left:8px;">Zobacz wszystkich znajomych</a><div style="clear:both"></div><div class="znajomi">';
 
                             $id_uzyt = $uzytkownik['id'];
                             $znajomi = mysqli_query($baza, "SELECT * FROM `znajomi`  where (`znajomi`.`iduzytkownika` = '$id_uzyt' or `znajomi`.`iduzytkownik` = '$id_uzyt') and `znajomi`.`czyprzyjeto` = 1");
@@ -425,7 +436,7 @@ echo '<div>';
                                                 <button onclick="pokazkomentarze(this)" data-postid="<?php echo $post['idp'] ?>">💬Komentarz</button><button data-postid="<?php echo $post['idp'] ?>">👝Udostępnij</button>
                                             </div>
                                             <div class="post_komentarze">
-
+<div style="margin-left:auto;margin-right:auto;">
                                                 <?php
                                                 $profilowe = mysqli_query($baza, "SELECT `profilowe`,`folder` from `uzytkownicy` where `id` = '$sesja' LIMIT 9");
                                                 $prof = mysqli_fetch_row($profilowe);
@@ -437,6 +448,7 @@ echo '<div>';
                                                     echo "<div class='dodaj_komentarz_profilowe'><img loading='lazy' src='/../foty/uzytkownik.gif' alt='profilowe' /></div>";
                                                 }
                                                 ?>
+                                            
                                                 <form onsubmit="return false">
                                                     <input type="text" placeholder="Skomentuj ten wpis" data-postid-kom="<?php echo $post['idp'] ?>" />
                                                     <label>
@@ -444,7 +456,7 @@ echo '<div>';
                                                         <input data-postid-kom="<?php echo $post['idp'] ?>" onclick="dodajkomentarza(this)" style="display:none" type="submit" hidden />
                                                     </label>
                                                     <div data-postid-pokakom="<?php echo $post['idp'] ?>" class="komentarze_post wysrodkuj" style="display: none;">
-
+                                            </div>
                                                     </div>
                                                 </form>
                                             </div>

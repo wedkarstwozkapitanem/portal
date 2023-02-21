@@ -87,7 +87,7 @@ if (mysqli_num_rows($zapytanieuzytkownik) > 0) {
                         echo 'uzytkownik.gif';
                     }
                     echo '" alt="profilowe" /></div>
-                           <div class="wyrownaj"> <div style="height:68px"><h1>' . $uzytkownik['imie'] . '  ' . $uzytkownik['nazwisko'] . '</h1></div></div>
+                           <div class="wyrownaj"> <div style="height:0;" class="nazwauzytkownika"><h1>' . $uzytkownik['imie'] . '  ' . $uzytkownik['nazwisko'] . '</h1></div></div>
                         
                     </div>
               <!--  </center> -->

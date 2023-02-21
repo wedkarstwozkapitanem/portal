@@ -99,6 +99,7 @@ article {
     border-radius: 8px;
     font-size: 15px;
     cursor: pointer;
+    z-index: 28;
 }
 
 .post_akcja button:hover {
