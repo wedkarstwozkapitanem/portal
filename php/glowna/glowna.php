@@ -13,6 +13,7 @@ try {
     <link rel="shortcut icon" href="../../zdjecia/logo.png">
     <title>Pixi-twoje miejsce do rozmów</title>
     <meta name="description" content="Pixi.Twoje miejsce do rozmów,rozrywki i czatu z kapitanem">
+    <meta name="author" content="Dominik Kapitan Łempicki">
 </head>
 
 <body>
