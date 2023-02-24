@@ -25,7 +25,7 @@ try {
         for ((int) $i = 0; $i < (int)count($zdjecie); $i++) {
           if (is_uploaded_file($_FILES['fota_artykulu']['tmp_name'][$i])) {
             if ((int)htmlspecialchars($_FILES['fota_artykulu']['error'][$i]) === (int)0) {
-              if ((string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpeg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/png' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/gif') {
+              if ((string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpeg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/png' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/gif' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/webp') {
                 if ((int)htmlspecialchars($_FILES['fota_artykulu']['size'][$i]) <= (int)5000000) {
 
                   (string) $fota_nazwap = mysqli_real_escape_string($baza, htmlspecialchars(uniqid() . '' . htmlspecialchars(basename($_FILES['fota_artykulu']['name'][$i]))));
@@ -83,16 +83,16 @@ try {
                 } else {
                   echo "Załoczony plik jest za duży";
                 }
-              } else if($_FILES['fota_artykulu']['type'][$i]=='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+              } else if((string)$_FILES['fota_artykulu']['type'][$i]===(string)'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || (string)$_FILES['fota_artykulu']['type'][$i]===(string)'application/pdf')
               {
 
 
                 if ((int)htmlspecialchars($_FILES['fota_artykulu']['size'][$i]) <= (int)5000000) {
 
                   (string) $fota_nazwap = mysqli_real_escape_string($baza, htmlspecialchars(uniqid() . '' . trim(htmlspecialchars(basename($_FILES['fota_artykulu']['name'][$i])))));
-                  move_uploaded_file(htmlspecialchars($_FILES['fota_artykulu']['tmp_name'][$i]), "foty/" . $mojfolder . "/posty/" . $fota_nazwap);
+                  move_uploaded_file(htmlspecialchars($_FILES['fota_artykulu']['tmp_name'][$i]), "foty/" . (string)$mojfolder . "/posty/" . $fota_nazwap);
 
-                  (string)$tresc = $tresc.'<div><a href="/foty/'.$mojfolder.'/posty/'.$fota_nazwap.'" >Plik excela: '.(string)htmlspecialchars($_FILES['fota_artykulu']['name'][$i]).'</a></div>';
+                  (string)$tresc = $tresc.'<div><a href="/foty/'.(string)$mojfolder.'/posty/'.(string)$fota_nazwap.'" >Plik:'.(string)$_FILES['fota_artykulu']['type'][$i].' '.(string)htmlspecialchars($_FILES['fota_artykulu']['name'][$i]).'</a></div>';
 
                   if (mysqli_query($baza, "INSERT INTO `posty` (`iduzytkownika`,`tresc`,`publiczny`) VALUES ('$sesja','$tresc','$czypubliczny')")) {
                     if (!mysqli_error($baza) && !mysqli_errno($baza)) {

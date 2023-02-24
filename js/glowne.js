@@ -6,7 +6,7 @@ const dokladneinformacje = document.getElementById('dokladneinformacje');
 const gdzie = document.getElementById('przeglodaj');
 const powiadomienia = document.getElementById('powiadomienia');
 let profilinoformacje;
-
+const dodaj_posta = document.querySelector('.dodaj_posta');
 
 function komunikacja(akcja) {
     let poloczenie = new XMLHttpRequest();
@@ -486,7 +486,7 @@ document.getElementById('fota_artykulu').addEventListener('change', ladujobraz);
 
 function ladujobraz() {
     for (let i = 0; i < document.getElementById('fota_artykulu').files.length; i++) {
-        if (document.getElementById('fota_artykulu').files[i].type === 'image/jpeg' || document.getElementById('fota_artykulu').files[i].type === 'image/jpg' || document.getElementById('fota_artykulu').files[i].type === 'image/png') {
+        if (document.getElementById('fota_artykulu').files[i].type === 'image/jpeg' || document.getElementById('fota_artykulu').files[i].type === 'image/jpg' || document.getElementById('fota_artykulu').files[i].type === 'image/png' ) {
             let zdjecia = document.getElementById('fota_artykulu').files[i];
             let czytnikobrazow = new FileReader();
             czytnikobrazow.readAsDataURL(zdjecia);
@@ -494,9 +494,11 @@ function ladujobraz() {
                 document.getElementById('podglodfot').innerHTML += `<img src='${czytnikobrazow.result}' alt="podglod foty" />`;
             });
         } else if  (document.getElementById('fota_artykulu').files[i].type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
-            document.getElementById('podglodfot').innerHTML += "Plik excala";  
+            document.getElementById('podglodfot').innerHTML += "<img src='/zdjecia/excel.jfif' alt='plik excel' />";  
+        } else  if(document.getElementById('fota_artykulu').files[i].type === 'application/pdf') {
+            document.getElementById('podglodfot').innerHTML += "<img src='/zdjecia/pdf.png' alt='plik pdg' />";  
         }
-        
+
         else {
             let plik = document.getElementById('fota_artykulu').files[i];
             let czytnikobrazow = new FileReader();
@@ -509,3 +511,24 @@ function ladujobraz() {
         }
     }
 }
+
+
+
+  dodaj_posta.addEventListener('dragenter', dodawaniezdjecia, false)
+  dodaj_posta.addEventListener('drop', domyslnie, false)
+
+  dodaj_posta.addEventListener('dragleave', domyslnie, false)
+  dodaj_posta.addEventListener('dragover', domyslnie , false)
+
+  function dodawaniezdjecia(e) {
+    e.preventDefault();
+    let pliki = Array.from(e.dataTransfer.files || e.target.files || []);
+
+    console.log(pliki);
+    document.getElementById('fota_artykulu').files.push(e.dataTransfer.files);
+  }
+
+  function domyslnie(e) {
+    e.preventDefault();
+  }
+
