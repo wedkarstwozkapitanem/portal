@@ -9,7 +9,7 @@ try {
         ]
     );
 */
-    session_save_path("bazadanych/sesje");
+ /*   session_save_path("bazadanych/sesje");
     session_name('sesja_pixi');
     session_start();
     session_set_cookie_params(
@@ -22,7 +22,7 @@ try {
             'samesite' => 'Strict',
         ]
         );
-
+*/
 
     
     if(!include("php/polocz.php")) throw new Exception("Nie udało sie uzyskać bazy");
@@ -32,9 +32,7 @@ try {
     (bool)$poprawnosc = true;
 
 
-/*    echo htmlspecialchars($_POST['email']);
-    echo htmlspecialchars($_POST['haslo']);
-*/
+
 
     if (!empty(htmlspecialchars($_POST['email'])) && !empty(htmlspecialchars($_POST['haslo']))) {
         (string)$email =  mysqli_real_escape_string($baza,htmlspecialchars($_POST['email']));
@@ -50,6 +48,7 @@ try {
                     $_SESSION['ip'] = htmlspecialchars($_SERVER['REMOTE_ADDR']);
                     $_SESSION['poprawnosc'] = true;
                     header('Location:/');
+                    echo "poprawne";
                 }
                 exit();
             }
