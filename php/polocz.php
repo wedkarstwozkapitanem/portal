@@ -50,5 +50,6 @@ if ($_SERVER['SERVER_NAME'] == "localhost" ) {
     exit();
   }
 }
+mysqli_set_charset($baza, "utf8");
 global $baza;
 ?>
