@@ -28,8 +28,8 @@ try {
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         global $skrypt;
-        if (file_exists("php/logowanie/dodaj_uzytkownika.php")) {
-            include "php/logowanie/dodaj_uzytkownika.php";
+        if (file_exists("php/logowanie/min/dodaj_uzytkownika.min.php")) {
+            include "php/logowanie/min/dodaj_uzytkownika.min.php";
         } else {
             echo "Nie prawidłowa akcja";
             header("HTTP/1.1 404 Not Found");

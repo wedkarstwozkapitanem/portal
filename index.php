@@ -174,11 +174,11 @@ try {
         }
     } else if (strpos($ktora, 'logowanie')) {
         if ($ktora == '/logowanie') {
-            sprawdzeniestrony('logowanie', "php/logowanie/logowanie.php");
+            sprawdzeniestrony('logowanie', "php/logowanie/min/logowanie.min.php");
         } else if ($ktora == '/logowanie/wchodze') {
-            sprawdzeniestrony('wchodze', 'php/logowanie/sprawdz_uzytkownika.php');
+            sprawdzeniestrony('wchodze', 'php/logowanie/min/sprawdz_uzytkownika.min.php');
         } else if ($ktora == '/wylogowanie')
-            sprawdzeniestrony('wylogowanie', 'php/logowanie/wylogowanie.php');
+            sprawdzeniestrony('wylogowanie', 'php/logowanie/min/wylogowanie.min.php');
     } else if (strpos($ktora, 'post'))
         sprawdzeniestrony('post', "php/post.php");
     else if (strpos($ktora, 'rejestracja')) {

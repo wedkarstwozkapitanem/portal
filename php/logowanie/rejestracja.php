@@ -6,8 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../zdjecia/logo.png">
-    <title>ZARAJESTRUJ SIĘ DO SERWISU</title>
-    <meta name="description" content="Rejestracja">
+    <title>ZARAJESTRUJ SIĘ DO SERWISU SPOŁECZNOŚCIOWEGO WĘDKARSTWO Z KAPITANEM</title>
+    <meta name="description" content="Logowanie do portalu społecznościowego wędkarstwo z kapitanem">
+    <meta http-equiv="expires" content="48000"/>	
+    <link href='http://fonts.googleapis.com/css?family=Akaya+Kanadaka&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <meta name="Wędkarstwo z kapitanem" content="assigned index"/>
+    <meta name="creator" content="Dominik Kapitan Łempicki">
+    <meta name="copyright" content="Wędkarstwo z kapitanem" />
+    <meta name="application-name" content="Portal wędkarstwo z kapitanem">
+    <meta name="keywords" content="wędkartwo z kapitanem,portal,komunikator,wedkuj z kapitanem,łów z kapitanem,ryby,psy,zwierzęta,owczarek niemiecki,rozmiawaj,rozmowy,dziel się z innymi,łowienie,wędkarstwo spinngowe,wędkarstwo spławikowe,wędkarstwo gruntowe,spinning,spławik,grunt,jak łowić,metody,gatunki">
+    <meta name="robots" content="index,follow"/>
 </head>
 
 <body>

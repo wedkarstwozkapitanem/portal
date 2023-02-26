@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 31 Sty 2023, 18:00
+-- Czas generowania: 26 Lut 2023, 08:35
 -- Wersja serwera: 10.4.27-MariaDB
 -- Wersja PHP: 8.2.0
 
@@ -69,14 +69,31 @@ CREATE TABLE `polubienia` (
 --
 
 CREATE TABLE `posty` (
-  `id` int(11) NOT NULL,
+  `idp` int(11) NOT NULL,
   `iduzytkownika` int(11) NOT NULL,
   `tresc` text CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci NOT NULL,
   `foty` text NOT NULL,
+  `udustepniono` int(11) NOT NULL,
   `datadodania` datetime NOT NULL DEFAULT current_timestamp(),
   `publiczny` int(11) NOT NULL,
   `usunieto` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `powiadomienia`
+--
+
+CREATE TABLE `powiadomienia` (
+  `id` int(11) NOT NULL,
+  `id_tresci` int(11) NOT NULL,
+  `id_odbiorcy` int(11) NOT NULL,
+  `id_uzytkownika` int(11) NOT NULL,
+  `typ` int(11) NOT NULL,
+  `datadodania` datetime NOT NULL DEFAULT current_timestamp(),
+  `wyswietlono` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 -- --------------------------------------------------------
 
@@ -113,7 +130,7 @@ CREATE TABLE `znajomi` (
   `iduzytkownika` int(11) NOT NULL,
   `iduzytkownik` int(11) NOT NULL,
   `data` datetime NOT NULL DEFAULT current_timestamp(),
-  `czyprzyjeto` tinyint(1) NOT NULL
+  `czyprzyjeto` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -142,6 +159,18 @@ ALTER TABLE `polubienia`
 -- Indeksy dla tabeli `posty`
 --
 ALTER TABLE `posty`
+  ADD PRIMARY KEY (`idp`);
+
+--
+-- Indeksy dla tabeli `powiadomienia`
+--
+ALTER TABLE `powiadomienia`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeksy dla tabeli `znajomi`
+--
+ALTER TABLE `znajomi`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -170,6 +199,18 @@ ALTER TABLE `polubienia`
 -- AUTO_INCREMENT dla tabeli `posty`
 --
 ALTER TABLE `posty`
+  MODIFY `idp` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `powiadomienia`
+--
+ALTER TABLE `powiadomienia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT dla tabeli `znajomi`
+--
+ALTER TABLE `znajomi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
