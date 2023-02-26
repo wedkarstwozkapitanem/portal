@@ -7,7 +7,7 @@
     header("Content-Security-Policy: 'font-src' 'https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap';");
 
 
-session_save_path("bazadanych/sesje");
+session_save_path("../bazadanych/sesje");
 session_name('sesja_pixi');
 session_set_cookie_params(
     [
@@ -80,7 +80,7 @@ try {
 
 
 
-    if (!include('bazadanych/polocz.php')) throw new Exception("Brak bazy");
+    if (!include('../bazadanych/polocz.php')) throw new Exception("Brak bazy");
     global $baza;
 
 

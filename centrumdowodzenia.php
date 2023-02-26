@@ -4,7 +4,7 @@
 
 
 
-    session_save_path("bazadanych/sesje");
+    session_save_path("../bazadanych/sesje");
     session_name('sesja_pixi');
     session_set_cookie_params(
         [

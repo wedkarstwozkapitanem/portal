@@ -1,6 +1,6 @@
 <?php
 try {
-    session_save_path("bazadanych/sesje");
+    session_save_path("../bazadanych/sesje");
     session_name('sesja_pixi');
     session_start();
     include("php/polocz.php");
