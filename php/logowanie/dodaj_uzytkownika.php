@@ -14,7 +14,7 @@ try {
             (string)$imie = mysqli_real_escape_string($baza, htmlspecialchars($_POST['imie']));
             (string)$nazwisko = mysqli_real_escape_string($baza,  htmlspecialchars($_POST['nazwisko']));
             (string)$data_urodzenia = mysqli_real_escape_string($baza, htmlspecialchars($_POST['data_urodzenia']));
-            (string)$email = mysqli_real_escape_string($baza, htmlspecialchars($_POST['email']));
+            (string)$email = mysqli_real_escape_string($baza, htmlspecialchars(filter_var($_POST['email'],FILTER_SANITIZE_EMAIL)));
             (string)$haslo = mysqli_real_escape_string($baza, htmlspecialchars($_POST['haslo']));
             (string)$haslo_powtorzone = mysqli_real_escape_string($baza, htmlspecialchars($_POST['haslo_powtorz']));
             (string)$ip = mysqli_real_escape_string($baza, $_SERVER['REMOTE_ADDR']);

@@ -1,6 +1,6 @@
 <?php
 try {
-    header('Location:/');
+//    header('Location:/');
 } catch (Exception $blod) {
     if (!file_exists('bledy.txt')) {
       fopen('bledy/bledy.txt','a');

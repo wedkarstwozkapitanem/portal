@@ -89,24 +89,24 @@ try {
 
                             echo '<div>';
                             if ((int)$id !== (int)$sesja) {
-                                echo '<div  class="znajomosc"><div style="margin-bottom:10px;"><button onclick="otworzdymekwiadomosc(' . $uzytkownik['id'] . ')" style="left:108px;" class="dodajznajomego wiad"> Napisz wiadomość </button></div>';
+                                echo '<div  class="znajomosc"><div style="margin-bottom:10px;"><button onclick="otworzdymekwiadomosc(' . $uzytkownik['id'] . ')" style="left:68px;" class="dodajznajomego wiad"> Napisz wiadomość </button></div>';
                                 //    echo '<div style="min-height:328px;">';
                                 $sqlczyznaj = "SELECT * FROM (SELECT * FROM `znajomi` where `iduzytkownika` = '$sesja' OR `iduzytkownik` = '$sesja') as p where `iduzytkownika` = '$id' OR `iduzytkownik` = '$id' LIMIT 1";
                                 if ($czyznaj = mysqli_query($baza, $sqlczyznaj)) {
                                     if (mysqli_num_rows($czyznaj) > 0) {
                                         while ($czyznajomy = $czyznaj->fetch_assoc()) {
                                             if ($czyznajomy['czyprzyjeto'] == 1) {
-                                                echo '<button onclick="dodajznajomego()" style="right:108px;background:white !important;color:blue !important;" class="dodajznajomego" id="dodajznaj" > Znajomi </button>';
+                                                echo '<button onclick="dodajznajomego()" style="right:68px;background:white !important;color:blue !important;" class="dodajznajomego" id="dodajznaj" > Znajomi </button>';
                                             } else {
                                                 if ($czyznajomy['iduzytkownika'] == $sesja) {
-                                                    echo '<button onclick="dodajznajomego();" style="right:108px;background:silver !important;color:blue !important;" class="dodajznajomego" id="dodajznaj" > Zaproszenie wysłane </button>';
+                                                    echo '<button onclick="dodajznajomego();" style="right:68px;background:silver !important;color:blue !important;" class="dodajznajomego" id="dodajznaj" > Zaproszenie wysłane </button>';
                                                 } else {
                                                     echo '<button onclick="dodajznajomego();" style="right:108px;background:yellow !important;" class="dodajznajomego" id="dodajznaj" > Przyjmij zaproszenie </button>';
                                                 }
                                             }
                                         }
                                     } else {
-                                        echo '<button onclick="dodajznajomego();" style="right:108px;" class="dodajznajomego" id="dodajznaj"> Dodaj do znajomych </button>';
+                                        echo '<button onclick="dodajznajomego();" style="right:68px;" class="dodajznajomego" id="dodajznaj"> Dodaj do znajomych </button>';
                                     }
                                 } else throw new Exception("Nie udało się sprawdzić znajomności");
                                 //  echo '</div>';
