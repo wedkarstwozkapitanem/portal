@@ -493,7 +493,7 @@ function ladujobraz() {
             czytnikobrazow.addEventListener('load', function () {
                 document.getElementById('podglodfot').innerHTML += `<img src='${czytnikobrazow.result}' alt="podglod foty" />`;
             });
-        } else if  (document.getElementById('fota_artykulu').files[i].type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+        } else if  (document.getElementById('fota_artykulu').files[i].type === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || document.getElementById('fota_artykulu').files[i].type === 'application/vnd.ms-excel.sheet.macroEnabled.12') {
             document.getElementById('podglodfot').innerHTML += "<img src='/zdjecia/excel.jfif' alt='plik excel' />";  
         } else  if(document.getElementById('fota_artykulu').files[i].type === 'application/pdf') {
             document.getElementById('podglodfot').innerHTML += "<img src='/zdjecia/pdf.png' alt='plik pdg' />";  

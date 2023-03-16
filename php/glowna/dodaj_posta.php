@@ -25,7 +25,7 @@ try {
         for ((int) $i = 0; $i < (int)count($zdjecie); $i++) {
           if (is_uploaded_file($_FILES['fota_artykulu']['tmp_name'][$i])) {
             if ((int)htmlspecialchars($_FILES['fota_artykulu']['error'][$i]) === (int)0) {
-              if ((string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpeg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/png' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/gif' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/webp') {
+              if ((string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpeg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/jpg' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/png' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/gif' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'image/webp' ) {
                 if ((int)htmlspecialchars($_FILES['fota_artykulu']['size'][$i]) <= (int)5000000) {
 
                   (string) $fota_nazwap = mysqli_real_escape_string($baza, htmlspecialchars(uniqid() . '' . htmlspecialchars(basename($_FILES['fota_artykulu']['name'][$i]))));
@@ -83,7 +83,7 @@ try {
                 } else {
                   echo "Załoczony plik jest za duży";
                 }
-              } else if((string)$_FILES['fota_artykulu']['type'][$i]===(string)'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || (string)$_FILES['fota_artykulu']['type'][$i]===(string)'application/pdf')
+              } else if((string)$_FILES['fota_artykulu']['type'][$i]===(string)'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' || (string)$_FILES['fota_artykulu']['type'][$i]===(string)'application/pdf' || (string)htmlspecialchars($_FILES['fota_artykulu']['type'][$i]) === (string)'application/vnd.ms-excel.sheet.macroEnabled.12')
               {
 
 
