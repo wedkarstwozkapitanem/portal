@@ -22,7 +22,7 @@ body {
     border-radius: 4px;
     box-shadow: 0 0 4px rgb(40, 118, 33);
     font-size: 48px;
-    z-index: 28;
+    z-index: 30;
 }
 .tytul {
     margin: 4px 10px 4px 4px;
@@ -36,16 +36,19 @@ body {
     border-radius: 28px;
 }
 
-@media screen and (max-device-width:1200px) {
+@media screen and (max-device-width:688px) {
     .tytul {
         display: none;
+    }
+    #wyszukiwarka {
+        left:4px;
     }
 }
 
 #wyszukiwarka {
-    left: 24%;
+    left: 8%;
     top: 0;
-    width: 36%;
+    width: 60%;
     bottom: 0;
     z-index: 8;
     position: absolute;
@@ -180,7 +183,7 @@ body {
     text-align: center;
 }
 
-@media (max-width: 1008px) {
+@media (max-width: 628px) {
     #glowna_tresc_p {
         width: 100% !important;
     }

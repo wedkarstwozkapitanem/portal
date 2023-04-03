@@ -486,7 +486,7 @@ document.getElementById('fota_artykulu').addEventListener('change', ladujobraz);
 
 function ladujobraz() {
     for (let i = 0; i < document.getElementById('fota_artykulu').files.length; i++) {
-        if (document.getElementById('fota_artykulu').files[i].type === 'image/jpeg' || document.getElementById('fota_artykulu').files[i].type === 'image/jpg' || document.getElementById('fota_artykulu').files[i].type === 'image/png' ) {
+        if (document.getElementById('fota_artykulu').files[i].type === 'image/jpeg' || document.getElementById('fota_artykulu').files[i].type === 'image/jpg' || document.getElementById('fota_artykulu').files[i].type === 'image/png' || document.getElementById('fota_artykulu').files[i].type === 'image/gif' ) {
             let zdjecia = document.getElementById('fota_artykulu').files[i];
             let czytnikobrazow = new FileReader();
             czytnikobrazow.readAsDataURL(zdjecia);

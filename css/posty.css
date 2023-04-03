@@ -50,6 +50,7 @@ article {
     text-shadow: 0 0 4px rgb(0, 0, 255);
     font-size: 28px;
     color: wheat;
+    width: 60%;
 }
 
 .post_data {
@@ -61,6 +62,7 @@ article {
     font-size: 12px;
     color: #c0c0c07d;
     font-weight: 100;
+    display: inline;
 }
 
 .post_data a:hover {
@@ -460,10 +462,14 @@ color:wheat;
     width:48%;
     margin-top:68px;
 }
-@media screen and (max-width:888px) {
+@media screen and (max-width:688px) {
     .marginpost {
         width: 98% !important;
     }
+    .post_data a {
+        display:block;
+    }
+
 }
 
 

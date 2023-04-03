@@ -1,35 +1,38 @@
 <?php
 
+try {
+    ob_flush();
     header("Content-Security-Policy: 'default-src' 'self';");
     header("Content-Security-Policy: 'script-src' 'self';");
     header("Content-Security-Policy: 'object-src' 'self';");
     header("Content-Security-Policy: 'script-src' 'https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap';");
     header("Content-Security-Policy: 'font-src' 'https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap';");
+    
+    header("x-powered-by: pixel");
+    header("server:pixi");
+        //kontrola bezpieczeństwa
+        if ($_SERVER['HTTP_HOST'] == 'wzk.ct8.pl') {
+            if (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] !== 'on') {
+                header("Location: https://kaptain.ct8.pl/logowanie");
+            }
+        }
 
 
-session_save_path("../bazadanych/sesje");
-session_name('sesja_pixi');
-session_set_cookie_params(
-    [
-        'path' => '/',
-        'lifetime' => 3600 * 24 * 28,
-        //      'domain' => 'domain.example',
-        'secure' => true,
-        'httponly' => true,
-        'samesite' => 'Strict',
-    ]
-);
-
-try {
-    session_start();
     if (isset($_SESSION['uzytkwonik_pixi_id'])) session_regenerate_id($_SESSION['uzytkwonik_pixi_id']);
     //zmiana sesji dla bezbieczeństwa
-    //kontrola bezpieczeństwa
-    if ($_SERVER['HTTP_HOST'] == 'kaptain.ct8.pl') {
-        if (!isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'on') {
-            header("Location: https://kaptain.ct8.pl/logowanie");
-        }
-    }
+    session_save_path("../bazadanych/sesje");
+    session_name('sesja_pixi');
+    session_set_cookie_params(
+        [
+            'path' => '/',
+            'lifetime' => 3600 * 24 * 28,
+            'secure' => true,
+            'httponly' => true,
+            'samesite' => 'Strict',
+        ]
+    );
+    session_start();
+
 
 
     if (isset($_SESSION['ip'])) {
@@ -38,10 +41,12 @@ try {
                 fopen('bledy/bledy.txt', 'a');
             }
             $plik = fopen('bledy/bledy.txt', 'a');
+
             fwrite($plik, 'Atak hakerski przechwycenie adresu sesji ' . $_SERVER['REMOTE_ADDR']) . ' || \n';
             fclose($plik);
-            //     echo "Atak hakerski karateka już na Ciebie czeka";
-            header('Location:/');
+           // echo "<span style='color:red;'>Atak hakerski karateka już na Ciebie czeka</span>";
+           session_destroy();
+           header('Location:/logowanie');
             throw new Exception("Atak hakerski");
         }
     }
@@ -198,6 +203,8 @@ try {
         header("HTTP/1.1 404 Not Found");
         exit();
     }
+
+    ob_end_flush();
 } catch (Exception $blod) {
     if (!file_exists('bledy.txt')) {
         fopen('bledy/bledy.txt', 'a');
@@ -205,7 +212,7 @@ try {
     $plik = fopen('bledy/bledy.txt', 'a');
     fwrite($plik, 'Błąd ' . $blod);
     fclose($plik);
-    echo "Błąd";
+    echo "<br>Błąd";
     exit();
 } catch (PDOException $blod) {
     if (!file_exists('bledy.txt')) {
@@ -214,7 +221,7 @@ try {
     $plik = fopen('bledy/bledy.txt', 'a');
     fwrite($plik, 'Błąd ' . $blod);
     fclose($plik);
-    echo "Błąd";
+    echo "<br>Błąd";
     exit();
 } catch (\Exception $blod) {
     if (!file_exists('bledy.txt')) {
@@ -223,7 +230,7 @@ try {
     $plik = fopen('bledy/bledy.txt', 'a');
     fwrite($plik, 'Błąd ' . $blod);
     fclose($plik);
-    echo "Błąd";
+    echo "<br>Błąd";
     exit();
 }
 

@@ -343,8 +343,9 @@ try {
                                     ?>
                                     <article>
                                         <div class="post" data-postid="<?php echo $post['idp'] ?>">
+                                        <div>
                                             <div class="post_informacje"><a href='/profil/<?php echo $post['iduzytkownika'] ?>' style="z-index:12;">
-                                                    <div>
+                                                 
                                                         <?php
                                                         if ($uzytkownik[3] !== "" && $uzytkownik[3] !== "uzytkownik.gif") {
                                                         ?>
@@ -352,12 +353,17 @@ try {
                                                         <?php } else { ?>
                                                             <img loading="lazy" src="/../foty/uzytkownik.gif" alt="profilowe" />
                                                         <?php } ?>
-                                                    </div>
+                                                   
                                                 </a>
+                                            
+                                                <div>
+                                                    
                                                 <a href="/profil/<?php echo $post['iduzytkownika'] ?>">
                                                     <div class="post_imie"><?php echo $uzytkownik[1] . ' ' . $uzytkownik[2] ?></div>
                                                 </a>
+                                                        
                                                 <div class="post_data"><a href="/profil/<?php echo $post['iduzytkownika'] ?>/post/<?php echo $post['idp'] ?>"><time><?php echo $post['datadodania'] ?></time></a><button style="border-radius:8px;margin: 2px 0 0 8px;background:silver;">Dodał/a posta</button></div>
+                                                </div>
                                                 <div class="opcjeposta opcjeposta_usuwanie wysrodkowanie" onclick="menuposta(this)" data-postid="<?php echo $post['idp'] ?>"><span style="top:-10px;">...</span></div>
 
                                                 <div class="menu_posta_opcje" style="display:none;" data-opcje_posta="<?php echo $post['idp'] ?>">
@@ -372,7 +378,7 @@ try {
                                                     <?php } ?>
                                                 </div>
 
-
+                                                </div>
                                             </div>
                                             <div class="post_tresc">
                                                 <?php echo nl2br($post['tresc']) ?>
