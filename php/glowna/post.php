@@ -50,10 +50,11 @@ try {
                         <meta charset="UTF-8">
                         <meta http-equiv="X-UA-Compatible" content="IE=edge">
                         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Profil użytkownika</title>
+                        <title>Przeglodaj posta</title>
                         <link href="/css/glowne.css" rel="stylesheet" type="text/css">
                         <link rel="shortcut icon" href="foty/logo.png">
                         <meta name="description" content="Pixi.Twoje miejsce do rozmów,rozrywki i czatu z kapitanem">
+                        <link rel="shortcut icon" href="/zdjecia/logo.png">
                     </head>
 
                     <body>

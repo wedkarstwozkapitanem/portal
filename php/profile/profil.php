@@ -52,6 +52,7 @@ try {
                     <link href="../css/menu.css" rel="stylesheet" type="text/css">
                     <link rel="shortcut icon" href="foty/logo.png">
                     <meta name="description" content="Pixi.Twoje miejsce do rozmów,rozrywki i czatu z kapitanem">
+                    <link rel="shortcut icon" href="/zdjecia/logo.png">
                 </head>
 
                 <body>
