@@ -202,16 +202,17 @@ try {
         sprawdzeniestrony('zarajestruj.php', 'zarajestruj.php');
 
     else {
-        if (strpos($ktora, "@")) {
-            (string) $parametry = substr($ktora, 1);
-            (array) $podzial = explode('@', $parametry);
+        $podzial[0] = strpos($ktora,1);
+        if(!empty($podzial[0])) {
+            (string) $parametry = $ktora;
+            (array) $podzial = explode('/', $parametry);
                         
-            (int)$id;
-            (int)$id_2;
+            (int)$id = 0;
+            (int)$id_2 = 0;
 
-            if(!empty($podzial[1])) {
+         
                 (int)$id = (int) htmlspecialchars($podzial[1]);
-            }
+            
             
                 //(int)$id_2 = (int) htmlspecialchars($podzial[0]);
             
