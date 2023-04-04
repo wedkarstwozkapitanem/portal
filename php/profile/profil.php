@@ -30,7 +30,8 @@ try {
     <!DOCTYPE html>
     <html lang="pl">
     <?php
-    $id = mysqli_real_escape_string($baza, $id);
+
+    $id = mysqli_real_escape_string($baza, htmlentities($id));
     (string) $sqluzytkownik = "SELECT * FROM `uzytkownicy` WHERE `id` = '$id' LIMIT 1";
     if (!$zapytanieuzytkownik = mysqli_query($baza, $sqluzytkownik)) {
         throw new Exception("Nie można znależć użytkownika");
@@ -38,7 +39,7 @@ try {
 
 
     try {
-        if (mysqli_num_rows($zapytanieuzytkownik) > 0) {
+        if ((int)mysqli_num_rows($zapytanieuzytkownik) === (int)1) {
             while ($uzytkownik = $zapytanieuzytkownik->fetch_assoc()) {
     ?>
 

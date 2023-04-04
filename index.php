@@ -174,8 +174,10 @@ try {
         } else if ($podzial[1] == "znajomi") {
             sprawdzeniestrony('profil', 'php/profile/znajomi.php');
         } else {
-            include "bledy/nieznaleziono.php";
-            exit();
+            //sprawdzeniestrony('profil', 'php/glowna/post.php');
+            //include "bledy/nieznaleziono.php";
+            //exit();
+            header('Location:/profil/' . $podzial[0]);
         }
     } else if (strpos($ktora, 'logowanie')) {
         if ($ktora == '/logowanie') {
@@ -198,10 +200,28 @@ try {
         sprawdzeniestrony('dodawanie_tresci', 'php/glowna/dodaj_posta.php');
     else if ($ktora == '/zarajestruj.php')
         sprawdzeniestrony('zarajestruj.php', 'zarajestruj.php');
+
     else {
+        if (strpos($ktora, "@")) {
+            (string) $parametry = substr($ktora, 1);
+            (array) $podzial = explode('@', $parametry);
+                        
+            (int)$id;
+            (int)$id_2;
+
+            if(!empty($podzial[1])) {
+                (int)$id = (int) htmlspecialchars($podzial[1]);
+            }
+            
+                //(int)$id_2 = (int) htmlspecialchars($podzial[0]);
+            
+            include "php/profile/profil.php";
+        }
+        else {
         include "bledy/nieznaleziono.php";
         header("HTTP/1.1 404 Not Found");
         exit();
+        }
     }
 
     ob_end_flush();
