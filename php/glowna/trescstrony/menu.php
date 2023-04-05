@@ -13,7 +13,8 @@
     </div>
     <div class="opcje">
         <ul>
-            <li id="powiad">💌
+            <li id="wiadomosci">💌</li>
+            <li id="powiad">📰
 <?php
 try {
 global $baza;
@@ -33,6 +34,7 @@ echo '<div id="licznikpowiadomien">'.mysqli_num_rows(mysqli_query($baza,"SELECT 
     </div>
 </div>
 </nav>
+<div id="wszystkie_wiadomosci"></div>
 <aside class="powiadomienia" style="display:none;">
     <h4>Dziennik pokładowy:</h4>
     <hr>

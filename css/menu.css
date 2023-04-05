@@ -264,3 +264,23 @@ h4 {
 ::-webkit-scrollbar-track {
     border: 2px solid #008cff;
 }
+
+
+#wszystkie_wiadomosci {
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: fixed;
+    right: 8px;
+    width: 388px;
+    background: black;
+    border-radius: 8px;
+    color: white;
+    top: 70px;
+    text-align: center;
+    z-index: 48;
+    max-height: 88%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 4px silver;
+}

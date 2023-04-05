@@ -510,33 +510,17 @@ try {
                     </div>
                     </div>
                     </div>
-
-
-
-
-
                     <div class="wyswietlanieczatow" style="display:block;">
                     </div>
-
-
-
                     </div>
-
                     <div style="display:none" id="dokladneinformacje"></div>
-
-
-
                     <script src="/js/profil.js"></script>
 
                     <script>
                         const id_profilu = '<?php echo $id; ?>';
                     </script>
-
-
                 </body>
-
     </html>
-
 <?php
 } catch (Exception $blod) {
     if (!file_exists('bledy.txt')) {
